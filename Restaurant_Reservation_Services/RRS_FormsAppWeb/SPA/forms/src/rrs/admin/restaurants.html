@@ -1,0 +1,109 @@
+﻿<template>
+    <require from="common/resources/valueConverters/arraySanitizer"></require>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">Restaurants</h3>
+        </div>
+        <form id="accountForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
+                                            <td class="repeating-td-20"><strong>Name</strong></td>
+                                            <td class="repeating-td-10"><strong>City</strong></td>
+                                            <td class="repeating-td-10"><strong>Phone Number</strong></td>
+                                            <td class="repeating-td-20"><strong>Manager Name</strong></td>
+                                            <td class="repeating-td-20"><strong>Email</strong></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Activated</strong></td>
+                                            <td class="repeating-td-5"></td>
+                                            <td class="repeating-td-5"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr show.bind="!appController.RestaurantsList || appController.RestaurantsList.length == 0">
+                                            <td colspan="9">
+                                                <div class="row">
+                                                    <div class="col-xs-12" style="text-align:center">
+                                                        <h4><i>No Restaurants Found!</i></h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr repeat.for="res of appController.RestaurantsList | arraySanitizer">
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        ${$index + 1}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" readonly class="form-control" value.two-way="res.RestaurantName" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" readonly class="form-control" value.two-way="res.City" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" readonly class="form-control" value.two-way="res.PhoneNumber" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" readonly class="form-control" value.two-way="res.RestaurantManager.ManagerName" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" readonly class="form-control" value.two-way="res.RestaurantManager.Email" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                    <span>
+                                                        <i class="fa ${res.IsActive ? 'fa-check-circle-o fa-2x res-is-active' : 'fa-times-circle-o fa-2x res-is-not-active'}" style="margin-top:10px;" aria-hidden="true"></i>
+                                                    </span>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                    <a click.delegate="activeted(res)"><i class="fa fa-check fa-2x res-is-active" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                    <a click.delegate="deactiveted(res)"><i class="fa fa-times fa-2x res-is-not-active" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>

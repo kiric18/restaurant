@@ -1,0 +1,11 @@
+﻿<template>
+    <div class="selectElement">
+        <select if.bind="isMulti" class="demo-default selectized" multiple id.bind="elementId" name.bind="elementName" data-placeholder.bind="placeholder">
+            <option repeat.for="option of optionsList" value.bind="option.Name">${option.Name}</option>
+        </select>
+
+        <select if.bind="!isMulti" class="demo-default selectized" id.bind="elementId" name.bind="elementName" data-placeholder.bind="placeholder">
+            <option repeat.for="option of optionsList" value.bind="option.Name">${option.Name}</option>
+        </select>
+    </div>
+</template>

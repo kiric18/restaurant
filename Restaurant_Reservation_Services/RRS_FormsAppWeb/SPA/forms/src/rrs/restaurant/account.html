@@ -1,0 +1,261 @@
+﻿<template>
+    <require from="common/resources/customElements/panels/UploadPictures"></require>
+    <require from="common/resources/customElements/controls/comments"></require>
+    <require from="common/resources/customElements/controls/password"></require>
+    <require from="common/resources/customElements/controls/selectControl"></require>
+    <require from="common/resources/valueConverters/arraySanitizer"></require>
+    <require from='common/resources/customElements/customAttributes/timePicker'></require>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">Restaurant Details</h3>
+        </div>
+        <form id="accountForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="RestaurantName" class="form-label" style="margin:0px 0px 0px 0px">Restaurant Name:</h4>
+                                <input type="text" class="form-control" id="RestaurantName" name="RestaurantName" placeholder="Restaurant Name" value.bind="appController.model.RestaurantName" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="PhoneNumber" class="form-label" style="margin:0px 0px 0px 0px">Phone Number:</h4>
+                                <input type="text" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" value.bind="appController.model.PhoneNumber" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Country" class="form-label" style="margin:0px 0px 0px 0px">Country:</h4>
+                                <input type="text" class="form-control" id="Country" name="Country" placeholder="Country" value.bind="appController.model.Country" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="City" class="form-label" style="margin:0px 0px 0px 0px">City:</h4>
+                                <input type="text" class="form-control" id="City" name="City" placeholder="City" value.bind="appController.model.City" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Address" class="form-label" style="margin:0px 0px 0px 0px">Address:</h4>
+                                <input type="text" class="form-control" id="Address" name="Address" placeholder="Address" value.bind="appController.model.Address" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="OpeningHoursFrom" class="form-label" style="margin:0px 0px 0px 0px">Opening Hours From:</h4>
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" id="OpeningHoursFrom" name="OpeningHoursFrom" timepicker placeholder="OpeningHoursFrom" value.bind="appController.model.OpeningHoursFrom" />
+                                    <span class="input-group-addon" style="font-size:20px;">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="OpeningHoursTo" class="form-label" style="margin:0px 0px 0px 0px">Opening Hours To:</h4>
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" id="OpeningHoursTo" name="OpeningHoursTo" timepicker placeholder="OpeningHoursTo" value.bind="appController.model.OpeningHoursTo" />
+                                    <span class="input-group-addon" style="font-size:20px;">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Amenities" class="form-label" style="margin:0px 0px 0px 0px">Amenities:</h4>
+                                <select-control is-multi.bind="true" element-name="Amenities" element-id="Amenities" is-amenities.bind="true"
+                                                placeholder="Select Amenities..." sp-column.two-way="appController.model.RestaurantAmenities"
+                                                options-list.bind="appController.AmenitiesList" view-model.ref="amenitiesVM">
+                                </select-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Style" class="form-label" style="margin:0px 0px 0px 0px">Cuisine:</h4>
+                                <select-control is-multi.bind="true" element-name="Cuisine" element-id="Cuisine" is-cuisine.bind="true"
+                                                placeholder="Select Cuisine..." sp-column.two-way="appController.model.RestaurantCuisines"
+                                                options-list.bind="appController.CuisinesList" view-model.ref="cuisineVM">
+                                </select-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Style" class="form-label" style="margin:0px 0px 0px 0px">Style:</h4>
+                                <select-control is-multi.bind="true" element-name="Style" element-id="Style" is-styles.bind="true"
+                                                placeholder="Select Style..." sp-column.two-way="appController.model.RestaurantStyles"
+                                                options-list.bind="appController.StylesList" view-model.ref="styleVM">
+                                </select-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="PaymentMethods" class="form-label" style="margin:0px 0px 0px 0px">Payment Methods:</h4>
+                                <select-control is-multi.bind="true" element-name="PaymentMethods" element-id="RestaurantPaymentMethods"
+                                                placeholder="Select Payment Methods..." is-payment-methods.bind="true"
+                                                sp-column.two-way="appController.model.RestaurantPaymentMethods"
+                                                options-list.bind="appController.PaymentMethodsList" view-model.ref="paymentMethodsVM">
+                                </select-control>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Description" class="form-label" style="margin:0px 0px 0px 0px">Desrciption:</h4>
+                                <comments element-name="Description" comment-element.two-way="appController.model.Description" info="Add description about your restaurant." tooltip-id="descriptionTooltip" panel-title="Description"></comments>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Desrciption" class="form-label" style="margin:0px 0px 0px 0px">Tables:</h4>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
+                                            <td class="repeating-td-20"><strong>Number Of Table</strong></td>
+                                            <td class="repeating-td-20"><strong>Number Of Persons</strong></td>
+                                            <td class="repeating-td-50"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-5"></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr show.bind="!appController.model.RestaurantTables || appController.model.RestaurantTables.length == 0">
+                                            <td colspan="6">
+                                                <div class="row">
+                                                    <div class="col-xs-12" style="text-align:center">
+                                                        <h4><i>No tables specified</i></h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr repeat.for="table of appController.model.RestaurantTables | arraySanitizer">
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        ${$index + 1}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%">
+                                                            <option disabled.bind="table.NumberOfTable" selected.bind="!table.NumberOfTable" value="">Select Table Number</option>
+                                                            <option repeat.for="option of numberOfTableList" value.bind="option">${option}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="table.NumberOfPersons" style="width:100%">
+                                                            <option disabled.bind="table.NumberOfPersons" selected.bind="!table.NumberOfPersons" value="">Select Number of Persons</option>
+                                                            <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
+                                                                        placeholder="Select Ambience..." is-ambience.bind="true"
+                                                                        sp-column.two-way="table.Ambience"
+                                                                        options-list.bind="appController.AmbiencesList">
+                                                        </select-control>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                    <a click.delegate="removeColumn($index)"><i class="fa fa-times fa-2x" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <a click.delegate="addColumn()">
+                                            <div style="font-size:12px;">
+                                                <i class="fa fa-plus fa-2x" aria-hidden="true" style="display:inline; float:left;"></i>
+                                                <div style="margin-left:10px; display:inline; vertical-align:middle;">Add new Table</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <upload-pictures panel-title="Upload Pictures" element-id="uploadPictures" tooltip-id="uploadPicturesTooltip" multi-select="1" info="Upload Pictures about your restaurant"></upload-pictures>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Email" class="form-label" style="margin:0px 0px 0px 0px">Email:</h4>
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.model.RestaurantManager.Email" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="ManagerName" class="form-label" style="margin:0px 0px 0px 0px">Manager Name:</h4>
+                                <input type="text" class="form-control" id="ManagerName" name="ManagerName" placeholder="Manager Name" value.bind="appController.model.RestaurantManager.ManagerName" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Username" class="form-label" style="margin:0px 0px 0px 0px">Username:</h4>
+                                <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" value.bind="appController.model.RestaurantManager.Username" />
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="Password" element-name="Password" icon-id="iconPassword" placeholder="Password" label="Password" column.two-way="appController.model.RestaurantManager.Password"></password>
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="ConfirmPassword" element-name="ConfirmPassword" icon-id="iconConfirmPassword" placeholder="Confirm Password" label="Confirm Password" column.two-way="appController.model.ConfirmPassword"></password>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            <input type="button" name="command" class="btn btn-primary" value="Save Changes" click.delegate="saveChanges()">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>

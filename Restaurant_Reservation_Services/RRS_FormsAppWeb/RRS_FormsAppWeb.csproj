@@ -1,0 +1,678 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4331C7D4-BAD6-4891-BB4A-57A4D840B5B9}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RRS_FormsAppWeb</RootNamespace>
+    <AssemblyName>RRS_FormsAppWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>
+    </Use64BitIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.2.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.0.6\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.2.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.2.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.2.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.2.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.2.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CommonController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantController.cs" />
+    <Compile Include="Controllers\SpaController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helper\Common\Cryptography.cs" />
+    <Compile Include="Helper\Common\CustomJsonResult.cs" />
+    <Compile Include="Helper\Services\RestaurantServices.cs" />
+    <Compile Include="Helper\Services\UserServices.cs" />
+    <Compile Include="Models\ViewModel\OptGroupList.cs" />
+    <Compile Include="Models\ViewModel\Login.cs" />
+    <Compile Include="Models\ViewModel\PasswordVM.cs" />
+    <Compile Include="Models\ViewModel\RestaurantManagerVM.cs" />
+    <Compile Include="Models\ViewModel\RestaurantTablesVM.cs" />
+    <Compile Include="Models\ViewModel\RestaurantVM.cs" />
+    <Compile Include="Models\ViewModel\SearchRestaurant.cs" />
+    <Compile Include="Models\ViewModel\Signup.cs" />
+    <Compile Include="Models\ViewModel\UserVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="SPA\forms\assets\fonts\bootstrap\glyphicons-halflings-regular.svg" />
+    <Content Include="SPA\forms\assets\fonts\icomoon\icomoon.svg" />
+    <Content Include="SPA\forms\assets\fonts\themify-icons\themify.svg" />
+    <Content Include="SPA\forms\assets\images\add_small.png" />
+    <Content Include="SPA\forms\assets\images\ajax-loader.gif" />
+    <Content Include="SPA\forms\assets\images\area.jpg" />
+    <Content Include="SPA\forms\assets\images\chef.jpg" />
+    <Content Include="SPA\forms\assets\images\chosen-sprite.png" />
+    <Content Include="SPA\forms\assets\images\cover.jpg" />
+    <Content Include="SPA\forms\assets\images\datepicker.gif" />
+    <Content Include="SPA\forms\assets\images\deleteRow.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\alert.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\excel.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\mail.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\other.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\pdf.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\powerpoint.png" />
+    <Content Include="SPA\forms\assets\images\DocumentFormat\word.png" />
+    <Content Include="SPA\forms\assets\images\loader.gif" />
+    <Content Include="SPA\forms\assets\images\sort_asc.png" />
+    <Content Include="SPA\forms\assets\images\sort_asc_disabled.png" />
+    <Content Include="SPA\forms\assets\images\sort_both.png" />
+    <Content Include="SPA\forms\assets\images\sort_desc.png" />
+    <Content Include="SPA\forms\assets\images\sort_desc_disabled.png" />
+    <Content Include="SPA\forms\assets\images\styles.jpg" />
+    <Content Include="SPA\forms\assets\images\topcuisine.jpg" />
+    <Content Include="SPA\forms\assets\images\topstyle.jpg" />
+    <Content Include="SPA\forms\assets\styles\animate.css" />
+    <Content Include="SPA\forms\assets\styles\awesome-bootstrap-checkbox-build.css" />
+    <Content Include="SPA\forms\assets\styles\awesome-bootstrap-checkbox.css" />
+    <Content Include="SPA\forms\assets\styles\bootstrap-combobox.css" />
+    <Content Include="SPA\forms\assets\styles\bootstrap-datepicker3.min.css" />
+    <Content Include="SPA\forms\assets\styles\bootstrap-datetimepicker.min.css" />
+    <Content Include="SPA\forms\assets\styles\bootstrap.css" />
+    <Content Include="SPA\forms\assets\styles\buttons.bootstrap.min.css" />
+    <Content Include="SPA\forms\assets\styles\buttons.dataTables.min.css" />
+    <Content Include="SPA\forms\assets\styles\chosen.min.css" />
+    <Content Include="SPA\forms\assets\styles\dataTables.bootstrap.min.css" />
+    <Content Include="SPA\forms\assets\styles\datatables.min.css" />
+    <Content Include="SPA\forms\assets\styles\footable.bootstrap.css" />
+    <Content Include="SPA\forms\assets\styles\footable.bootstrap.min.css" />
+    <Content Include="SPA\forms\assets\styles\formValidation.min.css" />
+    <Content Include="SPA\forms\assets\styles\jquery-ui-datepicker.css" />
+    <Content Include="SPA\forms\assets\styles\jquery-ui.min.css" />
+    <Content Include="SPA\forms\assets\styles\jquery.dataTables.min.css" />
+    <Content Include="SPA\forms\assets\styles\jquery.tagit.css" />
+    <Content Include="SPA\forms\assets\styles\navbar-custom.css" />
+    <Content Include="SPA\forms\assets\styles\selectize.css" />
+    <Content Include="SPA\forms\assets\styles\selectize.default.css" />
+    <Content Include="SPA\forms\assets\styles\templateAnimate.css" />
+    <Content Include="SPA\forms\assets\styles\templateBootstrap.css" />
+    <Content Include="SPA\forms\assets\styles\templateIcomoon.css" />
+    <Content Include="SPA\forms\assets\styles\templateMagnific-popup.css" />
+    <Content Include="SPA\forms\assets\styles\templateoOwl.theme.default.min.css" />
+    <Content Include="SPA\forms\assets\styles\templateOwl.carousel.min.css" />
+    <Content Include="SPA\forms\assets\styles\templateStyle.css" />
+    <Content Include="SPA\forms\assets\styles\styles.css" />
+    <Content Include="SPA\forms\assets\styles\style_beforeAurelia.css" />
+    <Content Include="SPA\forms\assets\styles\style_forms.css" />
+    <Content Include="SPA\forms\assets\styles\style_inspinia.css" />
+    <Content Include="SPA\forms\assets\styles\sweetalert2.css" />
+    <Content Include="SPA\forms\assets\styles\tagit.ui-zendesk.css" />
+    <Content Include="SPA\forms\assets\styles\templateThemify-icons.css" />
+    <Content Include="SPA\forms\config.js" />
+    <Content Include="SPA\forms\package.json" />
+    <Content Include="SPA\forms\src\app.html" />
+    <Content Include="SPA\forms\src\app.js" />
+    <Content Include="SPA\forms\src\common\controllers\appController.js" />
+    <Content Include="SPA\forms\src\common\plugins\bootstrap-combobox.js" />
+    <Content Include="SPA\forms\src\common\plugins\bootstrap-datepicker.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\bootstrap-datetimepicker.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\bootstrap.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\buttons.bootstrap.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\buttons.flash.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\buttons.html5.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\buttons.print.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\chosen.jquery.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\dataTables.bootstrap.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\dataTables.buttons.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\datatables.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\footable.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\formValidation.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\formValidation.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\formValidation.popular.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\formValidation.popular.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\bootstrap.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\bootstrap.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\bootstrap4.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\bootstrap4.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\foundation.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\foundation.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\foundation5.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\foundation5.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\pure.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\pure.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\semantic.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\semantic.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\uikit.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\framework\uikit.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ar_MA.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\bg_BG.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ca_ES.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\cs_CZ.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\da_DK.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\de_DE.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\el_GR.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\en_US.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\es_CL.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\es_ES.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\eu_ES.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\fa_IR.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\fi_FI.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\fr_BE.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\fr_FR.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\he_IL.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\hi_IN.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\hu_HU.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\id_ID.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\it_IT.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ja_JP.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\nl_BE.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\nl_NL.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\no_NO.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\pl_PL.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\pt_BR.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\pt_PT.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ro_RO.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ru_RU.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\sk_SK.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\sq_AL.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\sr_RS.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\sv_SE.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\th_TH.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\tr_TR.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\ua_UA.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\vi_VN.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\zh_CN.js" />
+    <Content Include="SPA\forms\src\common\plugins\formvalidation\language\zh_TW.js" />
+    <Content Include="SPA\forms\src\common\plugins\inspinia.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery-ui.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.countTo.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.dataTables.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.easing.1.3.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.magnific-popup.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.slimscroll.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.stellar.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\jquery.waypoints.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\magnific-popup-options.js" />
+    <Content Include="SPA\forms\src\common\plugins\main.js" />
+    <Content Include="SPA\forms\src\common\plugins\modernizr-2.6.2.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\owl.carousel.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\respond.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\selectize.js" />
+    <Content Include="SPA\forms\src\common\plugins\tag-it.min.js" />
+    <Content Include="SPA\forms\src\common\resources\config\environment.js" />
+    <Content Include="SPA\forms\src\common\resources\config\init.js" />
+    <Content Include="SPA\forms\src\common\resources\constants\alertMessages.js" />
+    <Content Include="SPA\forms\src\common\resources\constants\commonMessages.js" />
+    <Content Include="SPA\forms\src\common\resources\constants\commonNames.js" />
+    <Content Include="SPA\forms\src\common\resources\constants\externalSystemCodes.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\cancelButton.js">
+      <DependentUpon>cancelButton.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\chosenControl.js">
+      <DependentUpon>chosenControl.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\comments.js">
+      <DependentUpon>comments.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\datetimePicker.js">
+      <DependentUpon>datetimePicker.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\password.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\cancelButton.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\chosenControl.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\datetimePicker.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\password.js">
+      <DependentUpon>password.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\restaurantName.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\restaurantName.js">
+      <DependentUpon>restaurantName.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\selectControl.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\selectControl.js">
+      <DependentUpon>selectControl.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\tooltipInfo.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\tooltipInfo.js">
+      <DependentUpon>tooltipInfo.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.js">
+      <DependentUpon>yesNoButtons.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\countryPicker.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\currencyPicker.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\datePicker.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\dateTimePicker.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\timePicker.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\comments.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\footer.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\footer.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\header.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\header.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\customLogAppender.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\error.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\formValidator.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\helper.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\json.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\log.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\popup.js" />
+    <Content Include="SPA\forms\src\common\resources\scripts\toast.js" />
+    <Content Include="SPA\forms\src\common\resources\validation\rules.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\arraySanitizer.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\blobToUrl.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\checkboxToChoice.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\dateAndTimeFormat.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\dateFormat.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\fileListToArray.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\htmlSanitizer.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\newLine.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\stringToIcon.js" />
+    <Content Include="SPA\forms\src\common\resources\valueConverters\viewDebugger.js" />
+    <Content Include="SPA\forms\src\common\services\webServices.js" />
+    <Content Include="SPA\forms\src\common\services\md5.js" />
+    <Content Include="SPA\forms\src\common\services\serverLog.js" />
+    <Content Include="SPA\forms\src\main.js" />
+    <Content Include="SPA\forms\src\model\historyEntry.js" />
+    <Content Include="SPA\forms\src\model\restaurant.js" />
+    <Content Include="SPA\forms\src\model\restaurantTable.js" />
+    <Content Include="SPA\forms\src\model\user.js" />
+    <Content Include="SPA\forms\src\rrs\admin\home.html" />
+    <Content Include="SPA\forms\src\rrs\admin\home.js">
+      <DependentUpon>home.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\admin\index.html" />
+    <Content Include="SPA\forms\src\rrs\admin\index.js">
+      <DependentUpon>index.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\admin\login.html" />
+    <Content Include="SPA\forms\src\rrs\admin\login.js">
+      <DependentUpon>login.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\admin\restaurants.html" />
+    <Content Include="SPA\forms\src\rrs\admin\restaurants.js">
+      <DependentUpon>restaurants.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\admin\users.html" />
+    <Content Include="SPA\forms\src\rrs\admin\users.js">
+      <DependentUpon>users.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\account.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\account.js">
+      <DependentUpon>account.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\home.js">
+      <DependentUpon>home.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\signup.js">
+      <DependentUpon>signup.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\account.html" />
+    <Content Include="SPA\forms\src\rrs\user\account.js">
+      <DependentUpon>account.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\home.js">
+      <DependentUpon>home.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\index.html" />
+    <Content Include="SPA\forms\src\rrs\user\index.js">
+      <DependentUpon>index.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\login.html" />
+    <Content Include="SPA\forms\src\rrs\user\login.js">
+      <DependentUpon>login.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\signup.html" />
+    <Content Include="SPA\forms\src\rrs\user\signup.js">
+      <DependentUpon>signup.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\home.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\index.js">
+      <DependentUpon>index.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\login.js">
+      <DependentUpon>login.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\signup.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\login.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\index.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\home.html" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\Spa\Index.cshtml" />
+    <Content Include="SPA\forms\assets\sass\bootstrap.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_alerts.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_background-variant.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_border-radius.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_buttons.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_center-block.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_clearfix.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_forms.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_gradients.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_grid-framework.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_grid.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_hide-text.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_image.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_labels.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_list-group.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_nav-divider.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_nav-vertical-align.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_opacity.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_pagination.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_panels.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_progress-bar.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_reset-filter.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_reset-text.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_resize.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_responsive-visibility.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_size.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_tab-focus.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_table-row.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_text-emphasis.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_text-overflow.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\mixins\_vendor-prefixes.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_alerts.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_badges.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_breadcrumbs.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_button-groups.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_buttons.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_carousel.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_close.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_code.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_component-animations.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_dropdowns.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_forms.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_glyphicons.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_grid.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_input-groups.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_jumbotron.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_labels.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_list-group.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_media.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_mixins.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_modals.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_navbar.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_navs.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_normalize.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_pager.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_pagination.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_panels.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_popovers.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_print.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_progress-bars.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_responsive-embed.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_responsive-utilities.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_scaffolding.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_tables.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_theme.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_thumbnails.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_tooltip.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_type.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_utilities.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_variables.scss" />
+    <Content Include="SPA\forms\assets\sass\bootstrap\_wells.scss" />
+    <Content Include="SPA\forms\assets\sass\style.scss" />
+    <Content Include="SPA\forms\assets\sass\_bootstrap-compass.scss" />
+    <Content Include="SPA\forms\assets\sass\_bootstrap-mincer.scss" />
+    <Content Include="SPA\forms\assets\sass\_bootstrap-sprockets.scss" />
+    <Content Include="SPA\forms\assets\fonts\bootstrap\glyphicons-halflings-regular.eot" />
+    <Content Include="SPA\forms\assets\fonts\bootstrap\glyphicons-halflings-regular.ttf" />
+    <Content Include="SPA\forms\assets\fonts\bootstrap\glyphicons-halflings-regular.woff" />
+    <Content Include="SPA\forms\assets\fonts\bootstrap\glyphicons-halflings-regular.woff2" />
+    <Content Include="SPA\forms\assets\fonts\icomoon\icomoon.eot" />
+    <Content Include="SPA\forms\assets\fonts\icomoon\icomoon.ttf" />
+    <Content Include="SPA\forms\assets\fonts\icomoon\icomoon.woff" />
+    <Content Include="SPA\forms\assets\fonts\themify-icons\themify.eot" />
+    <Content Include="SPA\forms\assets\fonts\themify-icons\themify.ttf" />
+    <Content Include="SPA\forms\assets\fonts\themify-icons\themify.woff" />
+    <Content Include="SPA\forms\assets\styles\slimselect.min.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="SPA\forms\src\common\resources\customElements\forms\" />
+    <Folder Include="Views\Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RRS_DataAccess\RRS_DataAccess.csproj">
+      <Project>{afe60d9c-7641-4d2a-8887-d11a97dc5069}</Project>
+      <Name>RRS_DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RRS_Model\RRS_Model.csproj">
+      <Project>{6adf26d4-b2fe-4810-94df-7f0994076e86}</Project>
+      <Name>RRS_Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>56294</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:56294/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.3.2\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

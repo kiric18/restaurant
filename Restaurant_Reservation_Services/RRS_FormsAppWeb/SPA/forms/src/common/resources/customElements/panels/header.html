@@ -1,0 +1,32 @@
+﻿<template style="width:100%; z-index:9999;">
+
+    <nav class="gtco-nav" role="navigation">
+        <div class="gtco-container">
+
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div id="gtco-logo"><a click.delegate="openPage('Welcome')">#-Table<em>.</em></a></div>
+                </div>
+                <div class="col-xs-8 text-right menu-1">
+                    <ul>
+                        <li><a click.delegate="openPage('About')">About</a></li>
+                        <li><a click.delegate="openPage('Contact')">Contact</a></li>
+                        <li class="btn-cta" show.bind="appController.IsUser"><a click.delegate="openPage('Signup')"><span>Sign Up</span></a></li>
+                        <li class="btn-cta" show.bind="appController.IsRestaurant"><a click.delegate="openPage('Register')"><span>Register</span></a></li>
+                        <li class="btn-cta"><a click.delegate="openPage('Login')"><span>Login</span></a></li>
+                        <li class="btn-cta" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin"><a click.delegate="openPage('Welcome')"><span>Logout</span></a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="row" style="height:4px">
+        <div class="col-xs-12">
+            <div style="height:4px; border:0px;" id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                <div class="ui-progressbar-value ui-widget-header ui-corner-left ui-corner-right" css="background-color:orange; border:0px; margin:0px; width: ${processProgress}%"></div>
+            </div>
+        </div>
+    </div>
+</template>

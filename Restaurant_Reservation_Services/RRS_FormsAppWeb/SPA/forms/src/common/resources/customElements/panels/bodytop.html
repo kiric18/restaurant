@@ -1,0 +1,64 @@
+﻿<template>
+    <div id="wrapper" style="box-shadow:none;">
+        <div class="contentHeader">
+            <div class="bodytop-logo">
+                <div style="margin-left:-10px;">
+                    <a href.bind="appController.environment.controlCenterUrl" target="_blank">
+                        <img title="Workflow Control Centre" src.bind="defaultLogo" alt="BT" style="width:200px;" />
+                    </a>
+                </div>
+            </div>
+            <form class="form-horizontal bodytop-form">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="row bodytop-section" if.bind="appController.IsProcess && appController.HasRelatedRequest">
+                                <div class="col-md-4 col-sm-4 col-xs-2">Requestor</div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.RequestorName" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="row bodytop-section" if.bind="!appController.IsProcess">
+                                <div class="col-md-4 col-sm-4 col-xs-2">Requestor</div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.RequestorName" />
+                                </div>
+                            </div>
+                            <div class="row bodytop-section" if.bind="appController.IsProcess">
+                                <div class="col-md-4 col-sm-4 col-xs-2">Initiator</div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.CreatedByName" />
+                                </div>
+                            </div>
+                            <div class="row bodytop-section">
+                                <div class="col-md-4 col-sm-4 col-xs-2">Client Name</div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.ClientName" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 col-md-4">
+                            <div class="row bodytop-section">
+                                <div class="col-md-4 col-sm-4 col-xs-2">Process Id</div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.ProcessId" />
+                                </div>
+                            </div>
+                            <div class="row bodytop-section">
+                                <div class="col-md-4 col-sm-4 col-xs-2">
+                                    <a click.delegate="goToCurrentPage()">Current Step</a>
+                                </div>
+                                <div class="col-md-8 col-sm-8 col-xs-10">
+                                    <input class="form-control" readonly value.two-way="appController.model.ActivePage" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                </form>
+        </div>
+        <div style="clear:both;"></div>
+    </div>
+</template>

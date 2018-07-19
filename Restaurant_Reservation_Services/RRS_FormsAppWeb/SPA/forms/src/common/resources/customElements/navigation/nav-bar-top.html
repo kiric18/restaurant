@@ -1,0 +1,77 @@
+﻿<template style="width:100%; z-index:9999;">
+
+    <nav class="gtco-nav" role="navigation">
+        <div class="gtco-container">
+
+            <div class="row">
+                <div class="col-sm-4 col-xs-12">
+                    <div id="gtco-logo"><a click.delegate="openPage('Home')">#-Resaurant Reservation Services<em>.</em></a></div>
+                </div>
+                <div class="col-xs-8 text-right menu-1">
+                    <ul>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="About" click.delegate="openPage('About')">
+                                <i class="fa fa-font">bout</i>
+                            </a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Contact" click.delegate="openPage('Contact')">
+                                <i class="fa fa-contao">ontact</i>
+                            </a>
+                        </li>
+
+                        <li class="dropdown" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdmin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Signup" click.delegate="openPage('Signup')">
+                                <i class="fa fa-sign-in"> Sign up</i>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdminLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Login" click.delegate="openPage('Login')">
+                                <i class="fa fa-sign-in"> Login</i>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Messages">
+                                <i class="fa fa-envelope"></i>  <span class="label label-warning">0</span>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Alerts">
+                                <i class="fa fa-bell"></i>  <span class="label label-primary">0</span>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Account" click.delegate="openPage('Account')">
+                                <i class="fa fa-user-circle"></i>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsAdminLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Restaurants" click.delegate="openPage('Restaurants')">
+                                <i class="fa fa-cutlery"> Restaurants</i>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsAdminLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Users" click.delegate="openPage('Users')">
+                                <i class="fa fa-users"> Users</i>
+                            </a>
+                        </li>
+                        <li class="dropdown" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin || appController.IsAdminLogin">
+                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Logout" click.delegate="openPage('Logout')">
+                                <i class="fa fa-sign-out"> Logout</i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="row" style="height:4px">
+        <div class="col-xs-12">
+            <div style="height:4px; border:0px;" id="progressbar" class="ui-progressbar ui-widget ui-widget-content ui-corner-all" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="100">
+                <div class="ui-progressbar-value ui-widget-header ui-corner-left ui-corner-right" css="background-color:#f54c53; border:0px; margin:0px; width: ${processProgress}%"></div>
+            </div>
+        </div>
+    </div>
+</template>

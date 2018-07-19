@@ -1,0 +1,39 @@
+﻿#siteIcon {
+    min-width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    margin-right: 20px;
+    float: left;
+}
+
+#titleAreaBox {
+    margin: auto 20px;
+}
+
+.header-left {
+    font-size: 25px;
+}
+
+.calculatedTextbox {
+    border: 1px solid #C6C6C8 !important;
+    border-radius: 5px;
+    padding: 1px 5px 2px 5px !important;
+    height: 16px !important;
+    width: 160px !important;
+    background-color: #F0F0F0 !important;
+}
+
+.ms-core-pageTitle {
+    font-size: 2.77em;
+    white-space: nowrap;
+}
+
+.ms-core-pageTitle, .ms-core-pageTitle a {
+    font-family: "Segoe UI Light","Segoe UI","Segoe",Tahoma,Helvetica,Arial,sans-serif;
+    color: #262626;
+}
+
+.ms-verticalAlignTop {
+    vertical-align: top;
+}

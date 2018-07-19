@@ -1,0 +1,23 @@
+﻿<template>
+    <ai-dialog>
+        <ai-dialog-header>
+            <button type="button" click.trigger="dialogController.cancel()" class="close" aria-label="Close"><span class="pull-right" aria-hidden="true">&times;</span></button>
+            <i if.bind="type == 'error'" style="color:orange; text-align:center; width:100%;" class="fa fa-exclamation-triangle fa-4x" aria-hidden="true"></i>
+            <i if.bind="type == 'critical'" style="color:red; text-align:center; width:100%;" class="fa fa-window-close-o fa-4x" aria-hidden="true"></i>
+            <i if.bind="type == 'question'" style="color:steelblue; text-align:center; width:100%;" class="fa fa-question-circle fa-4x" aria-hidden="true"></i>
+            <i if.bind="type == 'info'" style="color:royalblue; text-align:center; width:100%;" class="fa fa-info-circle fa-4x" aria-hidden="true"></i>
+            <i if.bind="type == 'warning'" style="color:darkorange; text-align:center; width:100%;" class="fa fa-exclamation-triangle fa-4x" aria-hidden="true"></i>
+            <h4 class="modal-title" style="text-align:center;">${title}</h4>
+        </ai-dialog-header>
+        <ai-dialog-body>
+            <div innerhtml.bind="body"></div>
+        </ai-dialog-body>
+        <ai-dialog-footer>
+            <button if.bind="hasOkButton" id="okbtn" type="button" class="btn btn-primary" click.trigger="dialogController.ok()">OK</button>
+            <button if.bind="hasCancelButton" type="button" class="btn btn-default" click.trigger="dialogController.cancel()">Cancel</button>
+            <button if.bind="hasYesButton" id="yesbtn" type="button" class="btn btn-primary" click.trigger="dialogController.ok()">Yes</button>
+            <button if.bind="hasNoButton" type="button" class="btn btn-default" click.trigger="dialogController.cancel()">No</button>
+        </ai-dialog-footer>
+    </ai-dialog>
+
+</template>

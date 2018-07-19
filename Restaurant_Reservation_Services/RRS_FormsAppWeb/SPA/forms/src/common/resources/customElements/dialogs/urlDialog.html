@@ -1,0 +1,15 @@
+﻿<template>
+    <ai-dialog>
+        <ai-dialog-header>
+            <button type="button" click.trigger="dialogController.cancel()" class="close" aria-label="Close"><span class="pull-right" aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" style="text-align:center;">${title}</h4>
+        </ai-dialog-header>
+        <ai-dialog-body style="width:100%;">
+            <iframe width="100%" src.bind="url"></iframe>
+        </ai-dialog-body>
+        <ai-dialog-footer>
+
+        </ai-dialog-footer>
+    </ai-dialog>
+
+</template>

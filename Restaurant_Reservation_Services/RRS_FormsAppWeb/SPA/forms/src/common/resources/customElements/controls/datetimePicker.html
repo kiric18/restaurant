@@ -1,0 +1,17 @@
+﻿<!--<template>
+    <div class="input-group date" id.bind="elementId">
+        <input type="text" class="form-control" value.bind="datevalue" name.bind="elementId">
+        <span class="input-group-addon">
+            <i class="glyphicon glyphicon-calendar"></i>
+        </span>
+    </div>
+</template>-->
+<template>
+    <div class='input-group date' id.bind="elementId">
+        <input type='text' class="form-control" name.bind="elementName" />
+        <span class="input-group-addon">
+            <i if.bind="!isTime" class="fa fa-calendar"></i>
+            <i if.bind="isTime" class="fa fa-clock-o"></i>
+        </span>
+    </div>
+</template>

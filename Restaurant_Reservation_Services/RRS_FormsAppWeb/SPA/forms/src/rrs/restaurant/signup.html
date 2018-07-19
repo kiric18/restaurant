@@ -1,0 +1,61 @@
+﻿<template>
+    <require from="common/resources/customElements/controls/password"></require>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">Sign up</h3>
+        </div>
+        <form id="signupForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="RestaurantName" class="form-label" style="margin:0px 0px 0px 0px">Restaurant Name:</h4>
+                                <input type="text" class="form-control" id="RestaurantName" name="RestaurantName" placeholder="Restaurant Name" value.bind="appController.model.RestaurantName" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="ManagerName" class="form-label" style="margin:0px 0px 0px 0px">Manager Name:</h4>
+                                <input type="text" class="form-control" id="ManagerName" name="ManagerName" placeholder="Manager Name" value.bind="appController.model.RestaurantManager.ManagerName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Email" class="form-label" style="margin:0px 0px 0px 0px">Email:</h4>
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.model.RestaurantManager.Email" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Username" class="form-label" style="margin:0px 0px 0px 0px">Username:</h4>
+                                <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" value.bind="appController.model.RestaurantManager.Username" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="Password" element-name="Password" icon-id="iconPassword" placeholder="Password" label="Password" column.two-way="appController.model.RestaurantManager.Password"></password>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="ConfirmPassword" element-name="ConfirmPassword" icon-id="iconConfirmPassword" placeholder="Confirm Password" label="Confirm Password" column.two-way="appController.model.ConfirmPassword"></password>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            <input type="button" name="command" class="btn btn-primary" value="Sign up" click.delegate="signup()">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>

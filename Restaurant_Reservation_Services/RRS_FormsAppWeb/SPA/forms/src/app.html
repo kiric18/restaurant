@@ -1,0 +1,16 @@
+﻿<template>
+    <!--<ul class="nav nav-tabs">
+        <li repeat.for="route of router.navigation" class="${route.isActive ? 'active' : ''}">
+            <a href.bind="route.href">${route.title}</a>
+        </li>
+    </ul>-->
+
+    <router-view  name="mainContent">
+        <div style="display:none;" class="${router.isNavigating ? 'navigating' : ''}">
+            <div class="loading-spinner">
+                <i class="fa fa-spinner fa-pulse fa-3x fa-fw" style="position:fixed; top:50%; left:47%;"></i>
+            </div>
+        </div>
+
+    </router-view>
+</template>

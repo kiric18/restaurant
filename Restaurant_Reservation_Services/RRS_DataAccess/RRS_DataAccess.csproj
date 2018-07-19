@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{AFE60D9C-7641-4D2A-8887-D11A97DC5069}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RRS_DataAccess</RootNamespace>
+    <AssemblyName>RRS_DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Context\RRSDatabaseContext.cs" />
+    <Compile Include="Migrations\201805180852369_initial.cs" />
+    <Compile Include="Migrations\201805180852369_initial.Designer.cs">
+      <DependentUpon>201805180852369_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805180858307_makeDateTimeToString.cs" />
+    <Compile Include="Migrations\201805180858307_makeDateTimeToString.Designer.cs">
+      <DependentUpon>201805180858307_makeDateTimeToString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805210946338_restaurantAddCityAndCountry.cs" />
+    <Compile Include="Migrations\201805210946338_restaurantAddCityAndCountry.Designer.cs">
+      <DependentUpon>201805210946338_restaurantAddCityAndCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805211142296_restaurants.cs" />
+    <Compile Include="Migrations\201805211142296_restaurants.Designer.cs">
+      <DependentUpon>201805211142296_restaurants.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201805211250149_renameAmenities.cs" />
+    <Compile Include="Migrations\201805211250149_renameAmenities.Designer.cs">
+      <DependentUpon>201805211250149_renameAmenities.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806132101373_changeRestaurantTableProperties.cs" />
+    <Compile Include="Migrations\201806132101373_changeRestaurantTableProperties.Designer.cs">
+      <DependentUpon>201806132101373_changeRestaurantTableProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806132109135_changeRestaurant.cs" />
+    <Compile Include="Migrations\201806132109135_changeRestaurant.Designer.cs">
+      <DependentUpon>201806132109135_changeRestaurant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140650328_addRelationshipBetweenResAndResTables.cs" />
+    <Compile Include="Migrations\201806140650328_addRelationshipBetweenResAndResTables.Designer.cs">
+      <DependentUpon>201806140650328_addRelationshipBetweenResAndResTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140752424_changePropertiesType.cs" />
+    <Compile Include="Migrations\201806140752424_changePropertiesType.Designer.cs">
+      <DependentUpon>201806140752424_changePropertiesType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140842224_changePropertiesType2.cs" />
+    <Compile Include="Migrations\201806140842224_changePropertiesType2.Designer.cs">
+      <DependentUpon>201806140842224_changePropertiesType2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140920242_changePropertiesType3.cs" />
+    <Compile Include="Migrations\201806140920242_changePropertiesType3.Designer.cs">
+      <DependentUpon>201806140920242_changePropertiesType3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806140950541_changePropertiesType4.cs" />
+    <Compile Include="Migrations\201806140950541_changePropertiesType4.Designer.cs">
+      <DependentUpon>201806140950541_changePropertiesType4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141141174_addManagerName.cs" />
+    <Compile Include="Migrations\201806141141174_addManagerName.Designer.cs">
+      <DependentUpon>201806141141174_addManagerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806141430048_changePropertiesType5.cs" />
+    <Compile Include="Migrations\201806141430048_changePropertiesType5.Designer.cs">
+      <DependentUpon>201806141430048_changePropertiesType5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806150736405_addNewTables.cs" />
+    <Compile Include="Migrations\201806150736405_addNewTables.Designer.cs">
+      <DependentUpon>201806150736405_addNewTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806150745467_renameDescription.cs" />
+    <Compile Include="Migrations\201806150745467_renameDescription.Designer.cs">
+      <DependentUpon>201806150745467_renameDescription.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806150821374_renameName.cs" />
+    <Compile Include="Migrations\201806150821374_renameName.Designer.cs">
+      <DependentUpon>201806150821374_renameName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806192048532_addNewTables1.cs" />
+    <Compile Include="Migrations\201806192048532_addNewTables1.Designer.cs">
+      <DependentUpon>201806192048532_addNewTables1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806202120506_changeIdToEnumId.cs" />
+    <Compile Include="Migrations\201806202120506_changeIdToEnumId.Designer.cs">
+      <DependentUpon>201806202120506_changeIdToEnumId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806202137109_changeId.cs" />
+    <Compile Include="Migrations\201806202137109_changeId.Designer.cs">
+      <DependentUpon>201806202137109_changeId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806202142448_changeEnumIToId.cs" />
+    <Compile Include="Migrations\201806202142448_changeEnumIToId.Designer.cs">
+      <DependentUpon>201806202142448_changeEnumIToId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806210545464_addBaseEntity.cs" />
+    <Compile Include="Migrations\201806210545464_addBaseEntity.Designer.cs">
+      <DependentUpon>201806210545464_addBaseEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806210600398_UpdateStylesManyToMany.cs" />
+    <Compile Include="Migrations\201806210600398_UpdateStylesManyToMany.Designer.cs">
+      <DependentUpon>201806210600398_UpdateStylesManyToMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806210609167_UpdateStylesManyToMany2.cs" />
+    <Compile Include="Migrations\201806210609167_UpdateStylesManyToMany2.Designer.cs">
+      <DependentUpon>201806210609167_UpdateStylesManyToMany2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806210620388_UpdateStylesManyToMany3.cs" />
+    <Compile Include="Migrations\201806210620388_UpdateStylesManyToMany3.Designer.cs">
+      <DependentUpon>201806210620388_UpdateStylesManyToMany3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806262018197_updateTablesManytoMany.cs" />
+    <Compile Include="Migrations\201806262018197_updateTablesManytoMany.Designer.cs">
+      <DependentUpon>201806262018197_updateTablesManytoMany.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806262156259_updateTableCuisine.cs" />
+    <Compile Include="Migrations\201806262156259_updateTableCuisine.Designer.cs">
+      <DependentUpon>201806262156259_updateTableCuisine.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806262157137_updateTableCuisine2.cs" />
+    <Compile Include="Migrations\201806262157137_updateTableCuisine2.Designer.cs">
+      <DependentUpon>201806262157137_updateTableCuisine2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270611090_newTableTest.cs" />
+    <Compile Include="Migrations\201806270611090_newTableTest.Designer.cs">
+      <DependentUpon>201806270611090_newTableTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270613129_removeTables.cs" />
+    <Compile Include="Migrations\201806270613129_removeTables.Designer.cs">
+      <DependentUpon>201806270613129_removeTables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270616116_addNewTable.cs" />
+    <Compile Include="Migrations\201806270616116_addNewTable.Designer.cs">
+      <DependentUpon>201806270616116_addNewTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270622548_addNewTable2.cs" />
+    <Compile Include="Migrations\201806270622548_addNewTable2.Designer.cs">
+      <DependentUpon>201806270622548_addNewTable2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270629426_addNewTable3.cs" />
+    <Compile Include="Migrations\201806270629426_addNewTable3.Designer.cs">
+      <DependentUpon>201806270629426_addNewTable3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270633312_addNewTable4.cs" />
+    <Compile Include="Migrations\201806270633312_addNewTable4.Designer.cs">
+      <DependentUpon>201806270633312_addNewTable4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201806270636055_addNewTable5.cs" />
+    <Compile Include="Migrations\201806270636055_addNewTable5.Designer.cs">
+      <DependentUpon>201806270636055_addNewTable5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807031936213_userTable.cs" />
+    <Compile Include="Migrations\201807031936213_userTable.Designer.cs">
+      <DependentUpon>201807031936213_userTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807162030522_addNewFielDForRes.cs" />
+    <Compile Include="Migrations\201807162030522_addNewFielDForRes.Designer.cs">
+      <DependentUpon>201807162030522_addNewFielDForRes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\RRS_Model\RRS_Model.csproj">
+      <Project>{6adf26d4-b2fe-4810-94df-7f0994076e86}</Project>
+      <Name>RRS_Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201805180852369_initial.resx">
+      <DependentUpon>201805180852369_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805180858307_makeDateTimeToString.resx">
+      <DependentUpon>201805180858307_makeDateTimeToString.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805210946338_restaurantAddCityAndCountry.resx">
+      <DependentUpon>201805210946338_restaurantAddCityAndCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805211142296_restaurants.resx">
+      <DependentUpon>201805211142296_restaurants.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201805211250149_renameAmenities.resx">
+      <DependentUpon>201805211250149_renameAmenities.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806132101373_changeRestaurantTableProperties.resx">
+      <DependentUpon>201806132101373_changeRestaurantTableProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806132109135_changeRestaurant.resx">
+      <DependentUpon>201806132109135_changeRestaurant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140650328_addRelationshipBetweenResAndResTables.resx">
+      <DependentUpon>201806140650328_addRelationshipBetweenResAndResTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140752424_changePropertiesType.resx">
+      <DependentUpon>201806140752424_changePropertiesType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140842224_changePropertiesType2.resx">
+      <DependentUpon>201806140842224_changePropertiesType2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140920242_changePropertiesType3.resx">
+      <DependentUpon>201806140920242_changePropertiesType3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806140950541_changePropertiesType4.resx">
+      <DependentUpon>201806140950541_changePropertiesType4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141141174_addManagerName.resx">
+      <DependentUpon>201806141141174_addManagerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806141430048_changePropertiesType5.resx">
+      <DependentUpon>201806141430048_changePropertiesType5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806150736405_addNewTables.resx">
+      <DependentUpon>201806150736405_addNewTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806150745467_renameDescription.resx">
+      <DependentUpon>201806150745467_renameDescription.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806150821374_renameName.resx">
+      <DependentUpon>201806150821374_renameName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806192048532_addNewTables1.resx">
+      <DependentUpon>201806192048532_addNewTables1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806202120506_changeIdToEnumId.resx">
+      <DependentUpon>201806202120506_changeIdToEnumId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806202137109_changeId.resx">
+      <DependentUpon>201806202137109_changeId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806202142448_changeEnumIToId.resx">
+      <DependentUpon>201806202142448_changeEnumIToId.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210545464_addBaseEntity.resx">
+      <DependentUpon>201806210545464_addBaseEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210600398_UpdateStylesManyToMany.resx">
+      <DependentUpon>201806210600398_UpdateStylesManyToMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210609167_UpdateStylesManyToMany2.resx">
+      <DependentUpon>201806210609167_UpdateStylesManyToMany2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806210620388_UpdateStylesManyToMany3.resx">
+      <DependentUpon>201806210620388_UpdateStylesManyToMany3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806262018197_updateTablesManytoMany.resx">
+      <DependentUpon>201806262018197_updateTablesManytoMany.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806262156259_updateTableCuisine.resx">
+      <DependentUpon>201806262156259_updateTableCuisine.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806262157137_updateTableCuisine2.resx">
+      <DependentUpon>201806262157137_updateTableCuisine2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270611090_newTableTest.resx">
+      <DependentUpon>201806270611090_newTableTest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270613129_removeTables.resx">
+      <DependentUpon>201806270613129_removeTables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270616116_addNewTable.resx">
+      <DependentUpon>201806270616116_addNewTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270622548_addNewTable2.resx">
+      <DependentUpon>201806270622548_addNewTable2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270629426_addNewTable3.resx">
+      <DependentUpon>201806270629426_addNewTable3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270633312_addNewTable4.resx">
+      <DependentUpon>201806270633312_addNewTable4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806270636055_addNewTable5.resx">
+      <DependentUpon>201806270636055_addNewTable5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807031936213_userTable.resx">
+      <DependentUpon>201807031936213_userTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807162030522_addNewFielDForRes.resx">
+      <DependentUpon>201807162030522_addNewFielDForRes.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="MigrationInfo.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

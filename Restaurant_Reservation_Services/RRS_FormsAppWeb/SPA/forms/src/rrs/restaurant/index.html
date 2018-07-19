@@ -1,0 +1,21 @@
+﻿<template>
+    <!--<require from="common/resources/customElements/panels/header"></require>
+    <require from="common/resources/customElements/navigation/nav-bar"></require>-->
+    <require from="common/resources/customElements/navigation/nav-bar-top"></require>
+    <require from="common/resources/customElements/panels/footer"></require>
+    <!--<require from="common/resources/customElements/panels/bodytop"></require>-->
+
+    <!--<header></header>-->
+    <nav-bar-top></nav-bar-top>
+
+    <div id="wrapper" class="mainContent">
+        <!--<body-top></body-top>-->
+        <!--<nav-bar router.bind="router"></nav-bar>-->
+
+        <div id="page-wrapper" class="gray-hsd-bg">
+            <router-view></router-view>
+        </div>
+    </div>
+    <footer></footer>
+
+</template>

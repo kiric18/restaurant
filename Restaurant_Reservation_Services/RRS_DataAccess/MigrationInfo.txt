@@ -1,0 +1,4 @@
+﻿
+Add-Migration "NameOfMigration"
+
+Update-Database -configuration RRS_DataAccess.Migrations.Configuration

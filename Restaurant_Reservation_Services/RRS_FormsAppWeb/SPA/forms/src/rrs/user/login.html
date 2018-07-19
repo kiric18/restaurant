@@ -1,0 +1,36 @@
+﻿<template>
+    <require from="common/resources/customElements/controls/password"></require>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">Login</h3>
+        </div>
+        <form id="loginForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Email" class="form-label" style="margin:0px 0px 0px 0px">Email:</h4>
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.model.Email" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="Password" element-name="Password" icon-id="iconPassword" placeholder="Password" label="Password" column.two-way="appController.model.Password"></password>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-md-12">
+                            <input type="button" name="command" class="btn btn-primary" value="Login" click.delegate="login()">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>

@@ -1,0 +1,120 @@
+﻿<template>
+    <require from='common/resources/valueConverters/dateFormat'></require>
+    <require from='common/resources/customElements/customAttributes/datePicker'></require>
+    <require from="common/resources/customElements/controls/password"></require>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">User Account</h3>
+        </div>
+        <form id="accountForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="FirstName" class="form-label" style="margin:0px 0px 0px 0px">FirstName:</h4>
+                                <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name" value.bind="appController.model.FirstName" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="LastName" class="form-label" style="margin:0px 0px 0px 0px">Last Name:</h4>
+                                <input type="text" class="form-control" id="LastName" name="LastName" placeholder="Last Name" value.bind="appController.model.LastName" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="PhoneNumber" class="form-label" style="margin:0px 0px 0px 0px">Phone Number:</h4>
+                                <input type="tel" class="form-control" id="PhoneNumber" name="PhoneNumber" placeholder="Phone Number" value.bind="appController.model.PhoneNumber" />
+                            </div>
+                        </div>
+                        <div class="col-xs-4">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Gender" class="form-label" style="margin:0px 0px 0px 0px">Gender:</h4>
+                                <select class="form-control" id="Gender" name="Gender" value.bind="appController.model.Gender" style="width:100%">
+                                    <option disabled.bind="appController.model.Gender" value="">Please select Gender</option>
+                                    <option repeat.for="option of genderList" value.bind="option">
+                                        ${option}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <div class="form-group add-padding-left-right">
+                                    <h4 for="dtBirthday" class="form-label" style="margin:0px 0px 0px 0px">Birthday:</h4>
+                                    <div class='input-group date' id='dtBirthday'>
+                                        <input type="text" class="form-control" id="Birthday" name="Birthday" datepicker placeholder="Birthday" value.bind="appController.model.Birthday  | dateFormat" input.delegate="dtBirthdayChanged($event.target.value)" />
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Country" class="form-label" style="margin:0px 0px 0px 0px">Country:</h4>
+                                <input type="text" class="form-control" id="Country" name="Country" placeholder="Country" value.bind="appController.model.Country" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="City" class="form-label" style="margin:0px 0px 0px 0px">City:</h4>
+                                <input type="text" class="form-control" id="City" name="City" placeholder="City" value.bind="appController.model.City" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Address" class="form-label" style="margin:0px 0px 0px 0px">Address:</h4>
+                                <input type="text" class="form-control" id="Address" name="Address" placeholder="Address" value.bind="appController.model.Address" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Email" class="form-label" style="margin:0px 0px 0px 0px">Email:</h4>
+                                <input type="email" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.model.Email" />
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Username" class="form-label" style="margin:0px 0px 0px 0px">Username:</h4>
+                                <input type="text" class="form-control" id="Username" name="Username" placeholder="Username" value.bind="appController.model.Username" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="Password" element-name="Password" icon-id="iconPassword" placeholder="Password" label="Password" column.two-way="appController.model.Password"></password>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="form-group add-padding-left-right">
+                                <password element-id="ConfirmPassword" element-name="ConfirmPassword" icon-id="iconConfirmPassword" placeholder="Confirm Password" label="ConfirmPassword" column.two-way="appController.model.ConfirmPassword"></password>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            <input type="button" name="command" class="btn btn-primary" value="Save Changes" click.delegate="saveChanges()">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>
