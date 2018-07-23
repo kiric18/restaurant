@@ -5,7 +5,7 @@ import { AppController } from "common/controllers/appController";
 
 
 @inject(Element, AppController)
-export class Home {
+export class Results {
 
     constructor(element, appController) {
         this.$element = $(element);

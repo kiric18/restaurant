@@ -1,0 +1,34 @@
+﻿<template>
+    <require from="common/resources/customElements/panels/searchRestaurant"></require>
+    <require from='common/resources/valueConverters/arraySanitizer'></require>
+    <section style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <search-restaurant></search-restaurant>
+            </div>
+        </div>
+        <div class="row" show.bind="appController.RestaurantsResultsList.length > 0">
+            <div class="col-sm-12">
+                <div>
+                    <h3 class="pull-left">${appController.RestaurantsResultsList.length} resturants</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="list-group" repeat.for="res of appController.RestaurantsResultsList | arraySanitizer" style="margin-bottom: 0px;">
+                    <div class="col-sm-4">
+                        <a href="#" class="list-group-item">
+                            <div class="thumbnail">
+                                <img src="/SPA/forms/assets/images/area.jpg" alt="TopArea">
+                                <div class="caption">
+                                    <h3>${res.RestaurantName}</h3>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</template>

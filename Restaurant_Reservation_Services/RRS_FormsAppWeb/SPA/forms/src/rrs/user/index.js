@@ -50,6 +50,11 @@ export class Index {
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
+            {
+                route: ['Results'],
+                moduleId: `rrs/${this.modulePath}/results`,
+                name: 'Results', title: 'Results', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
+            },
         ]);
     }
     //#endregion

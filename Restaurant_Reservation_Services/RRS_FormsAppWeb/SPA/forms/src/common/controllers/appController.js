@@ -30,6 +30,7 @@ export class AppController {
         this.md5 = md5;
 
         this.RestaurantsList = [];
+        this.RestaurantsResultsList = [];
         this.UsersList = [];
 
         this.CuisinesList = [];
@@ -38,6 +39,7 @@ export class AppController {
         this.AmbiencesList = [];
         this.StylesList = [];
         this.RestaurantNamesList = [];
+        this.RestaurantSearch = [];
         this.LocationsList = [
             { 'Id': 'Famagusta', 'Name': 'Famagusta', 'Description': 'Famagusta' },
             { 'Id': 'Nicosia', 'Name': 'Nicosia', 'Description': 'Nicosia' },
@@ -74,7 +76,7 @@ export class AppController {
         this.StylesList = this.json.clone(response.StylesList);
         if (this.IsUser) {
             this.RestaurantNamesList = this.json.clone(response.RestaurantNamesList);
-            this.model.RestaurantSearch = response.SearchRestaurant;
+            this.RestaurantSearch = this.json.clone(response.SearchRestaurant);
         }
     }
 
@@ -99,7 +101,7 @@ export class AppController {
         }
 
         this.originalModel = this.json.clone(this.model);
-        customLog(`Is Admin: , ${this.IsAdmin}, Is User: , ${this.IsUser}, Is Restaurant: , ${this.IsRestaurant}, Model: `, this.model, "info");
+        customLog(`Is Admin: ${this.IsAdmin}, Is User: ${this.IsUser}, Is Restaurant: ${this.IsRestaurant}, Model: `, this.model, "info");
     }
 
     populateAdminList(response) {

@@ -407,13 +407,17 @@
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.js" />
-    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.js">
+      <DependentUpon>nav-bar-top.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\searchRestaurant.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\searchRestaurant.js">
+      <DependentUpon>searchRestaurant.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.html" />
@@ -494,6 +498,10 @@
     <Content Include="SPA\forms\src\rrs\user\login.html" />
     <Content Include="SPA\forms\src\rrs\user\login.js">
       <DependentUpon>login.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\results.html" />
+    <Content Include="SPA\forms\src\rrs\user\results.js">
+      <DependentUpon>results.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\rrs\user\signup.html" />
     <Content Include="SPA\forms\src\rrs\user\signup.js">

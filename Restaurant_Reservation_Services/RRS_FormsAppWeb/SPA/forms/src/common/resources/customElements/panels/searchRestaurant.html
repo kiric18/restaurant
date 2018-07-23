@@ -1,0 +1,73 @@
+﻿<template>
+    <require from='common/resources/customElements/customAttributes/timePicker'></require>
+    <require from='common/resources/customElements/customAttributes/datePicker'></require>
+    <require from='common/resources/valueConverters/dateFormat'></require>
+    <require from="common/resources/customElements/controls/restaurantName"></require>
+
+    <form id="searchRestaurant" class="inputs-group form-search col-xs-12">
+        <fieldset>
+            <div class="row">
+                <div class="col-xs-4 reset-padding-left-right">
+                    <div class="form-group">
+                        <restaurant-name element-name="RestaurantName" element-id="RestaurantName"></restaurant-name>
+                    </div>
+                </div>
+                <div class="col-xs-3 reset-padding-left-right">
+                    <div class="form-group">
+                        <div class='input-group date' data-min-date="ctrl.data.minDate">
+                            <input type="text" class="form-control" id="Date" name="Date" datepicker placeholder="Date" input.delegate="dtDateChanged($event.target.value)" value.bind="appController.model.RestaurantSearch.Date | dateFormat" />
+                            <span class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3 reset-padding-left-right">
+                    <div class="form-group">
+                        <div class='input-group date'>
+                            <input type="text" class="form-control" id="Time" name="Time" timepicker placeholder="Time" value.bind="appController.model.RestaurantSearch.Time" />
+                            <span class="input-group-addon" style="font-size:20px;">
+                                <i class="fa fa-clock-o"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-2 reset-padding-left-right"></div>
+            </div>
+            <div class="row">
+                <div class="col-xs-10 reset-padding-left-right">
+                    <div class="form-group">
+                        <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Locations, Cuisines, Amenities, Styles, Ambiences">
+                            <optgroup label="Locations">
+                                <option repeat.for="option of appController.LocationsList" value.bind="option.Name">${option.Description}</option>
+                            </optgroup>
+                            <optgroup label="Cuisines">
+                                <option repeat.for="option of appController.CuisinesList" value.bind="option.Name">${option.Description}</option>
+                            </optgroup>
+                            <optgroup label="Amenities">
+                                <option repeat.for="option of appController.AmenitiesList" value.bind="option.Name">${option.Description}</option>
+                            </optgroup>
+                            <optgroup label="Styles">
+                                <option repeat.for="option of appController.StylesList" value.bind="option.Name">${option.Description}</option>
+                            </optgroup>
+                            <optgroup label="Ambience">
+                                <option repeat.for="option of appController.AmbiencesList" value.bind="option.Name">${option.Description}</option>
+                            </optgroup>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xs-2 reset-padding-left-right">
+                    <div class="form-group">
+                        <div class='input-group'>
+                            <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="Search" click.delegate="search()">
+                                <span style="font-size:20px;">
+                                    <i class="fa fa-search"> Search</i>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</template>
