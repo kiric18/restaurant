@@ -31,6 +31,7 @@ export class AppController {
 
         this.RestaurantsList = [];
         this.RestaurantsResultsList = [];
+        this.SelectedRestaurant = [];
         this.UsersList = [];
 
         this.CuisinesList = [];

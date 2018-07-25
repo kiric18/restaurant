@@ -70,6 +70,10 @@ export class SelectControl {
         });
 
         this.select[0].selectize.setValue(this.returnSpColumnValues());
+
+        if (this.isDisabled) {
+            this.select[0].selectize.disable();
+        }
     }
 
     returnSpColumnValues() {

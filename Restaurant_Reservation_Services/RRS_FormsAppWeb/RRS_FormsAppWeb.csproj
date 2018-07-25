@@ -499,9 +499,13 @@
     <Content Include="SPA\forms\src\rrs\user\login.js">
       <DependentUpon>login.html</DependentUpon>
     </Content>
-    <Content Include="SPA\forms\src\rrs\user\results.html" />
-    <Content Include="SPA\forms\src\rrs\user\results.js">
-      <DependentUpon>results.html</DependentUpon>
+    <Content Include="SPA\forms\src\rrs\user\selectedRestaurant.html" />
+    <Content Include="SPA\forms\src\rrs\user\restaurantsResults.html" />
+    <Content Include="SPA\forms\src\rrs\user\restaurantsResults.js">
+      <DependentUpon>restaurantsResults.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\user\selectedRestaurant.js">
+      <DependentUpon>selectedRestaurant.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\rrs\user\signup.html" />
     <Content Include="SPA\forms\src\rrs\user\signup.js">

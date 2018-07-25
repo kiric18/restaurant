@@ -1,0 +1,78 @@
+﻿<template>
+    <require from="common/resources/customElements/controls/selectControl"></require>
+    <require from='common/resources/valueConverters/arraySanitizer'></require>
+    <section style="margin-top: 20px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div>
+                    <h2 class="pull-left">${appController.SelectedRestaurant.RestaurantName}</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="form-label" style="margin:0px 0px 0px 0px">Book a Table</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <h4 class="form-label" style="margin:0px 0px 0px 0px">Photo</h4>
+            </div>
+        </div>
+        <fieldset>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group add-padding-left-right">
+                        <h4 for="Description" class="form-label" style="margin:0px 0px 0px 0px">Description</h4>
+                        <textarea class="form-control" rows.bind="4" readonly value.bind="appController.SelectedRestaurant.Description" name="Description"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group add-padding-left-right">
+                        <h4 for="Style" class="form-label" style="margin:0px 0px 0px 0px">Cuisine</h4>
+                        <select-control is-multi.bind="true" element-name="Cuisine" element-id="Cuisine" is-cuisine.bind="true"
+                                        placeholder="Select Cuisine..." sp-column.two-way="appController.SelectedRestaurant.RestaurantCuisines"
+                                        options-list.bind="appController.CuisinesList" is-disabled.bind="true" view-model.ref="cuisineVM">
+                        </select-control>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group add-padding-left-right">
+                        <h4 for="Style" class="form-label" style="margin:0px 0px 0px 0px">Style</h4>
+                        <select-control is-multi.bind="true" element-name="Style" element-id="Style" is-styles.bind="true"
+                                        placeholder="Select Style..." sp-column.two-way="appController.SelectedRestaurant.RestaurantStyles"
+                                        options-list.bind="appController.StylesList" is-disabled.bind="true" view-model.ref="styleVM">
+                        </select-control>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group add-padding-left-right">
+                        <h4 for="Amenities" class="form-label" style="margin:0px 0px 0px 0px">Amenities</h4>
+                        <select-control is-multi.bind="true" element-name="Amenities" element-id="Amenities" is-amenities.bind="true"
+                                        placeholder="Select Amenities..." sp-column.two-way="appController.SelectedRestaurant.RestaurantAmenities"
+                                        options-list.bind="appController.AmenitiesList" is-disabled.bind="true" view-model.ref="amenitiesVM">
+                        </select-control>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="form-group add-padding-left-right">
+                        <h4 for="PaymentMethods" class="form-label" style="margin:0px 0px 0px 0px">Payment Methods</h4>
+                        <select-control is-multi.bind="true" element-name="PaymentMethods" element-id="RestaurantPaymentMethods"
+                                        placeholder="Select Payment Methods..." is-payment-methods.bind="true"
+                                        sp-column.two-way="appController.SelectedRestaurant.RestaurantPaymentMethods"
+                                        options-list.bind="appController.PaymentMethodsList" is-disabled.bind="true" view-model.ref="paymentMethodsVM">
+                        </select-control>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </section>
+</template>

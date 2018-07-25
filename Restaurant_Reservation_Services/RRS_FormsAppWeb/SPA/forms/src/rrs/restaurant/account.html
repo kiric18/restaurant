@@ -1,11 +1,10 @@
 ﻿<template>
     <require from="common/resources/customElements/panels/UploadPictures"></require>
-    <require from="common/resources/customElements/controls/comments"></require>
     <require from="common/resources/customElements/controls/password"></require>
     <require from="common/resources/customElements/controls/selectControl"></require>
     <require from="common/resources/valueConverters/arraySanitizer"></require>
     <require from='common/resources/customElements/customAttributes/timePicker'></require>
-
+    <require from="common/resources/customElements/controls/tooltipInfo"></require>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 style="color:#f54c53">Restaurant Details</h3>
@@ -121,8 +120,8 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <div class="form-group add-padding-left-right">
-                                <h4 for="Description" class="form-label" style="margin:0px 0px 0px 0px">Desrciption:</h4>
-                                <comments element-name="Description" comment-element.two-way="appController.model.Description" info="Add description about your restaurant." tooltip-id="descriptionTooltip" panel-title="Description"></comments>
+                                <h4 for="Description" class="form-label" style="margin:0px 0px 0px 0px">Desrciption: <tooltip-info element-id="descriptionTooltip" info="Add description about your restaurant."></tooltip-info></h4>
+                                <textarea class="form-control" rows.bind="4" value.bind="appController.model.Description" name="Description"></textarea>
                             </div>
                         </div>
                     </div>

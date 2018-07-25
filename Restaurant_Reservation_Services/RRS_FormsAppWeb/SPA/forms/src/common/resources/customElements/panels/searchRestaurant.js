@@ -68,7 +68,7 @@ export class SearchRestaurant {
         this.appController.webServices.searchRestaurant(this.appController.RestaurantSearch, "User").then(response => {
             customLog(`Restaurant Search Response: `, response.Restaurants, "info");
             _self.appController.RestaurantsResultsList = response.Restaurants;
-            _self.router.navigateToRoute("Results");
+            _self.router.navigateToRoute("RestaurantsResults");
         });
     }
 }

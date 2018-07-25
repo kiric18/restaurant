@@ -1,13 +1,3 @@
 ﻿<template>
-    <require from="common/resources/customElements/controls/tooltipInfo"></require>
-
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            ${panelTitle}
-            <tooltip-info class="pull-right" show.bind="info" element-id.bind="tooltipId" info.bind="info"></tooltip-info>
-        </div>
-        <div class="panel-body">
-            <textarea class="form-control" rows.bind="rowsCount" value.bind="commentElement" readonly.bind="isReadonly" name.bind="elementName"></textarea>
-        </div>
-    </div>
+    <textarea class="form-control" rows.bind="rowsCount" value.bind="commentElement" readonly.bind="isReadonly" name.bind="elementName"></textarea>
 </template>

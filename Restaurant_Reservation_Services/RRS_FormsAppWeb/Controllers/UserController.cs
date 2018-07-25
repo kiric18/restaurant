@@ -172,7 +172,8 @@ namespace RRS_FormsAppWeb.Controllers
                 //restaurants.Add(res);
                 UpdateRestaurantList(restaurants, res);
             }
-            else if(searchRestaurant.Search.Count > 0)
+
+            if (searchRestaurant.Search != null && searchRestaurant.Search.Count > 0)
             {
                 for (int i=0; i < searchRestaurant.Search.Count; i++)
                 {
@@ -209,6 +210,10 @@ namespace RRS_FormsAppWeb.Controllers
                         UpdateRestaurantList(restaurants, res);
                     }
                 }
+            }
+            else
+            {
+                restaurants = db.Restaurants.ToList();
             }
 
             result.Data = new { Result = true, Restaurants = restaurants};
