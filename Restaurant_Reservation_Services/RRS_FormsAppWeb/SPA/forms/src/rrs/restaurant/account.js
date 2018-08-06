@@ -17,6 +17,7 @@ export class Account{
         this.router = router;
         this.appController = appController;
         this.formValidator = formValidator;
+        this.ambienceViewModel = [];
 
         this.numberOfTableList = [];
         this.numberOfPersonsList = [];
@@ -89,6 +90,7 @@ export class Account{
     removeColumn(index) {
         let _self = this;
         this.appController.model.RestaurantTables.splice(index, 1);
+        this.ambienceViewModel[index].setSelectize();
     }
 
     initializeValidation(formId) { //pass in form element id

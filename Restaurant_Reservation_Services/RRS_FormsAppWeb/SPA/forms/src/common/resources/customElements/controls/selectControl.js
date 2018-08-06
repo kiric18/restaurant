@@ -37,13 +37,13 @@ export class SelectControl {
     attached() {
         let _self = this;
         this.spColumn = !this.spColumn ? [] : this.spColumn;
+
+        this.setSelectize();
+    }
+
+    setSelectize() {
+        let _self = this;
         let element = this.$element.find("#" + this.elementId);
-
-        //var select = new SlimSelect({
-        //    select: "#" + this.elementId
-        //})
-
-        //select.setData(this.optionsList)
 
         this.select = element.selectize({
             plugins: ['remove_button'],

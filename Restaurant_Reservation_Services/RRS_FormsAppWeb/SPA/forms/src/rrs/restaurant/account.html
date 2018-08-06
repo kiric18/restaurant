@@ -182,7 +182,7 @@
                                                     <div class="col-xs-12 col-md-12">
                                                         <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
                                                                         placeholder="Select Ambience..." is-ambience.bind="true"
-                                                                        sp-column.two-way="table.Ambience"
+                                                                        sp-column.two-way="table.Ambience"  view-model.ref="ambienceViewModel[$index]"
                                                                         options-list.bind="appController.AmbiencesList">
                                                         </select-control>
                                                     </div>
