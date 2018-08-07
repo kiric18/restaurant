@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201807162030522_addNewFielDForRes.Designer.cs">
       <DependentUpon>201807162030522_addNewFielDForRes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808070548158_changeAmbience.cs" />
+    <Compile Include="Migrations\201808070548158_changeAmbience.Designer.cs">
+      <DependentUpon>201808070548158_changeAmbience.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -322,6 +326,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201807162030522_addNewFielDForRes.resx">
       <DependentUpon>201807162030522_addNewFielDForRes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808070548158_changeAmbience.resx">
+      <DependentUpon>201808070548158_changeAmbience.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
