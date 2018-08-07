@@ -69,11 +69,15 @@ export class SelectControl {
             },
         });
 
-        this.select[0].selectize.setValue(this.returnSpColumnValues());
+        this.setSelectedValues();
 
         if (this.isDisabled) {
             this.select[0].selectize.disable();
         }
+    }
+
+    setSelectedValues() {
+        this.select[0].selectize.setValue(this.returnSpColumnValues());
     }
 
     returnSpColumnValues() {
@@ -162,6 +166,7 @@ export class SelectControl {
             this.spColumn.push(object);
         }
         else if (this.isAmbience && !found) {
+            object.Ambience = { "Name": data.Name};
             object.AmbienceId = data.Id;
             this.spColumn.push(object);
         }
@@ -177,7 +182,7 @@ export class SelectControl {
             object.CuisineId = data.Id;
             this.spColumn.push(object);
         }
-        customLog(`Select Control- ADD - ${this.elementName}`, this.spColumn, "info");
+        //customLog(`Select Control- ADD - ${this.elementName}`, this.spColumn, "info");
     }
 
     removeObject(data) {
@@ -214,6 +219,6 @@ export class SelectControl {
                 }
             }
         }
-        customLog(`Select Control- REMOVE - ${this.elementName}`, this.spColumn, "info");
+        //customLog(`Select Control- REMOVE - ${this.elementName}`, this.spColumn, "info");
     }
 }

@@ -54,6 +54,11 @@ export class Index {
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
+            {
+                route: ['Reservations'],
+                moduleId: `rrs/${this.modulePath}/reservations`,
+                name: 'Reservations', title: 'Reservations', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
+            },
         ]);
     }
     //#endregion

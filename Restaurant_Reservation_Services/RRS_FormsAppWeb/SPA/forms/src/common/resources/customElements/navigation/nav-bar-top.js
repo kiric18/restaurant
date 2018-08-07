@@ -40,6 +40,10 @@ export class NavBarTop {
                 this.router.navigateToRoute(navigationPage);
                 break;
             }
+            case 'Reservations': {
+                this.router.navigateToRoute(navigationPage);
+                break;
+            }
             case 'Logout': {
                 let _self = this;
                 this.appController.resetLogoutGlobalProperties();

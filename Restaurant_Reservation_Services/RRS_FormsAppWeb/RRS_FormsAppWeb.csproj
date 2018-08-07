@@ -450,6 +450,7 @@
     <Content Include="SPA\forms\src\common\services\md5.js" />
     <Content Include="SPA\forms\src\common\services\serverLog.js" />
     <Content Include="SPA\forms\src\main.js" />
+    <Content Include="SPA\forms\src\model\ambience.js" />
     <Content Include="SPA\forms\src\model\historyEntry.js" />
     <Content Include="SPA\forms\src\model\restaurant.js" />
     <Content Include="SPA\forms\src\model\restaurantTable.js" />
@@ -480,6 +481,10 @@
     </Content>
     <Content Include="SPA\forms\src\rrs\restaurant\home.js">
       <DependentUpon>home.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\rrs\restaurant\reservations.html" />
+    <Content Include="SPA\forms\src\rrs\restaurant\reservations.js">
+      <DependentUpon>reservations.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\rrs\restaurant\signup.js">
       <DependentUpon>signup.html</DependentUpon>

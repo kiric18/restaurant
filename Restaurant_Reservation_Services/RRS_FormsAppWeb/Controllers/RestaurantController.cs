@@ -301,29 +301,20 @@ namespace RRS_FormsAppWeb.Controllers
                     {
                         for (int i = 0; i < restaurant.RestaurantTables.Count; i++)
                         {
-                            for (int a = 0; a < restaurant.RestaurantTables[i].Ambience.Count; a++)
+                            for (int j = 0; j < restaurantVM.RestaurantTables.Count; j++)
                             {
-                                for (int j = 0; j < restaurantVM.RestaurantTables.Count; j++)
+                                int indexRes = restaurant.RestaurantTables.FindIndex(f => f.Id == restaurantVM.RestaurantTables[j].Id);
+                                if (indexRes < 0)
                                 {
-                                    int indexRes = restaurant.RestaurantTables.FindIndex(f => f.Id == restaurantVM.RestaurantTables[j].Id);
-                                    if (indexRes < 0)
+                                    restaurant.RestaurantTables.Add(restaurantVM.RestaurantTables[j]);
+                                }
+                                else
+                                {
+                                    if (restaurant.RestaurantTables[i].Id == restaurantVM.RestaurantTables[j].Id)
                                     {
-                                        restaurant.RestaurantTables.Add(restaurantVM.RestaurantTables[j]);
-                                    }
-
-                                    for (int b = 0; b < restaurantVM.RestaurantTables[j].Ambience.Count; b++)
-                                    {
-                                        int indexRecAmb = restaurant.RestaurantTables[i].Ambience.FindIndex(f => f.AmbienceId == restaurantVM.RestaurantTables[j].Ambience[b].AmbienceId);
-                                        if (indexRecAmb < 0)
-                                        {
-                                            restaurant.RestaurantTables[i].Ambience.Add(restaurantVM.RestaurantTables[j].Ambience[b]);
-                                        }
-                                    }
-
-                                    int indexRecVMAmb = restaurantVM.RestaurantTables[j].Ambience.FindIndex(f => f.AmbienceId == restaurant.RestaurantTables[i].Ambience[a].AmbienceId);
-                                    if (indexRecVMAmb < 0)
-                                    {
-                                        db.RestaurantTablesAmbiences.Remove(restaurant.RestaurantTables[i].Ambience[a]);
+                                        restaurant.RestaurantTables[i].Ambience = restaurantVM.RestaurantTables[j].Ambience;
+                                        restaurant.RestaurantTables[i].NumberOfPersons = restaurantVM.RestaurantTables[j].NumberOfPersons;
+                                        restaurant.RestaurantTables[i].NumberOfTable = restaurantVM.RestaurantTables[j].NumberOfTable;
                                     }
                                 }
                             }
@@ -334,24 +325,6 @@ namespace RRS_FormsAppWeb.Controllers
                             }
                         }
                     }
-
-                    //for (int a = 0; a < restaurant.RestaurantTables[i].Ambience.Count; a++)
-                    //{
-                    //    for (int b = 0; b < restaurantVM.RestaurantTables[j].Ambience.Count; b++)
-                    //    {
-                    //        int indexRecAmb = restaurant.RestaurantTables[i].Ambience.FindIndex(f => f.AmbienceId == restaurantVM.RestaurantTables[j].Ambience[b].AmbienceId);
-                    //        if (indexRecAmb < 0)
-                    //        {
-                    //            restaurant.RestaurantTables[i].Ambience.Add(restaurantVM.RestaurantTables[j].Ambience[b]);
-                    //        }
-                    //    }
-
-                    //    int indexRecVMAmb = restaurantVM.RestaurantTables[j].Ambience.FindIndex(f => f.AmbienceId == restaurant.RestaurantTables[i].Ambience[a].AmbienceId);
-                    //    if (indexRecVMAmb < 0)
-                    //    {
-                    //        db.RestaurantTablesAmbiences.Remove(restaurant.RestaurantTables[i].Ambience[a]);
-                    //    }
-                    //}
                     restaurant.RestaurantManager.Email = restaurantVM.RestaurantManager.Email;
                     restaurant.RestaurantManager.ManagerName = restaurantVM.RestaurantManager.ManagerName;
                     restaurant.RestaurantManager.Username = restaurantVM.RestaurantManager.Username;

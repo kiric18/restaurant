@@ -51,7 +51,11 @@ export class Account{
             delete this.appController.model.RestaurantManager.Password;
         }
         delete this.appController.model.ConfirmPassword;
-
+        if (this.appController.model.RestaurantTables.length > 0) {
+            for (let i = 0; i < this.appController.model.RestaurantTables.length; i++) {
+                _self.appController.model.RestaurantTables[i].Ambience = JSON.stringify(_self.appController.model.RestaurantTables[i].Ambience);
+            }
+        }
 
         this.appController.webServices.updateAcount(this.appController.model, "Restaurant").then(response => {
             if (response.Result) {
@@ -68,16 +72,11 @@ export class Account{
 
     generateNumberOfTablesAndPersons() {
         let _self = this;
-        let tablesNumber = 0;
-        for (let i = 1; i < 100; i++) {
-            tablesNumber++;
-            _self.numberOfTableList.push(tablesNumber);
+        for (let i = 0; i <= 100; i++) {
+            _self.numberOfTableList.push(i);
         }
-
-        let personsNumber = 1;
-        for (let i = 1; i < 20; i++) {
-            personsNumber++;
-            _self.numberOfPersonsList.push(personsNumber);
+        for (let i = 0; i <= 20; i++) {
+            _self.numberOfPersonsList.push(i);
         }
     }
 
@@ -90,7 +89,7 @@ export class Account{
     removeColumn(index) {
         let _self = this;
         this.appController.model.RestaurantTables.splice(index, 1);
-        this.ambienceViewModel[index].setSelectize();
+        this.ambienceViewModel[index].setSelectedValues();
     }
 
     initializeValidation(formId) { //pass in form element id

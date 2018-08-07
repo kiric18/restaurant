@@ -13,6 +13,7 @@ import { Toast } from 'common/resources/scripts/toast';
 import { Error } from 'common/resources/scripts/error';
 import { User } from "model/user.js"
 import { Restaurant } from "model/restaurant.js"
+import { Ambience } from "model/ambience.js"
 
 @inject(Environment, Json, CommonMessages, CommonNames, Popup, Toast, Error, WebServices, User, Restaurant, Md5)
 export class AppController {
@@ -92,6 +93,19 @@ export class AppController {
             this.model.RestaurantPaymentMethods = this.model.RestaurantPaymentMethods || [];
             this.model.RestaurantAmenities = this.model.RestaurantAmenities || [];
             this.model.RestaurantTables = this.model.RestaurantTables || [];
+            if (this.model.RestaurantTables.length == 0) {
+                this.model.RestaurantTables.Ambience = [];
+            }
+            else {
+                for (let i = 0; i < this.model.RestaurantTables.length; i++) {
+                    if (this.model.RestaurantTables[i].Ambience) {
+                        this.model.RestaurantTables[i].Ambience = JSON.parse(this.model.RestaurantTables[i].Ambience);
+                    }
+                    else {
+                        this.model.RestaurantTables.Ambience = [];
+                    }
+                }
+            }
         }
         else if (this.IsUser) {
             this.model.Password = '';

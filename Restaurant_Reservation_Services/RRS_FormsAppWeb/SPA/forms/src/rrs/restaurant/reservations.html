@@ -1,0 +1,105 @@
+﻿<template>
+    <require from="common/resources/customElements/controls/selectControl"></require>
+    <require from="common/resources/valueConverters/arraySanitizer"></require>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 style="color:#f54c53">Reservations</h3>
+        </div>
+        <form id="accountForm" class="form-horizontal">
+            <div class="panel-body">
+                <fieldset>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="form-group add-padding-left-right">
+                                <h4 for="Desrciption" class="form-label" style="margin:0px 0px 0px 0px">Tables:</h4>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
+                                            <td class="repeating-td-10"><strong>Number Of Table</strong></td>
+                                            <td class="repeating-td-15"><strong>Number Of Persons</strong></td>
+                                            <td class="repeating-td-30"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-20"><strong>Reservation Name</strong></td>
+                                            <td class="repeating-td-15"><strong>Phone Number</strong></td>
+                                            <td class="repeating-td-5"><strong>Available</strong></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr show.bind="!appController.model.RestaurantTables || appController.model.RestaurantTables.length == 0">
+                                            <td colspan="7">
+                                                <div class="row">
+                                                    <div class="col-xs-12" style="text-align:center">
+                                                        <h4><i>No tables specified</i></h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr repeat.for="table of appController.model.RestaurantTables | arraySanitizer">
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        ${$index + 1}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <fieldset disabled>
+                                                            <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%">
+                                                                <option disabled.bind="table.NumberOfTable" selected.bind="!table.NumberOfTable" value="">Select Table Number</option>
+                                                                <option repeat.for="option of numberOfTableList" value.bind="option">${option}</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <fieldset disabled>
+                                                            <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="table.NumberOfPersons" style="width:100%">
+                                                                <option disabled.bind="table.NumberOfPersons" selected.bind="!table.NumberOfPersons" value="">Select Number of Persons</option>
+                                                                <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
+                                                            </select>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <fieldset disabled>
+                                                            <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
+                                                                            placeholder="Select Ambience..." is-ambience.bind="true"
+                                                                            sp-column.two-way="table.Ambience" view-model.ref="ambienceViewModel[$index]"
+                                                                            options-list.bind="appController.AmbiencesList">
+                                                            </select-control>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td></td>
+                                            <td></td>
+                                            <td style="text-align:center">
+                                                <div class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="IsAvailable${$index}" id="IsAvailable${$index}" class="styled" checked.bind="table.IsAvailable" />
+                                                    <label></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col-xs-12">
+                            <input type="button" name="command" class="btn btn-primary" value="Save Changes" click.delegate="saveChanges()">
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </form>
+    </div>
+</template>
