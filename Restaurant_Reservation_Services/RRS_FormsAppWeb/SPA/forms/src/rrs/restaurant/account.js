@@ -33,8 +33,15 @@ export class Account{
     }
 
     attached() {
+        let _self = this;
         this.appController.configureAttached();
         this.initializeValidation('accountForm');
+
+        if (this.appController.model.RestaurantTables && this.appController.model.RestaurantTables.length > 0) {
+            for (let i = 0; i < this.appController.model.RestaurantTables.length; i++) {
+                _self.disabledNumberOfTable(_self.appController.model.RestaurantTables[i].NumberOfTable);
+            }
+        }
     }
 
     saveChanges() {
@@ -72,11 +79,32 @@ export class Account{
 
     generateNumberOfTablesAndPersons() {
         let _self = this;
-        for (let i = 0; i <= 100; i++) {
-            _self.numberOfTableList.push(i);
+        for (let i = 1; i <= 100; i++) {
+            let obj = { "Number": i, "Disabled": false };
+            _self.numberOfTableList.push(obj);
         }
-        for (let i = 0; i <= 20; i++) {
+        for (let i = 1; i <= 20; i++) {
             _self.numberOfPersonsList.push(i);
+        }
+    }
+
+    disabledNumberOfTable(value) {
+        let _self = this;
+        for (let j = 0; j < this.numberOfTableList.length; j++) {
+            if (_self.numberOfTableList[j].Number === parseInt(value)) {
+                _self.numberOfTableList[j].Disabled = true;
+                break;
+            }
+        }
+    }
+
+    enabledNumberOfTable(value) {
+        let _self = this;
+        for (let j = 0; j < this.numberOfTableList.length; j++) {
+            if (_self.numberOfTableList[j].Number === parseInt(value)) {
+                _self.numberOfTableList[j].Disabled = false;
+                break;
+            }
         }
     }
 
@@ -84,12 +112,16 @@ export class Account{
         let _self = this;
         let restaurantTable = new RestaurantTable();
         this.appController.model.RestaurantTables.push(restaurantTable);
+        let lastIndex = _self.appController.model.RestaurantTables.length - 1;
+        this.disabledNumberOfTable(this.appController.model.RestaurantTables[lastIndex].NumberOfTable);
     }
 
     removeColumn(index) {
         let _self = this;
+        let removalNumberOfTable = _self.appController.model.RestaurantTables[index].NumberOfTable;
         this.appController.model.RestaurantTables.splice(index, 1);
         this.ambienceViewModel[index].setSelectedValues();
+        this.enabledNumberOfTable(removalNumberOfTable);
     }
 
     initializeValidation(formId) { //pass in form element id

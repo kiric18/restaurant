@@ -160,9 +160,9 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%">
+                                                        <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%" change.delegate="disabledNumberOfTable(table.NumberOfTable)">
                                                             <option disabled.bind="table.NumberOfTable" selected.bind="!table.NumberOfTable" value="">Select Table Number</option>
-                                                            <option repeat.for="option of numberOfTableList" value.bind="option">${option}</option>
+                                                            <option repeat.for="option of numberOfTableList" disabled.bind="option.Disabled" value.bind="option.Number">${option.Number}</option>
                                                         </select>
                                                     </div>
                                                 </div>

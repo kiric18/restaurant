@@ -299,16 +299,18 @@ namespace RRS_FormsAppWeb.Controllers
                     }
                     else if (restaurantVM.RestaurantTables != null)
                     {
+                        for (int j = 0; j < restaurantVM.RestaurantTables.Count; j++)
+                        {
+                            if (restaurantVM.RestaurantTables[j].Id == 0)
+                            {
+                                restaurant.RestaurantTables.Add(restaurantVM.RestaurantTables[j]);
+                            }
+                        }
                         for (int i = 0; i < restaurant.RestaurantTables.Count; i++)
                         {
                             for (int j = 0; j < restaurantVM.RestaurantTables.Count; j++)
                             {
-                                int indexRes = restaurant.RestaurantTables.FindIndex(f => f.Id == restaurantVM.RestaurantTables[j].Id);
-                                if (indexRes < 0)
-                                {
-                                    restaurant.RestaurantTables.Add(restaurantVM.RestaurantTables[j]);
-                                }
-                                else
+                                if (restaurantVM.RestaurantTables[j].Id != 0)
                                 {
                                     if (restaurant.RestaurantTables[i].Id == restaurantVM.RestaurantTables[j].Id)
                                     {
@@ -349,6 +351,5 @@ namespace RRS_FormsAppWeb.Controllers
                 throw ex;
             }
         }
-
     }
 }
