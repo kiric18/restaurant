@@ -60,4 +60,18 @@ export class Reservations {
             _self.numberOfPersonsList.push(i);
         }
     }
+
+    updateAvailabality(table) {
+        let _self = this;
+
+        this.appController.webServices.updateRestaurantTableAvailability(table.Id, table.IsAvailable).then(response => {
+            if (response != null) {
+                table.IsAvailable = response.IsAvailable;
+                _self.appController.toast.toastSuccess(`Table updated succesfully!`);
+            }
+            else {
+                _self.appController.toast.toastError(`Table not updated succesfully!`);
+            }
+        });
+    }
 }

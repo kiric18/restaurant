@@ -80,4 +80,16 @@ export class WebServices {
         newRequest.body = json(model);
         return this.defaultFetch(`${this.environment.appUrl}/${controller}/SearchRestaurant/`, newRequest);
     }
+
+    updateRestaurantTableAvailability(resTableId, isAvailable) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'restaurantTableId':'${resTableId}', 'isAvailable':'${isAvailable}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UpdateRestaurantTableAvailability/`, newRequest);
+    }
+
+    getAvailableRestaurantTables(restaurantId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'restaurantId':'${restaurantId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetAvailableRestaurantTables/`, newRequest);
+    }
 }

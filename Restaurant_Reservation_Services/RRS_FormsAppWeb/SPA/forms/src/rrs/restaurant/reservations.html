@@ -79,11 +79,23 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" name="ResName${$index}" id="ResName${$index}" class="form-control" value.bind="table.User" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" name="PhoneNumber${$index}" id="PhoneNumber${$index}" class="form-control" value.bind="table.User" />
+                                                    </div>
+                                                </div>
+                                            </td>
                                             <td style="text-align:center">
                                                 <div class="checkbox checkbox-primary">
-                                                    <input type="checkbox" name="IsAvailable${$index}" id="IsAvailable${$index}" class="styled" checked.bind="table.IsAvailable" />
+                                                    <input type="checkbox" name="IsAvailable${$index}" id="IsAvailable${$index}" class="styled" checked.bind="table.IsAvailable" change.delegate="updateAvailabality(table)" />
                                                     <label></label>
                                                 </div>
                                             </td>

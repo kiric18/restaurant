@@ -351,5 +351,52 @@ namespace RRS_FormsAppWeb.Controllers
                 throw ex;
             }
         }
+
+        // POST: UserAcount
+        [HttpPost]
+        public ActionResult UpdateRestaurantTableAvailability(int restaurantTableId, bool isAvailable)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+
+            RestaurantTables restaurantTables = db.RestaurantTables.Find(restaurantTableId);
+            if (restaurantTables != null)
+            {
+                restaurantTables.IsAvailable = isAvailable;
+                db.SaveChanges();
+                result.Data = restaurantTables;
+            }
+
+            return result;
+        }
+
+        // POST: UserAcount
+        [HttpPost]
+        public ActionResult GetAvailableRestaurantTables(int restaurantId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+
+            Restaurant restaurant = db.Restaurants.Find(restaurantId);
+
+            //RestaurantTables restaurantTables = db.RestaurantTables.Find(restaurantTableId);
+            if (restaurant != null)
+            {
+                List<RestaurantTables> restaurantTables = new List<RestaurantTables>();
+
+                if (restaurant.RestaurantTables.Count > 0)
+                {
+                    for (int i = 0; i < restaurant.RestaurantTables.Count; i++)
+                    {
+                        var resTable = restaurant.RestaurantTables[i];
+                        if (resTable.IsAvailable)
+                        {
+                            restaurantTables.Add(resTable);
+                        }
+                    }
+                }
+                result.Data = restaurantTables;
+            }
+
+            return result;
+        }
     }
 }
