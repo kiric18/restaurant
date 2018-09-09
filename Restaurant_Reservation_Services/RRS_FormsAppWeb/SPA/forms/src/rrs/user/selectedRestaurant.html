@@ -1,4 +1,5 @@
 ﻿<template>
+    <require from='common/resources/customElements/customAttributes/timePicker'></require>
     <require from="common/resources/customElements/controls/selectControl"></require>
     <require from='common/resources/valueConverters/arraySanitizer'></require>
     <section style="margin-top: 20px;">
@@ -12,6 +13,54 @@
         <div class="row">
             <div class="col-sm-12">
                 <h4 class="form-label" style="margin:0px 0px 0px 0px">Book a Table</h4>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="appController.model.RestaurantSearch.NumberOfPersons" style="width:100%">
+                                <option disabled.bind="appController.model.RestaurantSearch.NumberOfPersons" selected.bind="!appController.model.RestaurantSearch.NumberOfPersons" value="">Number of Persons</option>
+                                <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <div class='input-group date'>
+                                <input type="text" class="form-control" id="Time" name="Time" timepicker placeholder="Time" value.bind="appController.model.RestaurantSearch.Time" />
+                                <span class="input-group-addon" style="font-size:20px;">
+                                    <i class="fa fa-clock-o"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.model.RestaurantSearch.UserEmail" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="ReservationName" name="ReservationName" placeholder="Reservation Name" value.bind="appController.model.RestaurantSearch.ReservationName" />
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="ReservationPhoneNumber" name="ReservationPhoneNumber" placeholder="Reservation Phone Number" value.bind="appController.model.RestaurantSearch.ReservationPhoneNumber" />
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="form-group">
+                            <div class='input-group'>
+                                <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="CompleteReservation" click.delegate="completeReservation()">
+                                    <span style="font-size:20px;">
+                                        <i class="fa fa-search"> Complete Reservation</i>
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">

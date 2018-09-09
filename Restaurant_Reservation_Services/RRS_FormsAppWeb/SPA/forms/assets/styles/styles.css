@@ -756,7 +756,7 @@ div.tableContent {
 }
 
 .form-search {
-    margin-bottom:4.0em;
+    margin-bottom: 6em;
 }
 
 .text-center {
@@ -774,6 +774,20 @@ body.boxed-layout #wrapper {
 .res-is-active {
     color: #1ab394 !important;s
 }
+.selectize-control .selectize-input.disabled {
+    opacity:1.0 !important;
+}
+
+.selectize-control.plugin-remove_button [data-value] .remove{
+    display:none !important;
+}
+
+.btn{
+    height:43px;
+    padding: 6px 12px !important;
+}
+
+
 
 /* MEDIA QUERIES*/
 /*==========  Non-Mobile First Method  ==========*/

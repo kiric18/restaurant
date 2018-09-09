@@ -774,16 +774,16 @@ export function setMinDateAndTime($element, elementId, date) {
     $element.find(elementId).data("DateTimePicker").minDate(moment(date, momentDateFormat).format(dateFormat));
 }
 
-export function setMaxTime($element, elementId, date) {
+export function setMaxTime($element, elementId, time) {
     let timeFormat = 'HH:mm';
     let momentTimeFormat = 'HH:mm';
-    $element.find(elementId).data("DateTimePicker").maxDate(moment(date, momentTimeFormat).format(timeFormat));
+    $element.find(elementId).data("DateTimePicker").maxDate(moment(time, momentTimeFormat).format(timeFormat));
 }
 
-export function setMinTime($element, elementId, date) {
+export function setMinTime($element, elementId, time) {
     let timeFormat = 'HH:mm';
     let momentTimeFormat = 'HH:mm';
-    $element.find(elementId).data("DateTimePicker").minDate(moment(date, momentTimeFormat).format(timeFormat));
+    $element.find(elementId).data("DateTimePicker").minDate(moment(time, momentTimeFormat).format(timeFormat));
 }
 export function checkDateIfIsInWeekend(dateTo, plusDays) {
     let dateFormat = 'DD/MM/YYYY';
@@ -833,6 +833,11 @@ export function currentDate() {
 export function currentTime() {
     let dateFormat = 'HH:mm:ss';
     return moment().format(dateFormat);
+}
+
+export function formatTime(time) {
+    let timeFormat = 'HH:mm:ss';
+    return moment(time, timeFormat).format(timeFormat);
 }
 
 export function addDayMonthYearToSpecificDate(specificDate, dayMonthYear, numberToAdd) {
