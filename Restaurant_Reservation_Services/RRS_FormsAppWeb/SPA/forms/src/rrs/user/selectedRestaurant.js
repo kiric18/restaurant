@@ -2,7 +2,6 @@
 import { log, customLog } from 'common/resources/scripts/log';
 import { closeTab, setMinTime, setMaxTime, formatTime } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
-import { setMaxDate } from "../../common/resources/scripts/helper";
 
 
 @inject(Element, AppController)
@@ -12,6 +11,7 @@ export class SelectedRestaurant {
         this.$element = $(element);
         this.appController = appController;
         this.numberOfPersonsList = [];
+        this.ambienceViewModel = [];
     }
 
     activate(params, config, navigationInstruction) {
@@ -30,6 +30,13 @@ export class SelectedRestaurant {
         }
     }
 
+    dtDateChanged(valueIn) {
+        var newDate = formatDateToSharepoint(valueIn);
+        if (newDate && newDate != "Invalid date") {
+            this.appController.RestaurantSearch.Date = newDate;
+        }
+    }
+
     generateNumberOfTablesAndPersons() {
         let _self = this;
         for (let i = 1; i <= 20; i++) {
@@ -38,5 +45,10 @@ export class SelectedRestaurant {
     }
 
     completeReservation() {
+        customLog("Table Booking", this.appController.UserBooking, "info");
+        this.appController.UserBooking.Restaurant = this.appController.SelectedRestaurant;
+        this.appController.webServices.bookTable().then(response => {
+
+        });
     }
 }

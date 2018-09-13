@@ -38,6 +38,10 @@ export class SelectControl {
         let _self = this;
         this.spColumn = !this.spColumn ? [] : this.spColumn;
 
+        if (this.isAmbience) {
+            this.spColumn = !this.spColumn ? [] : JSON.parse(this.spColumn);
+        }
+
         this.setSelectize();
     }
 

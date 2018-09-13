@@ -200,6 +200,10 @@
     <Compile Include="Migrations\201808070548158_changeAmbience.Designer.cs">
       <DependentUpon>201808070548158_changeAmbience.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809131938574_updateUserBooking.cs" />
+    <Compile Include="Migrations\201809131938574_updateUserBooking.Designer.cs">
+      <DependentUpon>201809131938574_updateUserBooking.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -329,6 +333,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808070548158_changeAmbience.resx">
       <DependentUpon>201808070548158_changeAmbience.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809131938574_updateUserBooking.resx">
+      <DependentUpon>201809131938574_updateUserBooking.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

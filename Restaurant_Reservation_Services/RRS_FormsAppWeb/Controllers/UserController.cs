@@ -38,6 +38,7 @@ namespace RRS_FormsAppWeb.Controllers
                 var restaurantNames = db.Restaurants.Select(r => new { r.Id, r.RestaurantName}).ToList();
                 var searchRestaurant = new SearchRestaurant();
                 searchRestaurant.Search = new List<OptGroupList>();
+                var userBooking = new UserBooking();
 
                 result.Data = new
                 {
@@ -48,7 +49,8 @@ namespace RRS_FormsAppWeb.Controllers
                     AmbiencesList = ambience,
                     StylesList = styles,
                     RestaurantNamesList = restaurantNames,
-                    SearchRestaurant = searchRestaurant
+                    SearchRestaurant = searchRestaurant,
+                    UserBooking = userBooking
                 };
                 //result.Data = restaurant;
                 return result;
@@ -151,6 +153,35 @@ namespace RRS_FormsAppWeb.Controllers
                 db.SaveChanges();
 
                 result.Data = new { Result = true, User = user };
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        // POST: UserAcount
+        [HttpPost]
+        public ActionResult BookTable(UserBooking booking)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+                UserBooking userBooking= db.UserBookings.Find(booking.Id);
+                if(userBooking == null)
+                {
+                    db.UserBookings.Add(booking);
+                    db.SaveChanges();
+                    result.Data = new { Result = true, UserBooking = booking};
+                }
+                else
+                {
+                    result.Data = new { Result = false };
+                }
+
 
                 return result;
             }

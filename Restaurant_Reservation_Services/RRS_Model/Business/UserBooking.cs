@@ -9,6 +9,9 @@ namespace RRS_Model.Business
     {
         public string Date { get; set; }
         public string Time { get; set; }
+        public string ReservationName { get; set; }
+        public string ReservationPhoneNumber{ get; set; }
+        public string UserEmail{ get; set; }
         public virtual Restaurant Restaurant { get; set; }
         public virtual RestaurantTables RestaurantTables { get; set; }
         public virtual User User { get; set; }

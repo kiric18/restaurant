@@ -48,11 +48,6 @@ export class SearchRestaurant {
                 }
             },
         });
-
-        //setTimeout(_ => {
-        //    setMinDate(_self.$element, "#Date", currentDate());
-        //    setMinTime(_self.$element, "#Time", currentTime());
-        //});
     }
 
     dtDateChanged(valueIn) {

@@ -11,9 +11,10 @@ import { Md5 } from "common/services/md5";
 import { Popup } from 'common/resources/scripts/popup';
 import { Toast } from 'common/resources/scripts/toast';
 import { Error } from 'common/resources/scripts/error';
-import { User } from "model/user.js"
-import { Restaurant } from "model/restaurant.js"
-import { Ambience } from "model/ambience.js"
+import { User } from "model/user.js";
+import { Restaurant } from "model/restaurant.js";
+import { Ambience } from "model/ambience.js";
+import { UserBooking } from "model/userBooking";
 
 @inject(Environment, Json, CommonMessages, CommonNames, Popup, Toast, Error, WebServices, User, Restaurant, Md5)
 export class AppController {
@@ -42,6 +43,7 @@ export class AppController {
         this.StylesList = [];
         this.RestaurantNamesList = [];
         this.RestaurantSearch = [];
+        this.UserBooking = [];
         this.LocationsList = [
             { 'Id': 'Famagusta', 'Name': 'Famagusta', 'Description': 'Famagusta' },
             { 'Id': 'Nicosia', 'Name': 'Nicosia', 'Description': 'Nicosia' },
@@ -79,6 +81,7 @@ export class AppController {
         if (this.IsUser) {
             this.RestaurantNamesList = this.json.clone(response.RestaurantNamesList);
             this.RestaurantSearch = this.json.clone(response.SearchRestaurant);
+            this.UserBooking = this.json.clone(response.UserBooking);
         }
     }
 
