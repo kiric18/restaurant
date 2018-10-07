@@ -42,10 +42,10 @@ export class Login {
                 _self.router.navigateToRoute("Home");
             }
             else if (response.Result && !response.IsLoginCorrected) {
-                _self.appController.toast.toastError("Invalid email or password. Please re-enter your login info.", "toast-top-center", true);
+                _self.appController.toast.toastError("Invalid email or password. Please re-enter your login info.", true);
             }
             else {
-                _self.appController.toast.toastError("Account does not exists. Please Sign up!", "toast-top-center", true);
+                _self.appController.toast.toastError("Account does not exists. Please Sign up!", true);
             }
         });
     }

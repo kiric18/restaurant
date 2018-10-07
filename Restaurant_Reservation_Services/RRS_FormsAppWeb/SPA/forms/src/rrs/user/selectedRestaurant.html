@@ -15,134 +15,144 @@
         <div class="row">
             <div class="col-sm-12">
                 <h4 class="form-label">Book a Table</h4>
-                <div class="row">
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="appContoller.UserBooking.NumberOfPersons" style="width:100%">
-                                <option disabled.bind="appContoller.UserBooking.NumberOfPersons" selected.bind="!appContoller.UserBooking.NumberOfPersons" value="">Number of Persons</option>
-                                <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <div class='input-group date' data-min-date="ctrl.data.minDate">
-                                <input type="text" class="form-control" id="Date" name="Date" datepicker placeholder="Date" input.delegate="dtDateChanged($event.target.value)" value.bind="appController.model.RestaurantSearch.Date | dateFormat" />
-                                <span class="input-group-addon">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
+                <form id="bookForm">
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <select class="form-control" id="NumberOfPersons" name="NumberOfPersons" value.bind="appController.UserBooking.NumberOfPersons" style="width:100%">
+                                    <option disabled.bind="appController.UserBooking.NumberOfPersons" selected.bind="!appController.UserBooking.NumberOfPersons" value="">Number of Persons</option>
+                                    <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
+                                </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <div class='input-group date'>
-                                <input type="text" class="form-control" id="Time" name="Time" timepicker placeholder="Time" value.bind="appContoller.UserBooking.Time" />
-                                <span class="input-group-addon" style="font-size:20px;">
-                                    <i class="fa fa-clock-o"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appContoller.UserBooking.UserEmail" />
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="ReservationName" name="ReservationName" placeholder="Reservation Name" value.bind="appContoller.UserBooking.ReservationName" />
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="ReservationPhoneNumber" name="ReservationPhoneNumber" placeholder="Reservation Phone Number" value.bind="appContoller.UserBooking.ReservationPhoneNumber" />
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12">
-                        <div class="form-group">
-                            <h4 for="Desrciption" class="form-label">Tables:</h4>
-                            <table class="table table-striped table-hover">
-                                <thead>
-                                    <tr>
-                                        <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
-                                        <td class="repeating-td-15"><strong>Number Of Persons</strong></td>
-                                        <td class="repeating-td-30"><strong>Ambience</strong></td>
-                                        <td class="repeating-td-5" style="text-align:center;"><strong>Selected</strong></td>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr show.bind="!appController.SelectedRestaurant.RestaurantTables || appController.SelectedRestaurant.RestaurantTables.length == 0">
-                                        <td colspan="4">
-                                            <div class="row">
-                                                <div class="col-xs-12" style="text-align:center">
-                                                    <h4><i>No tables specified</i></h4>
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                    <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" show.bind="!appContoller.UserBooking.NumberOfPersons || (table.IsAvailable && (table.NumberOfPersons == appContoller.UserBooking.NumberOfPersons))">
-                                        <td style="text-align:center;vertical-align:middle;">
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-12">
-                                                    ${$index + 1}
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-12">
-                                                    <fieldset disabled>
-                                                        <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="table.NumberOfPersons" style="width:100%">
-                                                            <option disabled.bind="table.NumberOfPersons" selected.bind="!table.NumberOfPersons" value="">Select Number of Persons</option>
-                                                            <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
-                                                        </select>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <div class="row">
-                                                <div class="col-xs-12 col-md-12">
-                                                    <fieldset disabled>
-                                                        <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
-                                                                        placeholder="Select Ambience..." is-ambience.bind="true"
-                                                                        sp-column.two-way="table.Ambience" view-model.ref="ambienceViewModel[$index]"
-                                                                        options-list.bind="appController.AmbiencesList">
-                                                        </select-control>
-                                                    </fieldset>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td style="text-align:center">
-                                            <div class="checkbox checkbox-primary">
-                                                <input type="checkbox" name="IsAvailable${$index}" id="IsAvailable${$index}" class="styled" checked.bind="!table.IsAvailable" />
-                                                <label></label>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <div class="form-group">
-                            <div class='input-group'>
-                                <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="CompleteReservation" click.delegate="completeReservation()">
-                                    <span style="font-size:20px;">
-                                        <i class="fa fa-search"> Complete Reservation</i>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <div class='input-group date' data-min-date="ctrl.data.minDate">
+                                    <input type="text" class="form-control" id="Date" name="Date" datepicker placeholder="Date" input.delegate="dtDateChanged($event.target.value)" value.bind="appController.UserBooking.Date | dateFormat" />
+                                    <span class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
                                     </span>
-                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <div class='input-group date'>
+                                    <input type="text" class="form-control" id="Time" name="Time" timepicker placeholder="Time" value.bind="appController.UserBooking.Time" />
+                                    <span class="input-group-addon" style="font-size:20px;">
+                                        <i class="fa fa-clock-o"></i>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                    <div class="row">
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="Email" name="Email" placeholder="Email" value.bind="appController.UserBooking.UserEmail" />
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="ReservationName" name="ReservationName" placeholder="Reservation Name" value.bind="appController.UserBooking.ReservationName" />
+                            </div>
+                        </div>
+                        <div class="col-xs-3">
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="ReservationPhoneNumber" name="ReservationPhoneNumber" placeholder="Reservation Phone Number" value.bind="appController.UserBooking.ReservationPhoneNumber" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                    <div class="row" show.bind="showTables">
+                        <div class="col-xs-12">
+                            <div class="form-group">
+                                <h4 for="Desrciption" class="form-label">Chose Table</h4>
+                                <table class="table table-striped table-hover">
+                                    <thead>
+                                        <tr>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
+                                            <td class="repeating-td-15" style="text-align:center;"><strong>Number Of Persons</strong></td>
+                                            <td class="repeating-td-75"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Selected</strong></td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr show.bind="!appController.SelectedRestaurant.RestaurantTables || appController.SelectedRestaurant.RestaurantTables.length == 0">
+                                            <td colspan="4">
+                                                <div class="row">
+                                                    <div class="col-xs-12" style="text-align:center">
+                                                        <h4><i>No tables available for booking!</i></h4>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" show.bind="appController.UserBooking.NumberOfPersons == table.NumberOfPersons">
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        ${$index + 1}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center;vertical-align:middle;">
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        ${table.NumberOfPersons}
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <fieldset disabled>
+                                                            <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
+                                                                            placeholder="Select Ambience..." is-ambience.bind="true" is-user.bind="true"
+                                                                            sp-column.two-way="table.Ambience" view-model.ref="ambienceViewModel[$index]"
+                                                                            options-list.bind="appController.AmbiencesList">
+                                                            </select-control>
+                                                        </fieldset>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td style="text-align:center">
+                                                <div class="checkbox checkbox-primary">
+                                                    <input type="checkbox" name="IsBooking${$index}" id="IsBooking${$index}" class="styled" checked.bind="table.IsBooking" change.delegate="selectedTable(table, $index)"/>
+                                                    <label></label>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" show.bind="!showTables">
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <div class='input-group'>
+                                    <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="CompleteReservation" click.delegate="findTable()">
+                                        <span style="font-size:20px;">
+                                            <i class="fa fa-search"> Find Table</i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" show.bind="showTables">
+                        <div class="col-xs-2">
+                            <div class="form-group">
+                                <div class='input-group'>
+                                    <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="CompleteReservation" click.delegate="completeReservation()">
+                                        <span style="font-size:20px;">
+                                            <i class="fa fa-search"> Complete Reservation</i>
+                                        </span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="row">

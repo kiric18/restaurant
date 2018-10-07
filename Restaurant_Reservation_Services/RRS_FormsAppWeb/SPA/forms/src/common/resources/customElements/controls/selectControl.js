@@ -17,6 +17,7 @@ export class SelectControl {
     @bindable isAmenities;
     @bindable isPaymentMethods;
     @bindable isCuisine;
+    @bindable isUser;
 
     constructor(element) {
         this.$element = $(element);
@@ -28,6 +29,7 @@ export class SelectControl {
         this.isAmenities = false;
         this.isPaymentMethods = false;
         this.isCuisine = false;
+        this.isUser = false;
 
         this.placeholder = '';
         this.isMulti = false;
@@ -38,7 +40,7 @@ export class SelectControl {
         let _self = this;
         this.spColumn = !this.spColumn ? [] : this.spColumn;
 
-        if (this.isAmbience) {
+        if (this.isAmbience && this.isUser) {
             this.spColumn = !this.spColumn ? [] : JSON.parse(this.spColumn);
         }
 

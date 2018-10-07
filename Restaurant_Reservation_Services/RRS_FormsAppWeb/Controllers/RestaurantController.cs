@@ -76,7 +76,8 @@ namespace RRS_FormsAppWeb.Controllers
                 }
                 else
                 {
-                    result.Data = new { Result = true, Restaurant = restaurant };
+                    var userBooking = db.UserBookings.Where(u => u.RestaurantId == restaurant.Id && u.IsActive).ToList();
+                    result.Data = new { Result = true, Restaurant = restaurant, UserBooking = userBooking};
                 }
 
                 return result;
@@ -354,14 +355,14 @@ namespace RRS_FormsAppWeb.Controllers
 
         // POST: UserAcount
         [HttpPost]
-        public ActionResult UpdateRestaurantTableAvailability(int restaurantTableId, bool isAvailable)
+        public ActionResult UpdateRestaurantTableAvailability(int restaurantTableId, bool IsBooking)
         {
             CustomJsonResult result = new CustomJsonResult();
 
             RestaurantTables restaurantTables = db.RestaurantTables.Find(restaurantTableId);
             if (restaurantTables != null)
             {
-                restaurantTables.IsAvailable = isAvailable;
+                restaurantTables.IsBooking = IsBooking;
                 db.SaveChanges();
                 result.Data = restaurantTables;
             }
@@ -387,7 +388,7 @@ namespace RRS_FormsAppWeb.Controllers
                     for (int i = 0; i < restaurant.RestaurantTables.Count; i++)
                     {
                         var resTable = restaurant.RestaurantTables[i];
-                        if (resTable.IsAvailable)
+                        if (!resTable.IsBooking)
                         {
                             restaurantTables.Add(resTable);
                         }

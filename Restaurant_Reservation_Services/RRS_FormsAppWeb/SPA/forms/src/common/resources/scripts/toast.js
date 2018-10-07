@@ -31,34 +31,31 @@ export class Toast {
             fadeOut: 1000,
             extendedTimeOut: 1000,
             iconClass: 'toast-info',
-            positionClass: 'toast-bottom-right',
+            positionClass: 'toast-top-right',
+            loader: true,  
             timeOut: 5000, // Set timeOut to 0 to make it sticky
             titleClass: 'toast-title',
             messageClass: 'toast-message'
         }
     }
 
-    toastInfo(message, position = 'toast-bottom-right', hasCloseButton = false){
+    toastInfo(message, hasCloseButton = false){
         toastr.options.closeButton = hasCloseButton;
-        toastr.options.positionClass = position;
         toastr.info(message);
     }
 
-    toastWarning(message, position = 'toast-bottom-right', hasCloseButton = false){
+    toastWarning(message, hasCloseButton = false){
         toastr.options.closeButton = hasCloseButton;
-        toastr.options.positionClass = position;
         toastr.warning(message);
     }
 
-    toastError(message, position = 'toast-bottom-right', hasCloseButton = false) {
+    toastError(message, hasCloseButton = false) {
         toastr.options.closeButton = hasCloseButton;
-        toastr.options.positionClass = position;
         toastr.error(message);
     }
 
-    toastSuccess(message, position = 'toast-bottom-right', hasCloseButton = false){
+    toastSuccess(message, hasCloseButton = false){
         toastr.options.closeButton = hasCloseButton;
-        toastr.options.positionClass = position;
         toastr.success(message);
     }
 

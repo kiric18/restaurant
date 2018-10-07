@@ -51,7 +51,7 @@ export class App {
                 }
             },
             {
-                route: ['restaurant/'],
+                route: ['restaurant/', 'res/'],
                 viewPorts: { mainContent: { moduleId: 'rrs/restaurant/index' }, },
                 name: 'Restaurant', title: 'Restaurant',
                 settings: {

@@ -204,6 +204,18 @@
     <Compile Include="Migrations\201809131938574_updateUserBooking.Designer.cs">
       <DependentUpon>201809131938574_updateUserBooking.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810071215070_changeFieldName.cs" />
+    <Compile Include="Migrations\201810071215070_changeFieldName.Designer.cs">
+      <DependentUpon>201810071215070_changeFieldName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810071238493_changeFieldName2.cs" />
+    <Compile Include="Migrations\201810071238493_changeFieldName2.Designer.cs">
+      <DependentUpon>201810071238493_changeFieldName2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810071332334_changeFieldName3.cs" />
+    <Compile Include="Migrations\201810071332334_changeFieldName3.Designer.cs">
+      <DependentUpon>201810071332334_changeFieldName3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -336,6 +348,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809131938574_updateUserBooking.resx">
       <DependentUpon>201809131938574_updateUserBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071215070_changeFieldName.resx">
+      <DependentUpon>201810071215070_changeFieldName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071238493_changeFieldName2.resx">
+      <DependentUpon>201810071238493_changeFieldName2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810071332334_changeFieldName3.resx">
+      <DependentUpon>201810071332334_changeFieldName3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -30,7 +30,7 @@
                                 <i class="fa fa-sign-in"> Login</i>
                             </a>
                         </li>
-                        <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
+                        <!--<li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Messages">
                                 <i class="fa fa-envelope"></i>  <span class="label label-warning">0</span>
                             </a>
@@ -39,10 +39,10 @@
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Alerts">
                                 <i class="fa fa-bell"></i>  <span class="label label-primary">0</span>
                             </a>
-                        </li>
+                        </li>-->
                         <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
                             <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Reservations" click.delegate="openPage('Reservations')">
-                                <i class="fa fa-list-alt"></i>
+                                <i class="fa fa-list-alt"></i>  <span class="label label-primary">${appController.TablesBookingCount}</span>
                             </a>
                         </li>
                         <li class="dropdown" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin">

@@ -1,17 +1,19 @@
 ﻿import { inject } from "aurelia-framework";
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab, setMinTime, setMaxTime, formatTime } from 'common/resources/scripts/helper';
+import { closeTab, formatDateToSharepoint, setMinTime, setMaxTime, formatTime } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
+import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 
-
-@inject(Element, AppController)
+@inject(Element, AppController, FormValidator)
 export class SelectedRestaurant {
 
-    constructor(element, appController) {
+    constructor(element, appController, formValidator) {
         this.$element = $(element);
         this.appController = appController;
+        this.formValidator = formValidator;
         this.numberOfPersonsList = [];
         this.ambienceViewModel = [];
+        this.showTables = false;
     }
 
     activate(params, config, navigationInstruction) {
@@ -28,13 +30,14 @@ export class SelectedRestaurant {
                 setMaxTime(_self.$element, "#Time", "22:30");
             }, 1);
         }
-    }
 
-    dtDateChanged(valueIn) {
-        var newDate = formatDateToSharepoint(valueIn);
-        if (newDate && newDate != "Invalid date") {
-            this.appController.RestaurantSearch.Date = newDate;
+        if (this.appController.model.Id > 0) {
+            this.appController.UserBooking.UserEmail = this.appController.model.Email;
+            this.appController.UserBooking.ReservationPhoneNumber = this.appController.model.PhoneNumber;
+            this.appController.UserBooking.ReservationName = this.appController.model.FirstName + " " + this.appController.model.LastName + " (" + this.appController.model.Username + ")";
         }
+
+        this.initializeValidation('bookForm');
     }
 
     generateNumberOfTablesAndPersons() {
@@ -44,11 +47,102 @@ export class SelectedRestaurant {
         }
     }
 
-    completeReservation() {
-        customLog("Table Booking", this.appController.UserBooking, "info");
-        this.appController.UserBooking.Restaurant = this.appController.SelectedRestaurant;
-        this.appController.webServices.bookTable().then(response => {
+    dtDateChanged(valueIn) {
+        var newDate = formatDateToSharepoint(valueIn);
+        if (newDate && newDate != "Invalid date") {
+            this.appController.RestaurantSearch.Date = newDate;
+        }
+    }
 
+    completeReservation() {
+        let _self = this;
+        this.appController.UserBooking.User = this.appController.model.Id;
+        this.appController.UserBooking.RestaurantId = this.appController.SelectedRestaurant.Id;
+        this.appController.UserBooking.IsActive= true;
+        customLog("Table Booking", this.appController.UserBooking, "info");
+        this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
+            _self.appController.webServices.updateRestaurantTableAvailability(_self.appController.UserBooking.RestaurantTableId, true).then(response => {
+                _self.appController.toast.toastSuccess("Your table has been booking succesfully!");
+            });
         });
+    }
+
+    findTable() {
+        let _self = this;
+
+        if (this.runValidation() == false) {
+            return;
+        }
+
+        this.showTables = true;
+    }
+
+    selectedTable(selectedTable, index) {
+        this.appController.UserBooking.RestaurantTableId = selectedTable.Id;
+        for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
+            let table = this.appController.SelectedRestaurant.RestaurantTables[i];
+            if (!table.IsBooking && selectedTable.IsBooking) {
+                $(`#IsBooking${i}`).prop("disabled", true);
+            }
+            else {
+                $(`#IsBooking${i}`).prop("disabled", false);
+            }
+        }
+    }
+
+    initializeValidation(formId) { //pass in form element id
+        let _self = this;
+        this.valFields = {
+            NumberOfPersons: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Number Of Persons is required!' }
+                }
+            },
+            Date: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Date is required!' }
+                }
+            },
+            Time: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Time is required!' }
+                }
+            },
+            Email: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Email is required!' }
+                }
+            },
+            ReservationName: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Reservation Name is required!' }
+                }
+            },
+            ReservationPhoneNumber: {
+                enabled: false,
+                validators: {
+                    notEmpty: { message: 'Reservation Phone Number is required!' }
+                }
+            },
+        };
+
+        this.fv = cookFV(this.valFields, this.$element, formId);
+    }
+
+    enableFieldValidators(doEnable = true) {
+        for (var field in this.fv.options.fields) {
+            this.fv.enableFieldValidators(field, doEnable);
+        };
+    }
+
+    runValidation() {
+        this.enableFieldValidators();
+        let fvInstances = [this.fv];
+        return this.formValidator.getAndReportErrors(fvInstances);
     }
 }

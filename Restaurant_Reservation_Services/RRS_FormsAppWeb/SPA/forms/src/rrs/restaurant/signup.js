@@ -44,7 +44,7 @@ export class Signup {
                 _self.router.navigateToRoute("Account");
             }
             else {
-                _self.appController.toast.toastError("Restaurant account already exists!", "toast-top-center", true);
+                _self.appController.toast.toastError("Restaurant account already exists!", true);
             }
         });
     }

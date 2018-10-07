@@ -35,7 +35,7 @@ namespace RRS_FormsAppWeb.Controllers
                 var amenities = db.Amenities.ToList();
                 var paymentMethods = db.PaymentMethods.ToList();
                 var ambience = db.Ambiences.ToList();
-                var restaurantNames = db.Restaurants.Select(r => new { r.Id, r.RestaurantName}).ToList();
+                var restaurantNames = db.Restaurants.Select(r => new { r.Id, r.RestaurantName }).ToList();
                 var searchRestaurant = new SearchRestaurant();
                 searchRestaurant.Search = new List<OptGroupList>();
                 var userBooking = new UserBooking();
@@ -170,12 +170,12 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 CustomJsonResult result = new CustomJsonResult();
-                UserBooking userBooking= db.UserBookings.Find(booking.Id);
-                if(userBooking == null)
+                UserBooking userBooking = db.UserBookings.Find(booking.Id);
+                if (userBooking == null)
                 {
                     db.UserBookings.Add(booking);
                     db.SaveChanges();
-                    result.Data = new { Result = true, UserBooking = booking};
+                    result.Data = new { Result = true, UserBooking = booking };
                 }
                 else
                 {
@@ -206,7 +206,7 @@ namespace RRS_FormsAppWeb.Controllers
 
             if (searchRestaurant.Search != null && searchRestaurant.Search.Count > 0)
             {
-                for (int i=0; i < searchRestaurant.Search.Count; i++)
+                for (int i = 0; i < searchRestaurant.Search.Count; i++)
                 {
                     string id = searchRestaurant.Search[i].Id;
                     if (searchRestaurant.Search[i].OptGroup == "Locations")
@@ -247,19 +247,46 @@ namespace RRS_FormsAppWeb.Controllers
                 restaurants = db.Restaurants.ToList();
             }
 
-            result.Data = new { Result = true, Restaurants = restaurants};
+            result.Data = new { Result = true, Restaurants = restaurants };
 
             return result;
         }
 
         private void UpdateRestaurantList(List<Restaurant> restaurants, List<Restaurant> res)
         {
-            for(int i=0; i< res.Count; i++)
+            for (int i = 0; i < res.Count; i++)
             {
                 if (!restaurants.Contains(res[i]))
                 {
                     restaurants.Add(res[i]);
                 }
+            }
+        }
+
+        [HttpPost]
+        public ActionResult GetBookingTables(int resId)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+
+                // Call action here...
+                var userBooking = db.UserBookings.Where(r => r.RestaurantId == resId && r.IsActive).ToList();
+                if (userBooking != null)
+                {
+                    result.Data = new { Result = true, UserBooking = userBooking };
+                }
+                else
+                {
+                    result.Data = new { Result = false };
+                }
+
+                return result;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

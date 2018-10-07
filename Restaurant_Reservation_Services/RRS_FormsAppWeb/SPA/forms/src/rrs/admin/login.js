@@ -42,7 +42,7 @@ export class Login {
                 _self.router.navigateToRoute("Home");
             }
             else {
-                _self.appController.toast.toastError("Invalid email or password. Please re-enter your login info.", "toast-top-center", true);
+                _self.appController.toast.toastError("Invalid email or password. Please re-enter your login info.", true);
             }
         });
     }

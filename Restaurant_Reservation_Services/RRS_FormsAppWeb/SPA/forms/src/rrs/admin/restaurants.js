@@ -35,7 +35,7 @@ export class Restaurants {
                 _self.appController.toast.toastSuccess(`Restaurant activated succesfully!`);
             }
             else {
-                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", "toast-top-center", true);
+                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", true);
             }
         });
     }
@@ -49,7 +49,7 @@ export class Restaurants {
                 _self.appController.toast.toastSuccess(`Restaurant activated succesfully!`);
             }
             else {
-                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", "toast-top-center", true);
+                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", true);
             }
         });
     }

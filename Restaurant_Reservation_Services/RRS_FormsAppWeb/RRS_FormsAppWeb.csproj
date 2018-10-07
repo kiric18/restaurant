@@ -454,6 +454,7 @@
     <Content Include="SPA\forms\src\model\historyEntry.js" />
     <Content Include="SPA\forms\src\model\restaurant.js" />
     <Content Include="SPA\forms\src\model\restaurantTable.js" />
+    <Content Include="SPA\forms\src\model\tablesBook.js" />
     <Content Include="SPA\forms\src\model\user.js" />
     <Content Include="SPA\forms\src\model\userBooking.js" />
     <Content Include="SPA\forms\src\rrs\admin\home.html" />

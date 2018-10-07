@@ -17,6 +17,9 @@ export class NavBarTop {
         //this.router.navigateToRoute(navigationPage);
         switch (navigationPage) {
             case 'Home': {
+                this.appController.RestaurantsResultsList = [];
+                this.appController.SelectedRestaurant = [];
+                this.appController.resetRestaurantSearch();
                 this.router.navigateToRoute(navigationPage);
                 break;
             }

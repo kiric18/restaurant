@@ -42,7 +42,7 @@ export class Signup {
                 _self.router.navigateToRoute("Account");
             }
             else {
-                _self.appController.toast.toastError("Email account already exists!", "toast-top-center", true);
+                _self.appController.toast.toastError("Email account already exists!", true);
             }
         });
     }

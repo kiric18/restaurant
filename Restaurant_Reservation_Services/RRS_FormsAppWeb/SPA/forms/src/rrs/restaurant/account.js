@@ -26,7 +26,7 @@ export class Account{
     activate(params, config, navigationInstruction) {
         let _self = this;
         //if (this.appController.model.Id == 0) {
-        //    //this.appController.toast.toastWarning("First you need to login", "toast-top-center", true);
+        //    //this.appController.toast.toastWarning("First you need to login", "", true);
         //    this.router.navigate("#/restaurant/login");
         //}
         this.generateNumberOfTablesAndPersons();
@@ -71,7 +71,7 @@ export class Account{
                 _self.appController.toast.toastSuccess(`Changes saved succesfully!`);
             }
             else {
-                _self.appController.toast.toastError("Changes not saved succesfully. Please try again!", "toast-top-center", true);
+                _self.appController.toast.toastError("Changes not saved succesfully. Please try again!", true);
             }
         });
         //closeTab();

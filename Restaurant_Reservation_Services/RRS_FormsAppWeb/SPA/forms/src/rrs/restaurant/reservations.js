@@ -7,6 +7,7 @@ import { closeTab } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 import $ from 'jquery';
+import { TablesBook } from "model/tablesBook";
 
 @inject(Element, Router, AppController, FormValidator)
 export class Reservations {
@@ -21,33 +22,70 @@ export class Reservations {
 
         this.numberOfTableList = [];
         this.numberOfPersonsList = [];
+        this.isLoading = false;
     }
 
     activate(params, config, navigationInstruction) {
         let _self = this;
-        //if (this.appController.model.Id == 0) {
-        //    //this.appController.toast.toastWarning("First you need to login", "toast-top-center", true);
-        //    this.router.navigate("#/restaurant/login");
-        //}
         this.generateNumberOfTablesAndPersons();
     }
 
     attached() {
+        let _self = this;
+
         this.appController.configureAttached();
+
+        if (this.appController.model.RestaurantTables && this.appController.model.RestaurantTables.length > 0) {
+            let tablesLength = this.appController.model.RestaurantTables.length;
+            this.isLoading = true;
+            _self.appController.webServices.getBookingTables(_self.appController.model.Id).then(response => {
+                if (response.Result) {
+                    for (let i = 0; i < response.UserBooking.length; i++) {
+                        let book = response.UserBooking[i];
+                        for (let t = 0; t < tablesLength; t++) {
+                            let tableBook = new TablesBook();
+                            let table = this.appController.model.RestaurantTables[t];
+                            if (table.Id == book.RestaurantTableId) {
+                                tableBook.Id = table.Id;
+                                tableBook.NumberOfTable = table.NumberOfTable;
+                                tableBook.NumberOfPersons = table.NumberOfPersons;
+                                tableBook.Ambience = table.Ambience;
+                                tableBook.IsBooking = table.IsBooking;
+
+                                tableBook.RestaurantId = book.RestaurantId;
+                                tableBook.RestaurantTableId = book.RestaurantTableId;
+                                tableBook.UserId = book.UserId;
+                                tableBook.Date = book.Date;
+                                tableBook.Time = book.Time;
+                                tableBook.ReservationName = book.ReservationName;
+                                tableBook.ReservationPhoneNumber = book.ReservationPhoneNumber;
+                            }
+                            else {
+                                tableBook.Id = table.Id;
+                                tableBook.NumberOfTable = table.NumberOfTable;
+                                tableBook.NumberOfPersons = table.NumberOfPersons;
+                                tableBook.Ambience = table.Ambience;
+                            }
+
+                            _self.appController.RestaurantTableAndUserBooking.push(tableBook);
+                        }
+                    }
+
+                    this.isLoading = false;
+                }
+            });
+        }
     }
 
     saveChanges() {
         let _self = this;
 
-        //this.appController.webServices.updateAcount(this.appController.model, "Restaurant").then(response => {
-        //    if (response.Result) {
-        //        _self.appController.IsRestaurantLogin = true;
-        //        _self.appController.populateModels(response.Restaurant);
-        //        _self.appController.toast.toastSuccess(`Changes saved succesfully!`);
-        //    }
-        //    else {
-        //        _self.appController.toast.toastError("Changes not saved succesfully. Please try again!", "toast-top-center", true);
-        //    }
+        //this.appController.UserBooking.User = this.appController.model.Id;
+        //this.appController.UserBooking.RestaurantId = this.appController.SelectedRestaurant.Id;
+        //this.appController.UserBooking.IsActive = true;
+        //this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
+        //    _self.appController.toast.toastSuccess("Changes save succesfully!");
+
         //});
     }
 
@@ -64,14 +102,26 @@ export class Reservations {
     updateAvailabality(table) {
         let _self = this;
 
-        this.appController.webServices.updateRestaurantTableAvailability(table.Id, table.IsAvailable).then(response => {
+        this.appController.webServices.updateRestaurantTableAvailability(table.Id, table.IsBooking).then(response => {
             if (response != null) {
-                table.IsAvailable = response.IsAvailable;
+                table.IsBooking = response.IsBooking;
                 _self.appController.toast.toastSuccess(`Table updated succesfully!`);
             }
             else {
                 _self.appController.toast.toastError(`Table not updated succesfully!`);
             }
         });
+    }
+
+    // New
+    handleDOM(count) {
+
+        let _self = this;
+
+        if (count == 0) {
+            _self.isLoading = false;
+
+            _self.appController.configureAttached();
+        }
     }
 }

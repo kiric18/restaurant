@@ -12,17 +12,7 @@
                         <restaurant-name element-name="RestaurantName" element-id="RestaurantName"></restaurant-name>
                     </div>
                 </div>
-                <div class="col-xs-2" style="padding-right:0px;">
-                    <div class="form-group">
-                        <div class='input-group date' data-min-date="ctrl.data.minDate">
-                            <input type="text" class="form-control" id="Date" name="Date" datepicker placeholder="Date" input.delegate="dtDateChanged($event.target.value)" value.bind="appController.model.RestaurantSearch.Date | dateFormat" />
-                            <span class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xs-5" style="padding-right:0px;">
+                <div class="col-xs-7" style="padding-right:0px;">
                     <div class="form-group">
                         <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Locations, Cuisines, Amenities, Styles, Ambiences">
                             <optgroup label="Locations">

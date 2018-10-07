@@ -89,9 +89,9 @@ export class WebServices {
     }
 
 
-    updateRestaurantTableAvailability(resTableId, isAvailable) {
+    updateRestaurantTableAvailability(resTableId, IsBooking) {
         let newRequest = this.generateRequestBody();
-        newRequest.body = `{'restaurantTableId':'${resTableId}', 'isAvailable':'${isAvailable}'}`;
+        newRequest.body = `{'restaurantTableId':'${resTableId}', 'IsBooking':'${IsBooking}'}`;
         return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UpdateRestaurantTableAvailability/`, newRequest);
     }
 
@@ -99,5 +99,11 @@ export class WebServices {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantId':'${restaurantId}'}`;
         return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetAvailableRestaurantTables/`, newRequest);
+    }
+
+    getBookingTables(resId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'resId':'${resId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/User/GetBookingTables/`, newRequest);
     }
 }

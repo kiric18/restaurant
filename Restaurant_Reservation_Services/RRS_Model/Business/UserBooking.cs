@@ -12,8 +12,9 @@ namespace RRS_Model.Business
         public string ReservationName { get; set; }
         public string ReservationPhoneNumber{ get; set; }
         public string UserEmail{ get; set; }
-        public virtual Restaurant Restaurant { get; set; }
-        public virtual RestaurantTables RestaurantTables { get; set; }
+        public int RestaurantId { get; set; }
+        public int RestaurantTableId { get; set; }
+        public bool IsActive { get; set; }
         public virtual User User { get; set; }
     }
 }

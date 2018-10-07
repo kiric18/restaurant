@@ -62,8 +62,15 @@ export class SearchRestaurant {
         customLog(`Restaurant Search: `, this.appController.RestaurantSearch, "info");
         this.appController.webServices.searchRestaurant(this.appController.RestaurantSearch, "User").then(response => {
             customLog(`Restaurant Search Response: `, response.Restaurants, "info");
-            _self.appController.RestaurantsResultsList = response.Restaurants;
-            _self.router.navigateToRoute("RestaurantsResults");
+            if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants && response.Restaurants[0]) {
+                _self.appController.RestaurantsResultsList = response.Restaurants;
+                _self.appController.SelectedRestaurant = _self.appController.json.clone(response.Restaurants[0]);
+                _self.router.navigateToRoute("SelectedRestaurant");
+            }
+            else {
+                _self.appController.RestaurantsResultsList = response.Restaurants;
+                _self.router.navigateToRoute("RestaurantsResults");
+            }
         });
     }
 }

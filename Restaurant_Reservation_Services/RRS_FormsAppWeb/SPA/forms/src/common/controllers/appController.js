@@ -44,6 +44,10 @@ export class AppController {
         this.RestaurantNamesList = [];
         this.RestaurantSearch = [];
         this.UserBooking = [];
+        this.RestaurantTableAndUserBooking = [];
+
+        this.TablesBookingCount = 0;
+
         this.LocationsList = [
             { 'Id': 'Famagusta', 'Name': 'Famagusta', 'Description': 'Famagusta' },
             { 'Id': 'Nicosia', 'Name': 'Nicosia', 'Description': 'Nicosia' },
@@ -151,6 +155,14 @@ export class AppController {
         this.IsAdmin = false;
     }
 
+    resetRestaurantSearch() {
+        this.RestaurantSearch.RestaurantId = '';
+        this.RestaurantSearch.RestaurantName = '';
+        this.RestaurantSearch.Date = '';
+        this.RestaurantSearch.Time = '';
+        this.RestaurantSearch.Search = [];
+    }
+
     resetLogoutGlobalProperties() {
         this.IsUserLogin = false;
         this.IsRestaurantLogin = false;
@@ -161,6 +173,7 @@ export class AppController {
         }
         else if (this.IsRestaurant) {
             this.resetRestaurantModel();
+            this.TablesBookingCount = 0;
         }
         else if (this.IsUser){
             this.resetUserModel();

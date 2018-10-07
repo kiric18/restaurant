@@ -8,25 +8,28 @@
         <form id="accountForm" class="form-horizontal">
             <div class="panel-body">
                 <fieldset>
-                    <div class="row">
+                    <div class="loading-spinner-container" style="overflow:hidden" show.bind="isLoading">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div class="row" show.bind="!isLoading">
                         <div class="col-xs-12">
                             <div class="form-group add-padding-left-right">
-                                <h4 for="Desrciption" class="form-label" style="margin:0px 0px 0px 0px">Tables:</h4>
                                 <table class="table table-striped table-hover">
                                     <thead>
                                         <tr>
-                                            <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
-                                            <td class="repeating-td-10"><strong>Number Of Table</strong></td>
-                                            <td class="repeating-td-15"><strong>Number Of Persons</strong></td>
-                                            <td class="repeating-td-30"><strong>Ambience</strong></td>
-                                            <td class="repeating-td-20"><strong>Reservation Name</strong></td>
+                                            <td class="repeating-td-5"><strong>Table Number</strong></td>
+                                            <td class="repeating-td-5"><strong>Persons Number</strong></td>
+                                            <td class="repeating-td-25"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-15"><strong>Reservation Name</strong></td>
                                             <td class="repeating-td-15"><strong>Phone Number</strong></td>
-                                            <td class="repeating-td-5" style="text-align:center;"><strong>Available</strong></td>
+                                            <td class="repeating-td-15"><strong>Reservation Date</strong></td>
+                                            <td class="repeating-td-15"><strong>Reservation Time</strong></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Is Booking</strong></td>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr show.bind="!appController.model.RestaurantTables || appController.model.RestaurantTables.length == 0">
-                                            <td colspan="7">
+                                        <tr show.bind="!appController.RestaurantTableAndUserBooking || appController.RestaurantTableAndUserBooking.length == 0">
+                                            <td colspan="8">
                                                 <div class="row">
                                                     <div class="col-xs-12" style="text-align:center">
                                                         <h4><i>No tables specified</i></h4>
@@ -34,35 +37,18 @@
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr repeat.for="table of appController.model.RestaurantTables | arraySanitizer">
+                                        <tr repeat.for="table of appController.RestaurantTableAndUserBooking | arraySanitizer">
                                             <td style="text-align:center;vertical-align:middle;">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        ${$index + 1}
+                                                        ${table.NumberOfTable}
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <fieldset disabled>
-                                                            <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%">
-                                                                <option disabled.bind="table.NumberOfTable" selected.bind="!table.NumberOfTable" value="">Select Table Number</option>
-                                                                <option repeat.for="option of numberOfTableList" value.bind="option">${option}</option>
-                                                            </select>
-                                                        </fieldset>
-                                                    </div>
-                                                </div>
-                                            </td>
-                                            <td>
-                                                <div class="row">
-                                                    <div class="col-xs-12 col-md-12">
-                                                        <fieldset disabled>
-                                                            <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="table.NumberOfPersons" style="width:100%">
-                                                                <option disabled.bind="table.NumberOfPersons" selected.bind="!table.NumberOfPersons" value="">Select Number of Persons</option>
-                                                                <option repeat.for="option of numberOfPersonsList" value.bind="option">${option}</option>
-                                                            </select>
-                                                        </fieldset>
+                                                        ${table.NumberOfPersons}
                                                     </div>
                                                 </div>
                                             </td>
@@ -82,20 +68,34 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="ResName${$index}" id="ResName${$index}" class="form-control" value.bind="table.User" />
+                                                        <input type="text" name="ResName${$index}" id="ResName${$index}" class="form-control" value.bind="table.ReservationName" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="PhoneNumber${$index}" id="PhoneNumber${$index}" class="form-control" value.bind="table.User" />
+                                                        <input type="text" name="Phone${$index}" id="Phone${$index}" class="form-control" value.bind="table.ReservationPhoneNumber" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" name="Date${$index}" id="Date${$index}" class="form-control" value.bind="table.Date" />
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-xs-12 col-md-12">
+                                                        <input type="text" name="Time${$index}" id="Time${$index}" class="form-control" value.bind="table.Time" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td style="text-align:center">
                                                 <div class="checkbox checkbox-primary">
-                                                    <input type="checkbox" name="IsAvailable${$index}" id="IsAvailable${$index}" class="styled" checked.bind="table.IsAvailable" change.delegate="updateAvailabality(table)" />
+                                                    <input type="checkbox" name="IsBooking${$index}" id="IsBooking${$index}" class="styled" checked.bind="table.IsBooking" change.delegate="updateAvailabality(table)" />
                                                     <label></label>
                                                 </div>
                                             </td>
