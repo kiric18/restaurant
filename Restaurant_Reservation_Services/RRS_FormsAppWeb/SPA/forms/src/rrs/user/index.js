@@ -31,32 +31,32 @@ export class Index {
 
         config.map([
             {
-                route: ['', 'Home'],
+                route: ['', 'Home', 'h'],
                 moduleId: `rrs/${this.modulePath}/home`,
                 name: 'Home', title: 'Home', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Signup'],
+                route: ['Signup', 's'],
                 moduleId: `rrs/${this.modulePath}/signup`,
                 name: 'Signup', title: 'Sign up', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Login'],
+                route: ['Login', 'l'],
                 moduleId: `rrs/${this.modulePath}/login`,
                 name: 'Login', title: 'Login', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Account'],
+                route: ['Account', 'a'],
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['RestaurantsResults'],
+                route: ['RestaurantsResults', 'rr'],
                 moduleId: `rrs/${this.modulePath}/restaurantsResults`,
                 name: 'RestaurantsResults', title: 'RestaurantsResults', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['SelectedRestaurant'],
+                route: ['SelectedRestaurant', 'sr'],
                 moduleId: `rrs/${this.modulePath}/selectedRestaurant`,
                 name: 'SelectedRestaurant', title: 'SelectedRestaurant', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

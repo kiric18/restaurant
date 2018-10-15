@@ -6,8 +6,9 @@
         this.ReservationName = '';
         this.ReservationPhoneNumber = '';
         this.UserEmail = '';
-        this.Restaurant = '';
-        this.RestaurantTables = '';
+        this.RestaurantId = '';
+        this.RestaurantTableId = '';
+        this.IsActive = false;
         this.User = '';
     }
 }

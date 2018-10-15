@@ -6,8 +6,9 @@ import { log, customLog } from 'common/resources/scripts/log';
 import { closeTab } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
-import $ from 'jquery';
 import { TablesBook } from "model/tablesBook";
+import { UserBooking } from "model/userBooking";
+import $ from 'jquery';
 
 @inject(Element, Router, AppController, FormValidator)
 export class Reservations {
@@ -52,6 +53,7 @@ export class Reservations {
                                 tableBook.Ambience = table.Ambience;
                                 tableBook.IsBooking = table.IsBooking;
 
+                                tableBook.IsActive = book.IsActive;
                                 tableBook.RestaurantId = book.RestaurantId;
                                 tableBook.RestaurantTableId = book.RestaurantTableId;
                                 tableBook.UserId = book.UserId;
@@ -59,12 +61,16 @@ export class Reservations {
                                 tableBook.Time = book.Time;
                                 tableBook.ReservationName = book.ReservationName;
                                 tableBook.ReservationPhoneNumber = book.ReservationPhoneNumber;
+
+                                tableBook.IsDisabled = true;
                             }
                             else {
                                 tableBook.Id = table.Id;
                                 tableBook.NumberOfTable = table.NumberOfTable;
                                 tableBook.NumberOfPersons = table.NumberOfPersons;
                                 tableBook.Ambience = table.Ambience;
+                                tableBook.IsActive = false;
+                                tableBook.IsBooking = false;
                             }
 
                             _self.appController.RestaurantTableAndUserBooking.push(tableBook);
@@ -101,11 +107,35 @@ export class Reservations {
 
     updateAvailabality(table) {
         let _self = this;
+        let needToAddNewBook = false;
+        let newUserBooking = new UserBooking();
+        if (!table.IsActive) {
+            newUserBooking.ReservationName = table.ReservationName;
+            newUserBooking.ReservationPhoneNumber = table.ReservationPhoneNumber;
+            newUserBooking.Time = table.Time;
+            newUserBooking.Date = table.Date;
+            newUserBooking.RestaurantId = table.RestaurantId;
+            newUserBooking.RestaurantTableId = table.RestaurantTableId;
+            newUserBooking.IsActive = true;
+
+            needToAddNewBook = true;
+        }
 
         this.appController.webServices.updateRestaurantTableAvailability(table.Id, table.IsBooking).then(response => {
             if (response != null) {
                 table.IsBooking = response.IsBooking;
-                _self.appController.toast.toastSuccess(`Table updated succesfully!`);
+                table.IsDisabled = response.IsBooking;
+                if (needToAddNewBook) {
+                    customLog("Table Booking", newUserBooking, "info");
+                    _self.appController.webServices.bookTable(newUserBooking).then(response => {
+                        _self.appController.webServices.updateRestaurantTableAvailability(newUserBooking.RestaurantTableId, true).then(response => {
+                            _self.appController.toast.toastSuccess(`Table updated succesfully!`);
+                        });
+                    });
+                }
+                else {
+                    _self.appController.toast.toastSuccess(`Table updated succesfully!`);
+                }
             }
             else {
                 _self.appController.toast.toastError(`Table not updated succesfully!`);

@@ -13,5 +13,7 @@
         this.ReservationPhoneNumber = '';
         this.UserId = '';
         this.IsBooking = false;
+        this.IsDisabled = false;
+        this.IsActive = false;
     }
 }

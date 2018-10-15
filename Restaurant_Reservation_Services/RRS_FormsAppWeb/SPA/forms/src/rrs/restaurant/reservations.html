@@ -1,6 +1,9 @@
 ﻿<template>
     <require from="common/resources/customElements/controls/selectControl"></require>
     <require from="common/resources/valueConverters/arraySanitizer"></require>
+    <require from='common/resources/customElements/customAttributes/timePicker'></require>
+    <require from='common/resources/customElements/customAttributes/datePicker'></require>
+    <require from='common/resources/valueConverters/dateFormat'></require>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 style="color:#f54c53">Reservations</h3>
@@ -19,12 +22,12 @@
                                         <tr>
                                             <td class="repeating-td-5"><strong>Table Number</strong></td>
                                             <td class="repeating-td-5"><strong>Persons Number</strong></td>
-                                            <td class="repeating-td-25"><strong>Ambience</strong></td>
-                                            <td class="repeating-td-15"><strong>Reservation Name</strong></td>
-                                            <td class="repeating-td-15"><strong>Phone Number</strong></td>
+                                            <td class="repeating-td-30"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-20"><strong>Reservation Name</strong></td>
+                                            <td class="repeating-td-10"><strong>Phone Number</strong></td>
                                             <td class="repeating-td-15"><strong>Reservation Date</strong></td>
-                                            <td class="repeating-td-15"><strong>Reservation Time</strong></td>
-                                            <td class="repeating-td-5" style="text-align:center;"><strong>Is Booking</strong></td>
+                                            <td class="repeating-td-10"><strong>Reservation Time</strong></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Booked</strong></td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -68,28 +71,40 @@
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="ResName${$index}" id="ResName${$index}" class="form-control" value.bind="table.ReservationName" />
+                                                        <input type="text" name="ResName${$index}" id="ResName${$index}" disabled.bind="table.IsDisabled" class="form-control" placeholder="Reservation Name" value.bind="table.ReservationName" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="Phone${$index}" id="Phone${$index}" class="form-control" value.bind="table.ReservationPhoneNumber" />
+                                                        <input type="text" name="Phone${$index}" id="Phone${$index}" class="form-control" disabled.bind="table.IsDisabled" placeholder="Phone Number" value.bind="table.ReservationPhoneNumber" />
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="Date${$index}" id="Date${$index}" class="form-control" value.bind="table.Date" />
+                                                        <!--<input type="text" name="Date${$index}" id="Date${$index}" class="form-control" value.bind="table.Date" />-->
+                                                        <div class='input-group date'>
+                                                            <input type="text" class="form-control" id="${$index}" name="${$index}" disabled.bind="table.IsDisabled" datepicker placeholder="Date" value.bind="table.Date | dateFormat" />
+                                                            <!--<span class="input-group-addon">
+                                                                <i class="fa fa-calendar"></i>
+                                                            </span>-->
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
                                             <td>
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
-                                                        <input type="text" name="Time${$index}" id="Time${$index}" class="form-control" value.bind="table.Time" />
+                                                        <!--<input type="text" name="Time${$index}" id="Time${$index}" class="form-control" value.bind="table.Time" />-->
+                                                        <div class='input-group date'>
+                                                            <input type="text" class="form-control" id="Time${$index}" disabled.bind="table.IsDisabled" name="Time${$index}" timepicker placeholder="Time" value.bind="table.Time" />
+                                                            <!--<span class="input-group-addon" style="font-size:20px;">
+                                                                <i class="fa fa-clock-o"></i>
+                                                            </span>-->
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </td>
