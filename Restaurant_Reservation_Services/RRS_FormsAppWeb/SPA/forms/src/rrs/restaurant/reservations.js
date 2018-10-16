@@ -46,13 +46,13 @@ export class Reservations {
                         for (let t = 0; t < tablesLength; t++) {
                             let tableBook = new TablesBook();
                             let table = this.appController.model.RestaurantTables[t];
-                            if (table.Id == book.RestaurantTableId) {
-                                tableBook.Id = table.Id;
+                            if (book.IsActive && table.IsBooking && table.Id == book.RestaurantTableId) {
                                 tableBook.NumberOfTable = table.NumberOfTable;
                                 tableBook.NumberOfPersons = table.NumberOfPersons;
                                 tableBook.Ambience = table.Ambience;
                                 tableBook.IsBooking = table.IsBooking;
 
+                                tableBook.UserBookingId = book.Id;
                                 tableBook.IsActive = book.IsActive;
                                 tableBook.RestaurantId = book.RestaurantId;
                                 tableBook.RestaurantTableId = book.RestaurantTableId;
@@ -65,12 +65,13 @@ export class Reservations {
                                 tableBook.IsDisabled = true;
                             }
                             else {
-                                tableBook.Id = table.Id;
+                                tableBook.UserBookingId = book.Id;
+                                tableBook.IsActive = book.IsActive;
+                                tableBook.RestaurantTableId = table.Id;
                                 tableBook.NumberOfTable = table.NumberOfTable;
                                 tableBook.NumberOfPersons = table.NumberOfPersons;
                                 tableBook.Ambience = table.Ambience;
-                                tableBook.IsActive = false;
-                                tableBook.IsBooking = false;
+                                tableBook.IsBooking = table.IsBooking;
                             }
 
                             _self.appController.RestaurantTableAndUserBooking.push(tableBook);
@@ -81,18 +82,6 @@ export class Reservations {
                 }
             });
         }
-    }
-
-    saveChanges() {
-        let _self = this;
-
-        //this.appController.UserBooking.User = this.appController.model.Id;
-        //this.appController.UserBooking.RestaurantId = this.appController.SelectedRestaurant.Id;
-        //this.appController.UserBooking.IsActive = true;
-        //this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
-        //    _self.appController.toast.toastSuccess("Changes save succesfully!");
-
-        //});
     }
 
     generateNumberOfTablesAndPersons() {
@@ -107,9 +96,9 @@ export class Reservations {
 
     updateAvailabality(table) {
         let _self = this;
-        let needToAddNewBook = false;
         let newUserBooking = new UserBooking();
-        if (!table.IsActive) {
+
+        if (!table.IsActive && table.IsBooking) {
             newUserBooking.ReservationName = table.ReservationName;
             newUserBooking.ReservationPhoneNumber = table.ReservationPhoneNumber;
             newUserBooking.Time = table.Time;
@@ -118,40 +107,51 @@ export class Reservations {
             newUserBooking.RestaurantTableId = table.RestaurantTableId;
             newUserBooking.IsActive = true;
 
-            needToAddNewBook = true;
-        }
-
-        this.appController.webServices.updateRestaurantTableAvailability(table.Id, table.IsBooking).then(response => {
-            if (response != null) {
-                table.IsBooking = response.IsBooking;
-                table.IsDisabled = response.IsBooking;
-                if (needToAddNewBook) {
-                    customLog("Table Booking", newUserBooking, "info");
-                    _self.appController.webServices.bookTable(newUserBooking).then(response => {
-                        _self.appController.webServices.updateRestaurantTableAvailability(newUserBooking.RestaurantTableId, true).then(response => {
-                            _self.appController.toast.toastSuccess(`Table updated succesfully!`);
-                        });
+            this.appController.webServices.bookTable(newUserBooking).then(response => {
+                if (response) {
+                    _self.appController.webServices.updateRestaurantTableAvailability(table.RestaurantTableId, table.IsBooking).then(response => {
+                        if (response) {
+                            table.IsBooking = response.IsBooking;
+                            table.IsDisabled = response.IsBooking;
+                            _self.appController.webServices.updateUserBookingActive(table.UserBookingId, table.IsBooking).then(response => {
+                                if (response) {
+                                    table.IsActive = response.IsActive;
+                                    _self.appController.toast.toastSuccess(`Table booked succesfully!`);
+                                }
+                            });
+                        }
                     });
                 }
                 else {
-                    _self.appController.toast.toastSuccess(`Table updated succesfully!`);
+                    _self.appController.toast.toastError(`Table not booked succesfully!`);
                 }
-            }
-            else {
-                _self.appController.toast.toastError(`Table not updated succesfully!`);
-            }
-        });
-    }
-
-    // New
-    handleDOM(count) {
-
-        let _self = this;
-
-        if (count == 0) {
-            _self.isLoading = false;
-
-            _self.appController.configureAttached();
+            });
+        }
+        else {
+            this.appController.webServices.updateRestaurantTableAvailability(table.RestaurantTableId, table.IsBooking).then(response => {
+                if (response) {
+                    table.IsBooking = response.IsBooking;
+                    table.IsDisabled = response.IsBooking;
+                    _self.appController.webServices.updateUserBookingActive(table.UserBookingId, table.IsBooking).then(response => {
+                        if (response) {
+                            table.IsActive = response.IsActive;
+                            _self.appController.toast.toastSuccess(`Table booked succesfully!`);
+                        }
+                    });
+                }
+                else {
+                    _self.appController.toast.toastError(`Table not booked succesfully!`);
+                }
+            });
         }
     }
+
+    //// New
+    //handleDOM(count) {
+    //    let _self = this;
+    //    if (count == 0) {
+    //        _self.isLoading = false;
+    //        _self.appController.configureAttached();
+    //    }
+    //}
 }

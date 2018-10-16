@@ -1,11 +1,11 @@
 ﻿export class TablesBook {
     constructor() {
-        this.Id = 0;
+        this.UserBookingId = 0;
         this.NumberOfTable = "";
         this.NumberOfPersons = "";
         this.Ambience = [];
-        this.RestaurantId = '';
-        this.RestaurantTableId = '';
+        this.RestaurantId = 0;
+        this.RestaurantTableId = 0;
         this.UserId = '';
         this.Date = '';
         this.Time = '';

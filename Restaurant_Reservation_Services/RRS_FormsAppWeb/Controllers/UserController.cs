@@ -191,6 +191,23 @@ namespace RRS_FormsAppWeb.Controllers
             }
         }
 
+        // POST: UserAcount
+        [HttpPost]
+        public ActionResult UpdateUserBookingActive(int userBookingId, bool isActive)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+
+            UserBooking userBooking = db.UserBookings.Find(userBookingId);
+            if (userBooking != null)
+            {
+                userBooking.IsActive = isActive;
+                db.SaveChanges();
+                result.Data = userBooking;
+            }
+
+            return result;
+        }
+
         [HttpPost]
         public ActionResult SearchRestaurant(SearchRestaurant searchRestaurant)
         {
