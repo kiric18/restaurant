@@ -9,11 +9,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jspm": "^0.16.52",
-    "slim-select": "^1.15.1",
+    "jspm": "^0.16.53",
     "microplugin": "0.0.3",
     "selectize": "^0.12.4",
-    "sifter": "^0.5.3"
+    "sifter": "^0.5.3",
+    "slim-select": "^1.15.1"
   },
   "jspm": {
     "dependencies": {
