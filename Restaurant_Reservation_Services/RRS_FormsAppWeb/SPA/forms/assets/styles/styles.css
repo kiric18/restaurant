@@ -644,7 +644,7 @@ ai-dialog-overlay.active {
 
 .panel-default > .panel-heading .badge {
     font-family: inherit;
-    background-color: gray;
+    /*background-color: gray;*/
 }
 
 .tagit {
@@ -751,12 +751,12 @@ div.tableContent {
 
 .index-header__heading {
     color: #fff;
-    margin-bottom: 3.0em;
-    margin-top: 4.5em;
+    margin-bottom: 1.7em;
+    margin-top: 1.5em;
 }
 
 .form-search {
-    margin-bottom: 6em;
+    margin-bottom: 1.7em;
 }
 
 .text-center {
@@ -764,7 +764,7 @@ div.tableContent {
 }
 
 body.boxed-layout #wrapper {
-    max-width: 1599px;
+    max-width: 1400px;
 }
 
 .res-is-not-active {
@@ -772,91 +772,110 @@ body.boxed-layout #wrapper {
 }
 
 .res-is-active {
-    color: #1ab394 !important;s
+    color: #1ab394 !important;
+    s
 }
+
 .selectize-control .selectize-input.disabled {
-    opacity:1.0 !important;
+    opacity: 1.0 !important;
 }
 
-.selectize-control.plugin-remove_button [data-value] .remove{
-    display:none !important;
+.selectize-control.plugin-remove_button [data-value] .remove {
+    display: none !important;
 }
 
-.btn{
-    height:43px;
+.btn {
+    height: 43px;
     padding: 6px 12px !important;
 }
 
-
-
-/* MEDIA QUERIES*/
-/*==========  Non-Mobile First Method  ==========*/
-/* Large Devices, Wide Screens */
-@media only screen and (max-width : 1200px) {
-    .user-name {
-        float: right !important;
-    }
+.panel {
+    margin-bottom: 20px;
+    background-color: #fff;
+    border: 0px !important;
+    border-radius: 0px !important;
+    -webkit-box-shadow: 0 0px 0px rgba(0, 0, 0, 0);
 }
-/* Medium Devices, Desktops */
-@media only screen and (max-width : 992px) {
-    .user-name {
-        float: left !important;
-        padding-left: 0px;
-    }
 
-    /*.mainContent {
+.panel-heading {
+    padding: 0px !important;
+    border-bottom: 3px solid #d9534f !important;
+    border-top-right-radius: 0px !important;
+    border-top-left-radius: 0px !important;
+    background-color: #fff !important;
+}
+
+.thumbnail {
+    margin-bottom: 0px !important;
+}
+    /* MEDIA QUERIES
+    /*==========  Non-Mobile First Method  ==========*/
+    /* Large Devices, Wide Screens */
+    @media only screen and (max-width : 1200px) {
+        .user-name {
+            float: right !important;
+        }
+    }
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+        .user-name {
+            float: left !important;
+            padding-left: 0px;
+        }
+
+        /*.mainContent {
         margin-top: 90px !important;
     }*/
 
-    .navbar-header {
-        border-top: 1px solid #b8b8b8;
-    }
+        .navbar-header {
+            border-top: 1px solid #b8b8b8;
+        }
 
-    .contentHeader {
-        padding-top: 10px;
-    }
+        .contentHeader {
+            padding-top: 10px;
+        }
 
-    .bodytop-logo {
-        width: 220px;
-        float: left;
-    }
+        .bodytop-logo {
+            width: 220px;
+            float: left;
+        }
 
-    .bodytop-form {
-        padding-left: 15px;
-        padding-right: 15px;
+        .bodytop-form {
+            padding-left: 15px;
+            padding-right: 15px;
+        }
     }
-}
-/* Small Devices, Tablets */
-@media only screen and (max-width : 768px) {
-    .bodytop-logo {
-        width: auto;
-        float: none;
-        padding-top: 10px;
-        padding-bottom: 10px;
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+        .bodytop-logo {
+            width: auto;
+            float: none;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
     }
-}
-/* Extra Small Devices, Phones */
-@media only screen and (max-width : 480px) {
-    .user-name {
-        float: left !important;
-    }
+    /* Extra Small Devices, Phones */
+    @media only screen and (max-width : 480px) {
+        .user-name {
+            float: left !important;
+        }
 
-    .mainContent {
-        margin-top: 90px !important;
-        margin-bottom: 0px !important;
-    }
+        .mainContent {
+            margin-top: 90px !important;
+            margin-bottom: 0px !important;
+        }
 
-    .footer-template {
-        position: relative;
+        .footer-template {
+            position: relative;
+        }
     }
-}
-/* Custom, iPhone Retina */
-@media only screen and (max-width : 320px) {
-    .user-name {
-        float: left !important;
-    }
+    /* Custom, iPhone Retina */
+    @media only screen and (max-width : 320px) {
+        .user-name {
+            float: left !important;
+        }
 
-    .mainContent {
-        margin-top: 130px !important;
+        .mainContent {
+            margin-top: 130px !important;
+        }
     }
-}

@@ -7,14 +7,14 @@
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            ${panelTitle}
+            <span style="font-size: 18px;">${panelTitle}</span>
             <tooltip-info class="pull-right" show.bind="info" element-id.bind="tooltipId" info.bind="info"></tooltip-info>
             <!--<a show.bind="info" class="pull-right" data-toggle="tooltip" title.bind="info">
                 <i class="fa fa-info-circle" style="font-size:18px;"></i>
             </a>-->
         </div>
         <div class="panel-body">
-            <form id="uploadPicturesElement" class="form-horizontal">
+            <form id="uploadPicturesElement" class="form-horizontal" onsubmit="return false;">
                 <fieldset>
 
                     <div class="row">

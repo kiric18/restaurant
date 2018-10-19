@@ -5,7 +5,7 @@
         <div class="panel-heading">
             <h3 style="color:#f54c53">Restaurants</h3>
         </div>
-        <form id="accountForm" class="form-horizontal">
+        <form id="accountForm" class="form-horizontal" onsubmit="return false;">
             <div class="panel-body">
                 <fieldset>
                     <div class="row">
@@ -21,8 +21,8 @@
                                             <td class="repeating-td-20"><strong>Manager Name</strong></td>
                                             <td class="repeating-td-20"><strong>Email</strong></td>
                                             <td class="repeating-td-5" style="text-align:center;"><strong>Activated</strong></td>
-                                            <td class="repeating-td-5"></td>
-                                            <td class="repeating-td-5"></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Accept</strong></td>
+                                            <td class="repeating-td-5" style="text-align:center;"><strong>Decline</strong></td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -86,14 +86,18 @@
                                                 </div>
                                             </td>
                                             <td style="text-align:center">
-                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
-                                                    <a click.delegate="activeted(res)"><i class="fa fa-check fa-2x res-is-active" style="margin-top:10px;" aria-hidden="true"></i></a>
-                                                </div>
+                                                <fieldset disabled.bind="res.IsActive">
+                                                    <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                        <a click.delegate="activeted(res)"><i class="fa fa-check fa-2x res-is-active" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </fieldset>
                                             </td>
                                             <td style="text-align:center">
-                                                <div class="col-xs-12 col-md-12" style="margin-top:-4px">
-                                                    <a click.delegate="deactiveted(res)"><i class="fa fa-times fa-2x res-is-not-active" style="margin-top:10px;" aria-hidden="true"></i></a>
-                                                </div>
+                                                <fieldset disabled.bind="!res.IsActive">
+                                                    <div class="col-xs-12 col-md-12" style="margin-top:-4px">
+                                                        <a click.delegate="deactiveted(res)"><i class="fa fa-times fa-2x res-is-not-active" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                    </div>
+                                                </fieldset>
                                             </td>
                                         </tr>
                                     </tbody>

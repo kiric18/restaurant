@@ -36,10 +36,15 @@ export class Login {
         let pass = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
         this.appController.webServices.login(this.appController.model.RestaurantManager.Email, pass, "Restaurant").then(response => {
             if (response.Result && response.Restaurant) {
-                _self.appController.IsRestaurantLogin = true;
-                _self.appController.TablesBookingCount = response.UserBooking ? response.UserBooking.length : 0;
-                _self.appController.populateModels(response.Restaurant);
-                _self.router.navigateToRoute("Home");
+                if (response.Restaurant.IsActive) {
+                    _self.appController.IsRestaurantLogin = true;
+                    _self.appController.TablesBookingCount = response.UserBooking ? response.UserBooking.length : 0;
+                    _self.appController.populateModels(response.Restaurant);
+                    _self.router.navigateToRoute("Home");
+                }
+                else {
+                    _self.appController.toast.toastError("Restaurant not activated yet. Please wait for your activation!", true);
+                }
             }
             else if (response.Result && !response.PasswordCorrected) {
                 _self.appController.toast.toastError("Invalid email or password. Please re-enter your login info.", true);

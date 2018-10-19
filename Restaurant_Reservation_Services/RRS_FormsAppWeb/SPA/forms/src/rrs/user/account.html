@@ -7,13 +7,13 @@
         <div class="panel-heading">
             <h3 style="color:#f54c53">User Account</h3>
         </div>
-        <form id="accountForm" class="form-horizontal">
+        <form id="accountForm" class="form-horizontal" onsubmit="return false;">
             <div class="panel-body">
                 <fieldset>
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="form-group add-padding-left-right">
-                                <h4 for="FirstName" class="form-label" style="margin:0px 0px 0px 0px">FirstName:</h4>
+                                <h4 for="FirstName" class="form-label" style="margin:0px 0px 0px 0px">First Name:</h4>
                                 <input type="text" class="form-control" id="FirstName" name="FirstName" placeholder="First Name" value.bind="appController.model.FirstName" />
                             </div>
                         </div>

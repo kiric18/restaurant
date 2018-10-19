@@ -5,6 +5,7 @@ import { closeTab } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 import $ from 'jquery';
+import { Restaurant } from "../../model/restaurant";
 
 @inject(Element, Router, AppController, FormValidator)
 export class Signup {
@@ -39,9 +40,9 @@ export class Signup {
 
         this.appController.webServices.signup(this.appController.model, "Restaurant").then(response => {
             if (response.Result) {
-                _self.appController.IsRestaurantLogin = true;
-                _self.appController.populateModels(response.Restaurant);
-                _self.router.navigateToRoute("Account");
+                if (!response.Restaurant.IsActive) {
+                    _self.appController.toast.toastSuccess(`Restaurant SignUp succesfully. Please wait for your activation.`);
+                }
             }
             else {
                 _self.appController.toast.toastError("Restaurant account already exists!", true);

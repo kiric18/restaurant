@@ -32,10 +32,10 @@ export class Restaurants {
             if (response.Result) {
                 _self.appController.IsAdmin = true;
                 _self.appController.populateAdminList(response);
-                _self.appController.toast.toastSuccess(`Restaurant activated succesfully!`);
+                _self.appController.toast.toastSuccess(`Restaurant activated!`);
             }
             else {
-                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", true);
+                _self.appController.toast.toastError("Restaurant not activated. Please try again!", true);
             }
         });
     }
@@ -46,10 +46,10 @@ export class Restaurants {
             if (response.Result) {
                 _self.appController.IsAdmin = true;
                 _self.appController.populateAdminList(response);
-                _self.appController.toast.toastSuccess(`Restaurant activated succesfully!`);
+                _self.appController.toast.toastSuccess(`Restaurant deactivated!`);
             }
             else {
-                _self.appController.toast.toastError("Restaurant not activated succesfully. Please try again!", true);
+                _self.appController.toast.toastError("Restaurant not activated. Please try again!", true);
             }
         });
     }

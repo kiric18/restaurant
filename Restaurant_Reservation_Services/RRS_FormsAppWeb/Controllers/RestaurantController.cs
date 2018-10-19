@@ -170,7 +170,7 @@ namespace RRS_FormsAppWeb.Controllers
                     restaurant.OpeningHoursTo = restaurantVM.OpeningHoursTo;
                     restaurant.OpeningHoursFrom = restaurantVM.OpeningHoursFrom;
 
-                    if (restaurant.RestaurantStyles.Count == 0)
+                    if (restaurant.RestaurantStyles != null && restaurant.RestaurantStyles.Count == 0)
                     {
                         if (restaurantVM.RestaurantStyles != null)
                         {
@@ -200,7 +200,7 @@ namespace RRS_FormsAppWeb.Controllers
                         }
                     }
 
-                    if (restaurant.RestaurantCuisines.Count == 0)
+                    if (restaurant.RestaurantCuisines != null && restaurant.RestaurantCuisines.Count == 0)
                     {
                         if (restaurantVM.RestaurantCuisines != null)
                         {
@@ -230,7 +230,7 @@ namespace RRS_FormsAppWeb.Controllers
                         }
                     }
 
-                    if (restaurant.RestaurantPaymentMethods.Count == 0)
+                    if (restaurant.RestaurantPaymentMethods != null && restaurant.RestaurantPaymentMethods.Count == 0)
                     {
                         if (restaurantVM.RestaurantPaymentMethods != null)
                         {
@@ -261,7 +261,7 @@ namespace RRS_FormsAppWeb.Controllers
                     }
 
 
-                    if (restaurant.RestaurantAmenities.Count == 0)
+                    if (restaurant.RestaurantAmenities != null && restaurant.RestaurantAmenities.Count == 0)
                     {
                         if (restaurantVM.RestaurantAmenities != null)
                         {
@@ -291,7 +291,7 @@ namespace RRS_FormsAppWeb.Controllers
                         }
                     }
 
-                    if (restaurant.RestaurantTables.Count == 0)
+                    if (restaurant.RestaurantTables != null && restaurant.RestaurantTables.Count == 0)
                     {
                         if (restaurantVM.RestaurantTables != null)
                         {

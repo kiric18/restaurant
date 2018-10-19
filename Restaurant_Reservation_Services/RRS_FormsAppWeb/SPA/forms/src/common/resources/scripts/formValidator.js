@@ -1,10 +1,12 @@
 ﻿import { Popup } from 'common/resources/scripts/popup';
+import { Toast } from 'common/resources/scripts/toast';
 import { inject } from 'aurelia-framework';
 
-@inject(Popup)
+@inject(Popup, Toast)
 export class FormValidator {
-    constructor(popup) {
+    constructor(popup, toast) {
         this.popup = popup;
+        this.toast = toast;
     }
 
     revalidate(formValidatorInstance) {
@@ -48,6 +50,7 @@ export class FormValidator {
     getAndReportErrors(fvsArray) {
         var errors = this.getErrors(fvsArray);
         if (errors && errors.length > 0) {
+            this.toast.toastError("Please fix the required fields before continuing!", true);
             //this.reportErrors(errors);//Remove this current line if no popup is wanted
             return false;
         }

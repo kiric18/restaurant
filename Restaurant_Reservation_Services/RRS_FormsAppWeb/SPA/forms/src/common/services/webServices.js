@@ -31,7 +31,7 @@ export class WebServices {
             this.http.fetch(url, request).then(response => response.json()).then(data => {
                 resolve(data);
             }).catch(err => {
-                customLog('Central Repository Web API Error ', err, "error");
+                customLog('Web Service - Web API Error ', err, "error");
                 reject(err);
             });
         });
