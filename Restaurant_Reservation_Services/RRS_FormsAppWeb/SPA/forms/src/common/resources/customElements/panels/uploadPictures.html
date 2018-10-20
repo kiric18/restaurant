@@ -42,17 +42,14 @@
                         </div>
 
                         <div class="row" style="padding-bottom:15px;">
-                            <div class="list-group" repeat.for="file of uploadedFiles | arraySanitizer" style="margin-bottom: 0px;">
+                            <div class="list-group" repeat.for="file of uploadedFiles | arraySanitizer" style="margin-bottom: 0px;padding-bottom:5px;">
                                 <div class="col-sm-4">
                                     <div class="list-group-item">
-                                        <!--<div class="pull-left">
-                                            <a click.delegate="showImage(file)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
-                                        </div>-->
                                         <div class="pull-right" show.bind="appController.IsRestaurantLogin">
                                             <a click.delegate="removeImage($index)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
                                         </div>
                                         <div class="thumbnail">
-                                            <img click.delegate="showImage(file)" class="image" id="img${$index}" src="data:image/${file.ImageExtension};base64,${file.ImageBase64}" alt.bind="file.ImageName">
+                                            <img click.delegate="showImage(file)" class="image" id="img${$index}" src="data:image/${file.ImageExtension};base64,${file.ImageBase64}" alt.bind="file.ImageName" style="width:300px; height: 200px;">
                                         </div>
                                     </div>
                                 </div>
