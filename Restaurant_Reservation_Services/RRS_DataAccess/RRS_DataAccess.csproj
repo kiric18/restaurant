@@ -240,6 +240,10 @@
     <Compile Include="Migrations\201810201651138_images6.Designer.cs">
       <DependentUpon>201810201651138_images6.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810202039574_images7.cs" />
+    <Compile Include="Migrations\201810202039574_images7.Designer.cs">
+      <DependentUpon>201810202039574_images7.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -399,6 +403,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810201651138_images6.resx">
       <DependentUpon>201810201651138_images6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810202039574_images7.resx">
+      <DependentUpon>201810202039574_images7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -136,4 +136,26 @@ export class WebServices {
         return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteImage/?${this.environment.standardTokens}`, newRequest);
     }
 
+    uploadRestaurantTableImage(files, restaurantTableId) {
+        let request = { method: "POST", headers: new Headers(), body: new FormData() };
+
+        request.body.append('restaurantTableId', restaurantTableId);
+
+        for (let i = 0; i < files.length; i++) {
+            request.body.append(files[i].name, files[i]);
+        }
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadRestaurantTableImage/?${this.environment.standardTokens}`, request);
+    }
+
+    getRestaurantTableImage(restaurantTableId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'restaurantTableId':'${restaurantTableId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantTableImage/?${this.environment.standardTokens}`, newRequest);
+    }
+
+    deleteRestaurantTableImage(restaurantTableId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'restaurantTableId':'${restaurantTableId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteRestaurantTableImage/?${this.environment.standardTokens}`, newRequest);
+    }
 }

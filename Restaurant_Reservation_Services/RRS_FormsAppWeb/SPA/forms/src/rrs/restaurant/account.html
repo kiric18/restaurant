@@ -5,6 +5,7 @@
     <require from="common/resources/valueConverters/arraySanitizer"></require>
     <require from='common/resources/customElements/customAttributes/timePicker'></require>
     <require from="common/resources/customElements/controls/tooltipInfo"></require>
+    <require from="common/resources/customElements/controls/uploadImg"></require>
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 style="color:#f54c53">Restaurant Details</h3>
@@ -135,7 +136,8 @@
                                             <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
                                             <td class="repeating-td-20"><strong>Number Of Table</strong></td>
                                             <td class="repeating-td-20"><strong>Number Of Persons</strong></td>
-                                            <td class="repeating-td-50"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-30"><strong>Ambience</strong></td>
+                                            <td class="repeating-td-20" style="text-align:center;"><strong>Picture</strong></td>
                                             <td class="repeating-td-5"></td>
                                         </tr>
                                     </thead>
@@ -182,11 +184,14 @@
                                                     <div class="col-xs-12 col-md-12">
                                                         <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
                                                                         placeholder="Select Ambience..." is-ambience.bind="true"
-                                                                        sp-column.two-way="table.Ambience"  view-model.ref="ambienceViewModel[$index]"
+                                                                        sp-column.two-way="table.Ambience" view-model.ref="ambienceViewModel[$index]"
                                                                         options-list.bind="appController.AmbiencesList">
                                                         </select-control>
                                                     </div>
                                                 </div>
+                                            </td>
+                                            <td>
+                                                <upload-img element-id="img${$index}" model-id.bind="table.Id" img-name.two-way="table.ImageName" img-extension.two-way="table.ImageExtension" img-base.two-way="table.ImageBase64"></upload-img>
                                             </td>
                                             <td style="text-align:center">
                                                 <div class="col-xs-12 col-md-12" style="margin-top:-4px">

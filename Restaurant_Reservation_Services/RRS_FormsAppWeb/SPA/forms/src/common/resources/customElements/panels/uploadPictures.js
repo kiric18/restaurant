@@ -30,9 +30,11 @@ export class UploadPictures {
         this.selectedFiles = [];
         this.uploadedFiles = [];
         this.isLoading = false;
+        this.modelId = 0;
     }
 
     attached() {
+        this.modelId = this.modelId ? this.modelId : 0;
         this.getUploadedFiles();
     }
 
@@ -45,18 +47,11 @@ export class UploadPictures {
 
                 _self.uploadedFiles = result;
 
-                this.isLoading = false;
+                _self.isLoading = false;
             }).catch(error => {
                 customLog("Error from getImages: ", error, "error");
             });
         }
-    }
-
-    uploadSelectedFiles() {
-
-        let _self = this;
-
-        this.uploadFiles();
     }
 
     uploadFiles() {

@@ -389,6 +389,8 @@
     <Content Include="SPA\forms\src\common\resources\customElements\controls\tooltipInfo.js">
       <DependentUpon>tooltipInfo.html</DependentUpon>
     </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\uploadImg.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\uploadImg.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.js">
       <DependentUpon>yesNoButtons.html</DependentUpon>

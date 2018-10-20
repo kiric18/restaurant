@@ -5,6 +5,7 @@
     <require from="common/resources/customElements/controls/selectControl"></require>
     <require from='common/resources/valueConverters/arraySanitizer'></require>
     <require from="common/resources/customElements/panels/UploadPictures"></require>
+    <require from="common/resources/customElements/controls/uploadImg"></require>
     <section>
         <div class="row">
             <div class="col-sm-12">
@@ -74,13 +75,14 @@
                                     <tr>
                                         <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
                                         <td class="repeating-td-15" style="text-align:center;"><strong>Number Of Persons</strong></td>
-                                        <td class="repeating-td-75"><strong>Ambience</strong></td>
+                                        <td class="repeating-td-60"><strong>Ambience</strong></td>
+                                        <td class="repeating-td-15" style="text-align:center;"><strong>Picture</strong></td>
                                         <td class="repeating-td-5" style="text-align:center;"><strong>Selected</strong></td>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr show.bind="!appController.SelectedRestaurant.RestaurantTables || appController.SelectedRestaurant.RestaurantTables.length == 0">
-                                        <td colspan="4">
+                                        <td colspan="5">
                                             <div class="row">
                                                 <div class="col-xs-12" style="text-align:center">
                                                     <h4><i>No tables available for booking!</i></h4>
@@ -115,6 +117,9 @@
                                                     </fieldset>
                                                 </div>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <upload-img element-id="img${$index}" model-id.bind="table.Id" img-name.bind="table.ImageName" img-extension.bind="table.ImageExtension" img-base.bind="table.ImageBase64"></upload-img>
                                         </td>
                                         <td style="text-align:center">
                                             <div class="checkbox checkbox-primary">
@@ -158,7 +163,7 @@
         </div>
         <div class="row">
             <div class="col-sm-12">
-                <upload-pictures panel-title="Pictures" element-id="uploadPictures"  model-id.bind="appController.SelectedRestaurant.Id" tooltip-id="uploadPicturesTooltip" info="Upload Pictures about your restaurant"></upload-pictures>
+                <upload-pictures panel-title="Pictures" element-id="uploadPictures" model-id.bind="appController.SelectedRestaurant.Id" tooltip-id="uploadPicturesTooltip" info="Upload Pictures about your restaurant"></upload-pictures>
             </div>
         </div>
         <fieldset>

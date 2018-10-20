@@ -77,7 +77,7 @@ namespace RRS_FormsAppWeb.Controllers
                 else
                 {
                     var userBooking = db.UserBookings.Where(u => u.RestaurantId == restaurant.Id && u.IsActive).ToList();
-                    result.Data = new { Result = true, Restaurant = restaurant, UserBooking = userBooking};
+                    result.Data = new { Result = true, Restaurant = restaurant, UserBooking = userBooking };
                 }
 
                 return result;
@@ -164,16 +164,6 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 List<RestaurantImages> restaurnatImages = db.RestaurantImages.Where(r => r.RestaurantId == restaurantId).ToList();
-                if(restaurnatImages != null)
-                {
-                    foreach(RestaurantImages image in restaurnatImages)
-                    {
-                        //***Save Base64 Encoded string as Image File***//
-
-                        //Convert Base64 Encoded string to Byte Array.
-                        //byte[] imageBytes = Convert.FromBase64String(base64String);
-                    }
-                }
                 result.Data = restaurnatImages;
                 return result;
             }
@@ -181,7 +171,6 @@ namespace RRS_FormsAppWeb.Controllers
             {
                 throw ex;
             }
-
         }
 
         [HttpPost]
@@ -191,7 +180,7 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 RestaurantImages restaurnatImages = db.RestaurantImages.Find(imageId);
-                if(restaurnatImages != null)
+                if (restaurnatImages != null)
                 {
                     db.RestaurantImages.Remove(restaurnatImages);
                     db.SaveChanges();
@@ -203,7 +192,91 @@ namespace RRS_FormsAppWeb.Controllers
             {
                 throw ex;
             }
+        }
 
+        [HttpPost]
+        public ActionResult UploadRestaurantTableImage(int restaurantTableId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            try
+            {
+                string fileName = string.Empty;
+                string filePath = string.Empty;
+                string fileExtension = string.Empty;
+                string fileBase64 = string.Empty;
+
+                RestaurantTables restaurantTableImage = db.RestaurantTables.Where(r => r.Id == restaurantTableId).FirstOrDefault();
+                if (restaurantTableImage != null)
+                {
+
+                    for (int i = 0; i < Request.Files.Count; i++)
+                    {
+                        fileName = Path.GetFileName(Request.Files[i].FileName);
+                        filePath = Path.GetFullPath(Request.Files[i].FileName);
+                        fileExtension = Path.GetExtension(Request.Files[i].FileName);
+
+                        BinaryReader br = new BinaryReader(Request.Files[i].InputStream);
+                        byte[] bytes = br.ReadBytes((int)Request.Files[i].InputStream.Length);
+
+                        //Convert the Byte Array to Base64 Encoded string.
+                        fileBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                        result.Data = new { FileName = fileName, FileExtension = fileExtension, FileBase64 = fileBase64 };
+                    }
+
+                    restaurantTableImage.ImageName = fileName;
+                    restaurantTableImage.ImageBase64 = fileBase64;
+                    restaurantTableImage.ImageExtension = fileExtension;
+
+                    db.SaveChanges();
+                }
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult GetRestaurantTableImage(int restaurantTableId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            try
+            {
+                RestaurantTables restaurantTableImage = db.RestaurantTables.Where(r => r.Id == restaurantTableId).FirstOrDefault();
+                result.Data = restaurantTableImage;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult DeleteRestaurantTableImage(int restaurantTableId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            try
+            {
+                RestaurantTables restaurantTableImage = db.RestaurantTables.Where(r => r.Id == restaurantTableId).FirstOrDefault();
+                if (restaurantTableImage != null)
+                {
+                    restaurantTableImage.ImageName = string.Empty;
+                    restaurantTableImage.ImageBase64 = string.Empty;
+                    restaurantTableImage.ImageExtension = string.Empty;
+
+                    db.SaveChanges();
+                }
+                result.Data = restaurantTableImage;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // POST: UserAcount

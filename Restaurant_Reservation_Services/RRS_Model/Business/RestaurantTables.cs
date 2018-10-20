@@ -13,7 +13,14 @@ namespace RRS_Model.Business
         public string NumberOfTable { get; set; }
         public string NumberOfPersons { get; set; }
         public string Ambience { get; set; }
+        public string ImageName { get; set; }
+
+        public string ImageExtension { get; set; }
+
+        public string ImageBase64 { get; set; }
+
         public bool IsBooking { get; set; }
+
         public virtual Restaurant Restaurant{ get; set; }
     }
 }
