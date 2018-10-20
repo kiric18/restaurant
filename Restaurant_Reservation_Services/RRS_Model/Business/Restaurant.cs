@@ -36,5 +36,7 @@ namespace RRS_Model.Business
         public virtual List<RestaurantCuisines> RestaurantCuisines { get; set; }
 
         public virtual List<RestaurantPaymentMethods> RestaurantPaymentMethods { get; set; }
+
+        public virtual List<RestaurantImages> RestaurantImages { get; set; }
     }
 }

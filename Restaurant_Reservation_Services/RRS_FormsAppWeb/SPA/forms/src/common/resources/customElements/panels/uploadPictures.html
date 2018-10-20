@@ -8,7 +8,7 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <span style="font-size: 18px;">${panelTitle}</span>
-            <tooltip-info class="pull-right" show.bind="info" element-id.bind="tooltipId" info.bind="info"></tooltip-info>
+            <tooltip-info class="pull-right" show.bind="info && appController.IsRestaurantLogin" element-id.bind="tooltipId" info.bind="info"></tooltip-info>
             <!--<a show.bind="info" class="pull-right" data-toggle="tooltip" title.bind="info">
                 <i class="fa fa-info-circle" style="font-size:18px;"></i>
             </a>-->
@@ -17,57 +17,54 @@
             <form id="uploadPicturesElement" class="form-horizontal" onsubmit="return false;">
                 <fieldset>
 
-                    <div class="row">
-                        <div class="col-xs-12" style="padding-left:30px; padding-right:30px;">
-                            <div class="row" repeat.for="file of selectedFiles | fileListToArray" style="border-bottom:1px solid #eee; padding-top:5px; padding-bottom:5px;">
-                                <div class="col-xs-12 col-sm-4 col-md-4">
-                                    ${file.name}
+                    <div class="loading-spinner-container" style="overflow:hidden" show.bind="isLoading">
+                        <i class="fa fa-spinner fa-pulse fa-3x fa-fw" aria-hidden="true"></i>
+                    </div>
+                    <div show.bind="!isLoading">
+                        <div class="row">
+                            <div class="col-xs-12" style="padding-left:30px; padding-right:30px;">
+                                <div class="row" repeat.for="file of selectedFiles | fileListToArray" style="border-bottom:1px solid #eee; padding-top:5px; padding-bottom:5px;">
+                                    <div class="col-xs-12 col-sm-4 col-md-4">
+                                        ${file.name}
+                                    </div>
+                                    <div class="col-xs-12 col-sm-2 col-md-2">
+                                        ${file.size / 1000} kb
+                                    </div>
                                 </div>
-                                <div class="col-xs-12 col-sm-2 col-md-2">
-                                    ${file.size / 1000} kb
+                            </div>
+                        </div>
+                        <div class="row" style="padding-left:15px;" show.bind="appController.IsRestaurantLogin">
+                            <div class="form-group col-xs-12">
+                                <label class="btn btn-primary btn-file" disabled.bind="uploadedFiles.length > 0 && multiSelect == '0'">
+                                    Browse <input hidden type="file" name="elementName" id.bind="elementId" value.bind="inputValue" multiple files.bind="selectedFiles" change.delegate="uploadFiles()">
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="row" style="padding-bottom:15px;">
+                            <div class="list-group" repeat.for="file of uploadedFiles | arraySanitizer" style="margin-bottom: 0px;">
+                                <div class="col-sm-4">
+                                    <div class="list-group-item">
+                                        <!--<div class="pull-left">
+                                            <a click.delegate="showImage(file)"><i class="fa fa-eye fa-2x" aria-hidden="true"></i></a>
+                                        </div>-->
+                                        <div class="pull-right" show.bind="appController.IsRestaurantLogin">
+                                            <a click.delegate="removeImage($index)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+                                        </div>
+                                        <div class="thumbnail">
+                                            <img click.delegate="showImage(file)" class="image" id="img${$index}" src="data:image/${file.ImageExtension};base64,${file.ImageBase64}" alt.bind="file.ImageName">
+                                        </div>
+                                    </div>
                                 </div>
-                                <!--<div class="col-xs-12 col-sm-6 col-md-6">
-                                    Last Modified: ${file.lastModifiedDate}
-                                </div>-->
-                                <!--<img src.bind="file | blobToUrl" style="max-width: 100px"><img>-->
+                            </div>
+
+
+                            <div id="myModal" class="modal">
+                                <span class="close" id="close">&times;</span>
+                                <img class="modal-content" id="modalimg">
                             </div>
                         </div>
                     </div>
-
-                    <div class="row" style="padding-left:15px;">
-                        <div class="form-group col-xs-12">
-                            <label class="btn btn-primary btn-file" disabled.bind="uploadedFiles.length > 0 && multiSelect == '0'">
-                                Browse <input hidden type="file" name="elementName" id.bind="elementId" value.bind="inputValue" multiple.bind="multiSelect == '1'" files.bind="selectedFiles" change.delegate="uploadSelectedFiles()">
-                            </label>
-                            <button type="button" show.bind="uploadedFiles.length > 0" class="btn btn-default" click.delegate="confirmDeletion('clearAll')">Clear</button>
-                        </div>
-                    </div>
-
-                    <div class="row" style="padding-bottom:15px;">
-                        <div style="margin:0px 15px;">
-                            <div class="linkToDMS">
-                                <table class="table table-striped table-hover" style="margin-bottom:0px;border:0px;">
-                                    <tbody>
-                                        <tr repeat.for="file of uploadedFiles | arraySanitizer">
-                                            <td>
-                                                <a href.bind="environment.spHostUrlHostName + file.ServerRelativeUrl" target="_blank">
-                                                    <span style="padding:0 10px 0 5px"><img src.bind="environment.appUrl + '/SPA/workflowforms/assets/images/DocumentFormat/other.png'" /></span>
-                                                    <!--<span style="padding:0 10px 0 5px" innerHTML.bind="file.DocumentFormat | stringToIcon"></span>-->
-                                                    ${file.FileName}
-                                                </a>
-                                            </td>
-                                            <td>
-                                                <div class="pull-right">
-                                                    <a click.delegate="confirmDeletion('singleFile', $index)"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
                 </fieldset>
             </form>
         </div>

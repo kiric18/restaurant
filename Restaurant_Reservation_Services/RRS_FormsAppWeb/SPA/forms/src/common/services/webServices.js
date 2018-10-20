@@ -111,4 +111,29 @@ export class WebServices {
         newRequest.body = `{'resId':'${resId}'}`;
         return this.defaultFetch(`${this.environment.appUrl}/User/GetBookingTables/`, newRequest);
     }
+
+    uploadImages(files, restaurantId) {
+
+        let request = { method: "POST", headers: new Headers(), body: new FormData() };
+        request.body.append('restaurantId', restaurantId);
+
+        for (let i = 0; i < files.length; i++) {
+            request.body.append(files[i].name, files[i]);
+        }
+
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadImages/?${this.environment.standardTokens}`, request);
+    }
+
+    getImages(restaurantId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'restaurantId':'${restaurantId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetImages/?${this.environment.standardTokens}`, newRequest);
+    }
+
+    deleteImage(imageId) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'imageId':'${imageId}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteImage/?${this.environment.standardTokens}`, newRequest);
+    }
+
 }

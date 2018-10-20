@@ -2,6 +2,7 @@
 import { DialogService } from 'aurelia-dialog';
 import { PopupDialog } from 'common/resources/customElements/dialogs/popupDialog';
 import { UrlDialog } from 'common/resources/customElements/dialogs/urlDialog';
+import { ImageDialog } from 'common/resources/customElements/dialogs/imageDialog';
 
 @inject(DialogService)
 export class Popup {
@@ -49,6 +50,11 @@ export class Popup {
         $('.btn').blur();
         var model = { title: title, body: body, type: 'question', hasOkButton: false, hasCancelButton: false, hasYesButton: true, hasNoButton: true };
         return this.dialogService.open({ viewModel: PopupDialog, model: model });
+    }
+
+    popupImage(model) {
+        $('.btn').blur();
+        return this.dialogService.open({ viewModel: ImageDialog, model: model });
     }
 
     popupUrl(url, title = '', newTab = false) {

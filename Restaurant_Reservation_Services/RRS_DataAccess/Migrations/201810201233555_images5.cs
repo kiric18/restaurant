@@ -1,0 +1,18 @@
+namespace RRS_DataAccess.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class images5 : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.RestaurnatImages", "ImageExtension", c => c.String());
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.RestaurnatImages", "ImageExtension");
+        }
+    }
+}

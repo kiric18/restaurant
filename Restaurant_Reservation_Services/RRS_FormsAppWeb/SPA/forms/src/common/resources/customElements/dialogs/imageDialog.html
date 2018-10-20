@@ -1,0 +1,15 @@
+﻿<template>
+    <ai-dialog>
+        <ai-dialog-body>
+            <div class="row" style="margin-top: -12px;">
+                <div class="pull-right">
+                    <a click.delegate="dialogController.cancel()"><i class="fa fa-times fa-2x" aria-hidden="true"></i></a>
+                </div>
+            </div>
+            <div class="row">
+                <img src="data:image/${ImageExtension};base64,${ImageBase64}" alt.bind="ImageName" style="width:100%; height: 100%;">
+            </div>
+        </ai-dialog-body>
+    </ai-dialog>
+
+</template>

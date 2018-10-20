@@ -119,29 +119,85 @@ namespace RRS_FormsAppWeb.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadFile(HttpPostedFileBase[] files)
+        public ActionResult UploadImages(int restaurantId)
         {
+            CustomJsonResult result = new CustomJsonResult();
             try
             {
-                //Ensure model state is valid
-                if (ModelState.IsValid)
-                {   //iterating through multiple file collection
-                    foreach (HttpPostedFileBase file in files)
-                    {
-                        //Checking file is available to save.
-                        if (file != null)
-                        {
-                            var InputFileName = Path.GetFileName(file.FileName);
-                            var ServerSavePath = Path.Combine(Server.MapPath("~/UploadedFiles/") + InputFileName);
-                            //Save file to server folder
-                            file.SaveAs(ServerSavePath);
-                            //assigning file uploaded status to ViewBag for showing message to user.
-                            ViewBag.UploadStatus = files.Count().ToString() + " files uploaded successfully.";
-                        }
+                string fileName = string.Empty;
+                string filePath = string.Empty;
+                //string fileExtension = string.Empty;
 
+                for (int i = 0; i < Request.Files.Count; i++)
+                {
+                    RestaurantImages restaurnatImages = new RestaurantImages();
+
+                    restaurnatImages.ImageName = Path.GetFileName(Request.Files[i].FileName);
+                    restaurnatImages.ImageUrl = Path.GetFullPath(Request.Files[i].FileName);
+                    restaurnatImages.ImageExtension = Path.GetExtension(Request.Files[i].FileName);
+
+                    restaurnatImages.RestaurantId = restaurantId;
+
+                    BinaryReader br = new BinaryReader(Request.Files[i].InputStream);
+                    byte[] bytes = br.ReadBytes((int)Request.Files[i].InputStream.Length);
+
+                    //Convert the Byte Array to Base64 Encoded string.
+                    restaurnatImages.ImageBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                    db.RestaurantImages.Add(restaurnatImages);
+                    db.SaveChanges();
+                }
+                result.Data = true;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+
+        [HttpPost]
+        public ActionResult GetImages(int restaurantId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            try
+            {
+                List<RestaurantImages> restaurnatImages = db.RestaurantImages.Where(r => r.RestaurantId == restaurantId).ToList();
+                if(restaurnatImages != null)
+                {
+                    foreach(RestaurantImages image in restaurnatImages)
+                    {
+                        //***Save Base64 Encoded string as Image File***//
+
+                        //Convert Base64 Encoded string to Byte Array.
+                        //byte[] imageBytes = Convert.FromBase64String(base64String);
                     }
                 }
-                return View();
+                result.Data = restaurnatImages;
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
+
+        [HttpPost]
+        public ActionResult DeleteImage(int imageId)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            try
+            {
+                RestaurantImages restaurnatImages = db.RestaurantImages.Find(imageId);
+                if(restaurnatImages != null)
+                {
+                    db.RestaurantImages.Remove(restaurnatImages);
+                    db.SaveChanges();
+                    result.Data = true;
+                }
+                return result;
             }
             catch (Exception ex)
             {

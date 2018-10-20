@@ -400,6 +400,8 @@
     <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\timePicker.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\imageDialog.html" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\imageDialog.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.html" />

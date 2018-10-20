@@ -65,8 +65,8 @@ export class Reservations {
                                 tableBook.IsDisabled = true;
                             }
                             else {
-                                tableBook.UserBookingId = book.Id;
-                                tableBook.IsActive = book.IsActive;
+                                //tableBook.UserBookingId = book.Id;
+                                //tableBook.IsActive = book.IsActive;
                                 tableBook.RestaurantTableId = table.Id;
                                 tableBook.NumberOfTable = table.NumberOfTable;
                                 tableBook.NumberOfPersons = table.NumberOfPersons;
@@ -132,6 +132,9 @@ export class Reservations {
                 if (response) {
                     table.IsBooking = response.IsBooking;
                     table.IsDisabled = response.IsBooking;
+                    table.ReservationName = '';
+                    table.Date = '';
+                    table.Time = '';
                     _self.appController.webServices.updateUserBookingActive(table.UserBookingId, table.IsBooking).then(response => {
                         if (response) {
                             table.IsActive = response.IsActive;

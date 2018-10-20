@@ -45,6 +45,8 @@ namespace RRS_DataAccess.Context
 
         public DbSet<RestaurantTablesAmbiences> RestaurantTablesAmbiences { get; set; }
 
+        public DbSet<RestaurantImages> RestaurantImages { get; set; }
+
         public DbSet<User> Users { get; set; }
 
         public DbSet<UserFavoriteRestaurnat> UserFavoriteRestaurnats { get; set; }

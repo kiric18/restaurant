@@ -216,6 +216,30 @@
     <Compile Include="Migrations\201810071332334_changeFieldName3.Designer.cs">
       <DependentUpon>201810071332334_changeFieldName3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810200928171_images.cs" />
+    <Compile Include="Migrations\201810200928171_images.Designer.cs">
+      <DependentUpon>201810200928171_images.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810200934043_images2.cs" />
+    <Compile Include="Migrations\201810200934043_images2.Designer.cs">
+      <DependentUpon>201810200934043_images2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810201041020_images3.cs" />
+    <Compile Include="Migrations\201810201041020_images3.Designer.cs">
+      <DependentUpon>201810201041020_images3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810201058062_images4.cs" />
+    <Compile Include="Migrations\201810201058062_images4.Designer.cs">
+      <DependentUpon>201810201058062_images4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810201233555_images5.cs" />
+    <Compile Include="Migrations\201810201233555_images5.Designer.cs">
+      <DependentUpon>201810201233555_images5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810201651138_images6.cs" />
+    <Compile Include="Migrations\201810201651138_images6.Designer.cs">
+      <DependentUpon>201810201651138_images6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -357,6 +381,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810071332334_changeFieldName3.resx">
       <DependentUpon>201810071332334_changeFieldName3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810200928171_images.resx">
+      <DependentUpon>201810200928171_images.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810200934043_images2.resx">
+      <DependentUpon>201810200934043_images2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810201041020_images3.resx">
+      <DependentUpon>201810201041020_images3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810201058062_images4.resx">
+      <DependentUpon>201810201058062_images4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810201233555_images5.resx">
+      <DependentUpon>201810201233555_images5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810201651138_images6.resx">
+      <DependentUpon>201810201651138_images6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

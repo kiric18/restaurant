@@ -62,6 +62,7 @@
     <Compile Include="Business\RestaurantPaymentMethods.cs" />
     <Compile Include="Business\RestaurantStyles.cs" />
     <Compile Include="Business\RestaurantTables.cs" />
+    <Compile Include="Business\RestaurantImages.cs" />
     <Compile Include="Business\Styles.cs" />
     <Compile Include="Business\User.cs" />
     <Compile Include="Business\UserBooking.cs" />
