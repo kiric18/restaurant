@@ -20,7 +20,7 @@ export class TimePicker {
                 horizontal: 'auto',
                 vertical: 'auto'
             },
-            stepping: 15,
+            stepping: 30,
             ignoreReadonly: true,
             useCurrent: false
         }).on('dp.change', (e) => { fireEvent(e.target, 'input'); });

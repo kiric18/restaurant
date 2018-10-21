@@ -205,25 +205,24 @@ namespace RRS_FormsAppWeb.Controllers
                 string fileExtension = string.Empty;
                 string fileBase64 = string.Empty;
 
+                if (Request.Files.Count > 0)
+                {
+                    fileName = Path.GetFileName(Request.Files[0].FileName);
+                    filePath = Path.GetFullPath(Request.Files[0].FileName);
+                    fileExtension = Path.GetExtension(Request.Files[0].FileName);
+
+                    BinaryReader br = new BinaryReader(Request.Files[0].InputStream);
+                    byte[] bytes = br.ReadBytes((int)Request.Files[0].InputStream.Length);
+
+                    //Convert the Byte Array to Base64 Encoded string.
+                    fileBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
+
+                    result.Data = new { FileName = fileName, FileExtension = fileExtension, FileBase64 = fileBase64 };
+                }
+
                 RestaurantTables restaurantTableImage = db.RestaurantTables.Where(r => r.Id == restaurantTableId).FirstOrDefault();
                 if (restaurantTableImage != null)
                 {
-
-                    for (int i = 0; i < Request.Files.Count; i++)
-                    {
-                        fileName = Path.GetFileName(Request.Files[i].FileName);
-                        filePath = Path.GetFullPath(Request.Files[i].FileName);
-                        fileExtension = Path.GetExtension(Request.Files[i].FileName);
-
-                        BinaryReader br = new BinaryReader(Request.Files[i].InputStream);
-                        byte[] bytes = br.ReadBytes((int)Request.Files[i].InputStream.Length);
-
-                        //Convert the Byte Array to Base64 Encoded string.
-                        fileBase64 = Convert.ToBase64String(bytes, 0, bytes.Length);
-
-                        result.Data = new { FileName = fileName, FileExtension = fileExtension, FileBase64 = fileBase64 };
-                    }
-
                     restaurantTableImage.ImageName = fileName;
                     restaurantTableImage.ImageBase64 = fileBase64;
                     restaurantTableImage.ImageExtension = fileExtension;

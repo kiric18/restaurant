@@ -21,6 +21,7 @@ export class DateTimePicker {
                 horizontal: 'auto',
                 vertical: this.getWidgetVerticalPosition()
             },
+            stepping: 30,
             ignoreReadonly: true,
             useCurrent: false,
             //sideBySide: true,

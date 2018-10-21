@@ -390,7 +390,9 @@
       <DependentUpon>tooltipInfo.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\controls\uploadImg.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\controls\uploadImg.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\controls\uploadImg.js">
+      <DependentUpon>uploadImg.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\controls\yesNoButtons.js">
       <DependentUpon>yesNoButtons.html</DependentUpon>
@@ -401,36 +403,58 @@
     <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\dateTimePicker.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\customAttributes\timePicker.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\confirm.js">
+      <DependentUpon>confirm.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\imageDialog.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\imageDialog.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\imageDialog.js">
+      <DependentUpon>imageDialog.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\loading.js">
+      <DependentUpon>loading.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\popupDialog.js">
+      <DependentUpon>popupDialog.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\dialogs\urlDialog.js">
+      <DependentUpon>urlDialog.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\navigation\nav-bar-top.js">
       <DependentUpon>nav-bar-top.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\notAuthorized.js">
+      <DependentUpon>notAuthorized.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\pages\underMaintenance.js">
+      <DependentUpon>underMaintenance.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.js">
+      <DependentUpon>bodytop.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\footer.js">
+      <DependentUpon>footer.html</DependentUpon>
+    </Content>
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\header.js">
+      <DependentUpon>header.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\panels\searchRestaurant.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\searchRestaurant.js">
       <DependentUpon>searchRestaurant.html</DependentUpon>
     </Content>
     <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\panels\bodytop.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\controls\comments.html" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\footer.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\panels\footer.js" />
     <Content Include="SPA\forms\src\common\resources\customElements\panels\header.html" />
-    <Content Include="SPA\forms\src\common\resources\customElements\panels\header.js" />
+    <Content Include="SPA\forms\src\common\resources\customElements\panels\uploadPictures.js">
+      <DependentUpon>uploadPictures.html</DependentUpon>
+    </Content>
     <Content Include="SPA\forms\src\common\resources\scripts\customLogAppender.js" />
     <Content Include="SPA\forms\src\common\resources\scripts\error.js" />
     <Content Include="SPA\forms\src\common\resources\scripts\formValidator.js" />
