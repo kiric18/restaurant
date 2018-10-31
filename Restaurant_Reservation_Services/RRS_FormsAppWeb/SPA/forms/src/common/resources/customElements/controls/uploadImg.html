@@ -9,22 +9,22 @@
     <div show.bind="!isLoading">
         <div class="row" style="padding-left:15px;">
             <div class="col-xs-3">
-                <span class="btn btn-primary btn-file iploadImg" style="border-radius: 25px !important;" show.bind="appController.IsRestaurantLogin && !imgBase">
-                    <i class="fa fa-upload fa-2x" aria-hidden="true"  title="Upload Picture"></i>
-                    <input hidden type="file" name="elementName" id.bind="elementId" value.bind="inputValue" files.bind="selectedFiles" change.delegate="uploadFiles()" />
-                </span>
+                <a class="btn-file" style="border-radius: 25px !important;color:#f54c53 !important; cursor:pointer" show.bind="appController.IsRestaurantLogin && !imgBase">
+                    <i class="fa fa-upload fa-2x" aria-hidden="true" title="Upload Picture"></i>
+                    <input class="form-control" hidden type="file" name="elementName" id.bind="elementId" value.bind="inputValue" files.bind="selectedFiles" change.delegate="uploadFiles()" />
+                </a>
             </div>
 
             <div class="col-xs-4">
                 <a click.delegate="showImage()" show.bind="imgBase" title="See Picture">
-                    <i class="fa fa-picture-o fa-3x" aria-hidden="true">
+                    <i class="fa fa-picture-o fa-2x" aria-hidden="true">
                     </i>
                 </a>
             </div>
 
             <div class="col-xs-3">
                 <a click.delegate="removeImage()" show.bind="appController.IsRestaurantLogin && imgBase" title="Remove Picture">
-                    <i class="fa fa-times fa-3x" style="color:#f54c53 !important" aria-hidden="true">
+                    <i class="fa fa-times fa-2x" style="color:#f54c53 !important" aria-hidden="true">
                     </i>
                 </a>
             </div>

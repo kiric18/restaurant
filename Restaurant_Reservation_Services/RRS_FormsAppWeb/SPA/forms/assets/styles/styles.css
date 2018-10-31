@@ -140,7 +140,7 @@ ai-dialog-container.active {
 }
 
 ai-dialog-container > div {
-    width: 100%;
+    width: 40%;
     margin: auto;
 }
 
