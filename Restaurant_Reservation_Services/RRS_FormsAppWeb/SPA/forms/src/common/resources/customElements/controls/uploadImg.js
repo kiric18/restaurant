@@ -95,7 +95,7 @@ export class UploadImg {
         });
     }
 
-    showImage(file) {
+    showImage() {
         var model = { body: '', type: 'success', ImageName: this.imgName, ImageExtension: this.imgExtension, ImageBase64: this.imgBase };
         this.appController.popup.popupImage(model);
     }

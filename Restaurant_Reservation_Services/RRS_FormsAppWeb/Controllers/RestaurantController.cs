@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.Mvc;
 using RRS_DataAccess.Context;
 using RRS_FormsAppWeb.Helper.Common;
+using RRS_FormsAppWeb.Models.ViewModel;
 using RRS_Model.Business;
 
 namespace RRS_FormsAppWeb.Controllers
@@ -526,6 +527,129 @@ namespace RRS_FormsAppWeb.Controllers
             }
 
             return result;
+        }
+
+        [HttpPost]
+        public ActionResult Search(string search)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+            List<SearchResult> searchResults = new List<SearchResult>();
+
+            // Restaurant
+            var restaurants = db.Restaurants.Where(r => r.RestaurantName.Contains(search) || r.City.Contains(search)).Select(r => new SearchResult {
+                Id = r.Id.ToString(),
+                Name = r.RestaurantName,
+                RestautantName = r.RestaurantName,
+                City = r.City,
+                Description = r.RestaurantName,
+                OptGroup = "Restaurant"
+
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurants);
+
+            var location = db.Restaurants.Where(l => l.City.Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.City,
+                RestautantName = r.RestaurantName,
+                City = r.City,
+                Description = r.City,
+                OptGroup = "Location"
+            }).ToList();
+            UpdateRestaurantList(searchResults, location);
+
+            var restaurantCuisines = db.RestaurantCuisines.Where(c => c.CuisineId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.CuisineId.ToString(),
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.CuisineId.ToString(),
+                CuisineId = r.CuisineId.ToString(),
+                OptGroup = "Cuisines"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantCuisines);
+
+            var restaurantAmenities = db.RestaurantAmenities.Where(c => c.AmenitieId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.AmenitieId.ToString(),
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.AmenitieId.ToString(),
+                AmenitieId = r.AmenitieId.ToString(),
+                OptGroup = "Amenities"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantAmenities);
+
+            var restaurantStyle = db.RestaurantStyles.Where(c => c.StyleId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.StyleId.ToString(),
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.StyleId.ToString(),
+                StyleId = r.StyleId.ToString(),
+                OptGroup = "Style"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantStyle);
+
+            result.Data = searchResults;
+
+            return result;
+        }
+
+        private void UpdateRestaurantList(List<SearchResult> searchResults, List<SearchResult> res)
+        {
+            for (int i = 0; i < res.Count; i++)
+            {
+                if (!searchResults.Contains(res[i]))
+                {
+                    searchResults.Add(res[i]);
+                }
+            }
+        }
+
+
+        private string ConvertStyle(List<RestaurantStyles> restaurantStyles)
+        {
+            List<string> vs = new List<string>();
+            if (restaurantStyles.Count > 0)
+            {
+                for (int i = 0; i < restaurantStyles.Count; i++)
+                {
+                    vs.Add(restaurantStyles[i].StyleId.ToString());
+                }
+                return String.Join(", ", vs.ToArray());
+            }
+            return string.Empty;
+        }
+
+        private string ConvertCuisine(List<RestaurantCuisines> restaurantCuisines)
+        {
+            List<string> vs = new List<string>();
+            if(restaurantCuisines.Count > 0)
+            {
+                for (int i = 0; i < restaurantCuisines.Count; i++)
+                {
+                    vs.Add(restaurantCuisines[i].CuisineId.ToString());
+                }
+                return String.Join(", ", vs.ToArray());
+            }
+            return string.Empty;
+        }
+        private string ConvertAmenities(List<RestaurantAmenities> restaurantAmenities)
+        {
+            List<string> vs = new List<string>();
+            if (restaurantAmenities.Count > 0)
+            {
+                for (int i = 0; i < restaurantAmenities.Count; i++)
+                {
+                    vs.Add(restaurantAmenities[i].AmenitieId.ToString());
+                }
+                return String.Join(", ", vs.ToArray());
+            }
+            return string.Empty;
         }
     }
 }

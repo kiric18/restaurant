@@ -37,7 +37,10 @@
                         <div class="col-xs-6">
                             <div class="form-group add-padding-left-right">
                                 <h4 for="City" class="form-label" style="margin:0px 0px 0px 0px">City:</h4>
-                                <input type="text" class="form-control" id="City" name="City" placeholder="City" value.bind="appController.model.City" />
+                                <select class="form-control" id="City" name="City" value.bind="appController.model.City" style="width:100%">
+                                    <option disabled.bind="appController.model.City" selected.bind="!appController.model.City" value="">Select City</option>
+                                    <option repeat.for="option of appController.LocationsList" value.bind="option.Name">${option.Name}</option>
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -159,7 +162,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
                                                         <select class="form-control" id="NumberOfTable${$index}" name="NumberOfTable${$index}" value.bind="table.NumberOfTable" style="width:100%" change.delegate="disabledNumberOfTable(table.NumberOfTable)">
@@ -169,7 +172,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
                                                         <select class="form-control" id="NumberOfPersons${$index}" name="NumberOfPersons${$index}" value.bind="table.NumberOfPersons" style="width:100%">
@@ -179,7 +182,7 @@
                                                     </div>
                                                 </div>
                                             </td>
-                                            <td>
+                                            <td style="vertical-align:middle;">
                                                 <div class="row">
                                                     <div class="col-xs-12 col-md-12">
                                                         <select-control is-multi.bind="true" element-name="Ambience${$index}" element-id="Ambience${$index}"
@@ -193,9 +196,9 @@
                                             <td style="text-align:center;vertical-align:middle;">
                                                 <upload-img element-id="img${$index}" model-id.bind="table.Id" img-name.two-way="table.ImageName" img-extension.two-way="table.ImageExtension" img-base.two-way="table.ImageBase64"></upload-img>
                                             </td>
-                                            <td style="text-align:center">
+                                            <td style="text-align:center;vertical-align:middle;">
                                                 <div class="col-xs-12 col-md-12" style="margin-top:-4px">
-                                                    <a click.delegate="removeColumn($index)"><i class="fa fa-times fa-2x" style="margin-top:10px;" aria-hidden="true"></i></a>
+                                                    <a click.delegate="removeColumn($index)" title="Remove Table"><i class="fa fa-times fa-2x" style="margin-top:10px;" aria-hidden="true"></i></a>
                                                 </div>
                                             </td>
                                         </tr>

@@ -7,15 +7,10 @@
     <form id="searchRestaurant" class="inputs-group form-search col-xs-12" onsubmit="return false;">
         <fieldset>
             <div class="row">
-                <div class="col-xs-3" style="padding-right:0px;">
+                <div class="col-xs-10" style="padding-right:0px;">
                     <div class="form-group">
-                        <restaurant-name element-name="RestaurantName" element-id="RestaurantName"></restaurant-name>
-                    </div>
-                </div>
-                <div class="col-xs-7" style="padding-right:0px;">
-                    <div class="form-group">
-                        <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Locations, Cuisines, Amenities, Styles, Ambiences">
-                            <optgroup label="Locations">
+                        <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Locations, Cuisines, Amenities, Styles">
+                            <!--<optgroup label="Locations">
                                 <option repeat.for="option of appController.LocationsList" value.bind="option.Name">${option.Description}</option>
                             </optgroup>
                             <optgroup label="Cuisines">
@@ -29,7 +24,7 @@
                             </optgroup>
                             <optgroup label="Ambience">
                                 <option repeat.for="option of appController.AmbiencesList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>
+                            </optgroup>-->
                         </select>
                     </div>
                 </div>

@@ -75,9 +75,8 @@
                                     <tr>
                                         <td class="repeating-td-5" style="text-align:center;"><strong>#</strong></td>
                                         <td class="repeating-td-15" style="text-align:center;"><strong>Number Of Persons</strong></td>
-                                        <td class="repeating-td-60"><strong>Ambience</strong></td>
-                                        <td class="repeating-td-15" style="text-align:center;"><strong>Picture</strong></td>
-                                        <td class="repeating-td-5" style="text-align:center;"><strong>Selected</strong></td>
+                                        <td class="repeating-td-45"><strong>Ambience</strong></td>
+                                        <td class="repeating-td-35" style="text-align:center;"><strong>Picture</strong></td>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -90,7 +89,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" show.bind="appController.UserBooking.NumberOfPersons == table.NumberOfPersons">
+                                    <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" show.bind="appController.UserBooking.NumberOfPersons == table.NumberOfPersons && !table.IsBooking" click.delegate="onSelectTable($event, table)" class="${table.IsSelected ? 'selectedRow' : ''}" style="cursor:pointer">
                                         <td style="text-align:center;vertical-align:middle;">
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-12">
@@ -105,7 +104,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td style="vertical-align:middle;">
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-12">
                                                     <fieldset disabled>
@@ -120,12 +119,6 @@
                                         </td>
                                         <td style="text-align:center;vertical-align:middle;">
                                             <upload-img element-id="img${$index}" model-id.bind="table.Id" img-name.bind="table.ImageName" img-extension.bind="table.ImageExtension" img-base.bind="table.ImageBase64"></upload-img>
-                                        </td>
-                                        <td style="text-align:center">
-                                            <div class="checkbox checkbox-primary">
-                                                <input type="checkbox" name="IsBooking${$index}" id="IsBooking${$index}" class="styled" checked.bind="table.IsBooking" change.delegate="selectedTable(table, $index)" />
-                                                <label></label>
-                                            </div>
                                         </td>
                                     </tr>
                                 </tbody>

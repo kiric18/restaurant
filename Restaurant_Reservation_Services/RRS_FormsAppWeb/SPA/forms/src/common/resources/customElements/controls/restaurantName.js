@@ -18,12 +18,19 @@ export class RestaurantName {
         let _self = this;
         this.$element.find("#RestaurantName").autocomplete({
             source: function (request, response) {
-                response($.map(_self.appController.RestaurantNamesList, function (value, key) {
-                    return {
-                        label: value.RestaurantName,
-                        key: value.Id
-                    }
-                }));
+                _self.appController.webServices.search(request.term).then(apiResponse => {
+                    response($.map(apiResponse, function (item) {
+                        return {
+                            label: item.RestaurantName,
+                            key: item.Id
+                        };
+                    }));
+                }).catch(err => {
+                    log.debug('error', err);
+                    if (err instanceof Response) { }
+                    else if (err instanceof Error) { }
+                    else { }
+                });
             },
             response: function (event, ui) {
 

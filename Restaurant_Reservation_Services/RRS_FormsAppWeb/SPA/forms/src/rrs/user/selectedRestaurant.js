@@ -37,6 +37,18 @@ export class SelectedRestaurant {
             this.appController.UserBooking.ReservationName = this.appController.model.FirstName + " " + this.appController.model.LastName + " (" + this.appController.model.Username + ")";
         }
 
+        if (this.appController.SelectedRestaurant.RestaurantTables && this.appController.SelectedRestaurant.RestaurantTables.length > 0) {
+            for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
+                let table = this.appController.SelectedRestaurant.RestaurantTables[i];
+                if (table.IsBooking) {
+                    table["IsSelected"] = true;
+                }
+                else {
+                    table["IsSelected"] = false;
+                }
+            }
+        }
+
         this.initializeValidation('bookForm');
     }
 
@@ -77,18 +89,33 @@ export class SelectedRestaurant {
         this.showTables = true;
     }
 
-    selectedTable(selectedTable, index) {
+    onSelectTable(event, selectedTable) {
+        let _self = this;
         this.appController.UserBooking.RestaurantTableId = selectedTable.Id;
+
         for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
             let table = this.appController.SelectedRestaurant.RestaurantTables[i];
-            if (!table.IsBooking && selectedTable.IsBooking) {
-                $(`#IsBooking${i}`).prop("disabled", true);
+            if (table.Id === selectedTable.Id) {
+                table.IsSelected = true;
             }
-            else {
-                $(`#IsBooking${i}`).prop("disabled", false);
+            else if (!table.IsBooking){
+                table.IsSelected = false;
             }
         }
     }
+
+    //selectedTable(selectedTable, index) {
+    //    this.appController.UserBooking.RestaurantTableId = selectedTable.Id;
+    //    for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
+    //        let table = this.appController.SelectedRestaurant.RestaurantTables[i];
+    //        if (!table.IsBooking && selectedTable.IsBooking) {
+    //            $(`#IsBooking${i}`).prop("disabled", true);
+    //        }
+    //        else {
+    //            $(`#IsBooking${i}`).prop("disabled", false);
+    //        }
+    //    }
+    //}
 
     initializeValidation(formId) { //pass in form element id
         let _self = this;

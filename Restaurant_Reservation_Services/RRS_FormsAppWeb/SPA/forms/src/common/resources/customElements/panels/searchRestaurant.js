@@ -3,6 +3,7 @@ import { Router } from 'aurelia-router';
 import { log, customLog } from 'common/resources/scripts/log';
 import { closeTab, datetimepicker, formatDateToSharepoint, setMinTime, setMinDate, setMaxDate, currentDate, currentTime } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
+import "common/plugins/select2.full.min";
 import 'selectize';
 
 @inject(Element, Router, AppController)
@@ -25,16 +26,16 @@ export class SearchRestaurant {
             plugins: ['remove_button'],
             delimiter: ',',
             persist: false,
-            valueField: 'Id',
-            labelField: 'Description',
-            searchField: ['Name', 'Description'],
+            valueField: 'Name',
+            labelField: 'Name',
+            searchField: ['Name', 'City', 'RestautantName', 'CuisineId', 'AmenitieId', 'StyleId'],
             sortField: 'Name',
-            //options: _self.optionsList,
+            options: [],
             create: false,
             onItemAdd: function (value, $item) {
                 var data = this.options[value];
                 if (data) {
-                    var newObject = { Id: data.Id, OptGroup: data.optgroup }
+                    var newObject = { Id: data.Id, OptGroup: data.optgroup };
                     _self.appController.RestaurantSearch.Search.push(newObject);
                 }
             },
@@ -47,6 +48,15 @@ export class SearchRestaurant {
                     }
                 }
             },
+            load: function (query, callback) {
+                if (!query.length) return callback();
+                _self.appController.webServices.search(query).then(apiResponse => {
+                    callback(apiResponse);
+                }).catch(err => {
+                    log.debug('error', err);
+                    callback();
+                });
+            }
         });
     }
 

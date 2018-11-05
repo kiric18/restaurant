@@ -169,6 +169,7 @@
     <Compile Include="Models\ViewModel\RestaurantTablesVM.cs" />
     <Compile Include="Models\ViewModel\RestaurantVM.cs" />
     <Compile Include="Models\ViewModel\SearchRestaurant.cs" />
+    <Compile Include="Models\ViewModel\SearchResult.cs" />
     <Compile Include="Models\ViewModel\Signup.cs" />
     <Compile Include="Models\ViewModel\UserVM.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -244,6 +245,7 @@
     <Content Include="SPA\forms\assets\styles\jquery.dataTables.min.css" />
     <Content Include="SPA\forms\assets\styles\jquery.tagit.css" />
     <Content Include="SPA\forms\assets\styles\navbar-custom.css" />
+    <Content Include="SPA\forms\assets\styles\select2.min.css" />
     <Content Include="SPA\forms\assets\styles\selectize.css" />
     <Content Include="SPA\forms\assets\styles\selectize.default.css" />
     <Content Include="SPA\forms\assets\styles\templateAnimate.css" />
@@ -350,6 +352,7 @@
     <Content Include="SPA\forms\src\common\plugins\modernizr-2.6.2.min.js" />
     <Content Include="SPA\forms\src\common\plugins\owl.carousel.min.js" />
     <Content Include="SPA\forms\src\common\plugins\respond.min.js" />
+    <Content Include="SPA\forms\src\common\plugins\select2.full.min.js" />
     <Content Include="SPA\forms\src\common\plugins\selectize.js" />
     <Content Include="SPA\forms\src\common\plugins\tag-it.min.js" />
     <Content Include="SPA\forms\src\common\resources\config\environment.js" />

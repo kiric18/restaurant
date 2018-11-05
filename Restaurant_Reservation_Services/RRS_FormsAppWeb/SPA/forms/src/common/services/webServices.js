@@ -88,6 +88,12 @@ export class WebServices {
         return this.defaultFetch(`${this.environment.appUrl}/${controller}/SearchRestaurant/`, newRequest);
     }
 
+    search(search) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'search':'${search}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/Search/`, newRequest);
+    }
+
     updateRestaurantTableAvailability(resTableId, IsBooking) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantTableId':'${resTableId}', 'IsBooking':'${IsBooking}'}`;

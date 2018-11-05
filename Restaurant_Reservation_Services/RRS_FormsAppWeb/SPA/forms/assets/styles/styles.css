@@ -824,6 +824,12 @@ iploadImg > i {
     color: white;
 }
 
+.selectedRow {
+    background-color: #4da6ff !important;
+    color: whitesmoke !important;
+}
+
+
 iploadImg > input {
     background: none;
     color: white;
