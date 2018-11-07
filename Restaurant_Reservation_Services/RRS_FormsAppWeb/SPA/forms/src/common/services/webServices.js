@@ -81,11 +81,11 @@ export class WebServices {
         return this.defaultFetch(`${this.environment.appUrl}/user/BookTable/`, newRequest);
     }
 
-    searchRestaurant(model, controller) {
+    searchRestaurant(model) {
         let newRequest = this.generateRequestBody();
         newRequest.dataType = 'json';
         newRequest.body = json(model);
-        return this.defaultFetch(`${this.environment.appUrl}/${controller}/SearchRestaurant/`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/SearchRestaurant/`, newRequest);
     }
 
     search(search) {

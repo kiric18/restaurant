@@ -542,10 +542,22 @@ namespace RRS_FormsAppWeb.Controllers
                 RestautantName = r.RestaurantName,
                 City = r.City,
                 Description = r.RestaurantName,
-                OptGroup = "Restaurant"
+                OptGroup = "Restaurants"
 
             }).ToList();
             UpdateRestaurantList(searchResults, restaurants);
+
+            var restaurantByCuisines = db.RestaurantCuisines.Where(c => c.CuisineId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.Restaurant.RestaurantName,
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.Restaurant.RestaurantName,
+                CuisineId = r.CuisineId.ToString(),
+                OptGroup = "Restaurants"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantByCuisines);
 
             var location = db.Restaurants.Where(l => l.City.Contains(search)).Select(r => new SearchResult
             {
@@ -554,7 +566,7 @@ namespace RRS_FormsAppWeb.Controllers
                 RestautantName = r.RestaurantName,
                 City = r.City,
                 Description = r.City,
-                OptGroup = "Location"
+                OptGroup = "Locations"
             }).ToList();
             UpdateRestaurantList(searchResults, location);
 
@@ -570,6 +582,19 @@ namespace RRS_FormsAppWeb.Controllers
             }).ToList();
             UpdateRestaurantList(searchResults, restaurantCuisines);
 
+            var restaurantByAmenities = db.RestaurantAmenities.Where(c => c.AmenitieId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.Restaurant.RestaurantName,
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.Restaurant.RestaurantName,
+                AmenitieId = r.AmenitieId.ToString(),
+                OptGroup = "Restaurants"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantByAmenities);
+
+
             var restaurantAmenities = db.RestaurantAmenities.Where(c => c.AmenitieId.ToString().Contains(search)).Select(r => new SearchResult
             {
                 Id = r.Id.ToString(),
@@ -581,6 +606,18 @@ namespace RRS_FormsAppWeb.Controllers
                 OptGroup = "Amenities"
             }).ToList();
             UpdateRestaurantList(searchResults, restaurantAmenities);
+
+            var restaurantByStyle = db.RestaurantStyles.Where(c => c.StyleId.ToString().Contains(search)).Select(r => new SearchResult
+            {
+                Id = r.Id.ToString(),
+                Name = r.Restaurant.RestaurantName,
+                RestautantName = r.Restaurant.RestaurantName,
+                City = r.Restaurant.City,
+                Description = r.Restaurant.RestaurantName,
+                StyleId = r.StyleId.ToString(),
+                OptGroup = "Restaurants"
+            }).ToList();
+            UpdateRestaurantList(searchResults, restaurantByStyle);
 
             var restaurantStyle = db.RestaurantStyles.Where(c => c.StyleId.ToString().Contains(search)).Select(r => new SearchResult
             {
@@ -599,6 +636,77 @@ namespace RRS_FormsAppWeb.Controllers
             return result;
         }
 
+        [HttpPost]
+        public ActionResult SearchRestaurant(SearchRestaurant searchRestaurant)
+        {
+            CustomJsonResult result = new CustomJsonResult();
+
+            List<Restaurant> restaurants = new List<Restaurant>();
+            if (!string.IsNullOrEmpty(searchRestaurant.RestaurantName))
+            {
+                var res = db.Restaurants.Where(r => r.RestaurantName == searchRestaurant.RestaurantName).ToList();
+                //restaurants.Add(res);
+                UpdateRestaurantList(restaurants, res);
+            }
+
+            if (searchRestaurant.Search != null && searchRestaurant.Search.Count > 0)
+            {
+                for (int i = 0; i < searchRestaurant.Search.Count; i++)
+                {
+                    string id = searchRestaurant.Search[i].Id;
+                    if (searchRestaurant.Search[i].OptGroup == "Locations")
+                    {
+                        var res = db.Restaurants.Where(r => r.City == id).ToList();
+                        //restaurants.Add(res);
+                        UpdateRestaurantList(restaurants, res);
+                    }
+                    else if (searchRestaurant.Search[i].OptGroup == "Cuisines")
+                    {
+                        var res = db.RestaurantCuisines.Where(c => c.CuisineId.ToString() == id).Select(r => r.Restaurant).ToList();
+                        //restaurants.Add(res);
+                        UpdateRestaurantList(restaurants, res);
+                    }
+                    else if (searchRestaurant.Search[i].OptGroup == "Amenities")
+                    {
+                        var res = db.RestaurantAmenities.Where(c => c.AmenitieId.ToString() == id).Select(r => r.Restaurant).ToList();
+                        //restaurants.Add(res);
+                        UpdateRestaurantList(restaurants, res);
+                    }
+                    else if (searchRestaurant.Search[i].OptGroup == "Styles")
+                    {
+                        var res = db.RestaurantStyles.Where(c => c.StyleId.ToString() == id).Select(r => r.Restaurant).ToList();
+                        //restaurants.Add(res);
+                        //ListA.Where(a => ListX.Any(x => x.b == a.b))
+                        UpdateRestaurantList(restaurants, res);
+                    }
+                    else if (searchRestaurant.Search[i].OptGroup == "Ambience")
+                    {
+                        var res = db.RestaurantTablesAmbiences.Where(c => c.AmbienceId.ToString() == id).Select(r => r.RestaurantTables.Restaurant).ToList();
+                        //restaurants.Add(res);
+                        UpdateRestaurantList(restaurants, res);
+                    }
+                }
+            }
+            else
+            {
+                restaurants = db.Restaurants.ToList();
+            }
+
+            result.Data = new { Result = true, Restaurants = restaurants };
+
+            return result;
+        }
+
+        private void UpdateRestaurantList(List<Restaurant> restaurants, List<Restaurant> res)
+        {
+            for (int i = 0; i < res.Count; i++)
+            {
+                if (!restaurants.Contains(res[i]))
+                {
+                    restaurants.Add(res[i]);
+                }
+            }
+        }
         private void UpdateRestaurantList(List<SearchResult> searchResults, List<SearchResult> res)
         {
             for (int i = 0; i < res.Count; i++)
@@ -610,46 +718,5 @@ namespace RRS_FormsAppWeb.Controllers
             }
         }
 
-
-        private string ConvertStyle(List<RestaurantStyles> restaurantStyles)
-        {
-            List<string> vs = new List<string>();
-            if (restaurantStyles.Count > 0)
-            {
-                for (int i = 0; i < restaurantStyles.Count; i++)
-                {
-                    vs.Add(restaurantStyles[i].StyleId.ToString());
-                }
-                return String.Join(", ", vs.ToArray());
-            }
-            return string.Empty;
-        }
-
-        private string ConvertCuisine(List<RestaurantCuisines> restaurantCuisines)
-        {
-            List<string> vs = new List<string>();
-            if(restaurantCuisines.Count > 0)
-            {
-                for (int i = 0; i < restaurantCuisines.Count; i++)
-                {
-                    vs.Add(restaurantCuisines[i].CuisineId.ToString());
-                }
-                return String.Join(", ", vs.ToArray());
-            }
-            return string.Empty;
-        }
-        private string ConvertAmenities(List<RestaurantAmenities> restaurantAmenities)
-        {
-            List<string> vs = new List<string>();
-            if (restaurantAmenities.Count > 0)
-            {
-                for (int i = 0; i < restaurantAmenities.Count; i++)
-                {
-                    vs.Add(restaurantAmenities[i].AmenitieId.ToString());
-                }
-                return String.Join(", ", vs.ToArray());
-            }
-            return string.Empty;
-        }
     }
 }
