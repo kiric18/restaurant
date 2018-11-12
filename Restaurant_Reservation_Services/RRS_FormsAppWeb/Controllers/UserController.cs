@@ -126,6 +126,34 @@ namespace RRS_FormsAppWeb.Controllers
             }
         }
 
+        // POST: Login
+        [HttpPost]
+        public ActionResult GetUserById(int id)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+
+                // Call action here...
+                User user = db.Users.Find(id);
+                if (user == null)
+                {
+                    result.Data = new { Result = false };
+                }
+                else
+                {
+                    result.Data = new { Result = true, User = user };
+                }
+
+                return result;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // POST: UserAcount
         [HttpPost]
         public ActionResult UpdateAccount(User userVM)

@@ -244,6 +244,10 @@
     <Compile Include="Migrations\201810202039574_images7.Designer.cs">
       <DependentUpon>201810202039574_images7.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201811121900146_internalName.cs" />
+    <Compile Include="Migrations\201811121900146_internalName.Designer.cs">
+      <DependentUpon>201811121900146_internalName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -406,6 +410,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810202039574_images7.resx">
       <DependentUpon>201810202039574_images7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811121900146_internalName.resx">
+      <DependentUpon>201811121900146_internalName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

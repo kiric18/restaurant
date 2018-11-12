@@ -1,12 +1,12 @@
 ﻿import { inject } from "aurelia-framework";
 import { Router } from 'aurelia-router';
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab, datetimepicker, formatDateToSharepoint  } from 'common/resources/scripts/helper';
+import { closeTab, datetimepicker, formatDateToSharepoint } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 
 @inject(Element, Router, AppController, FormValidator)
-export class Account{
+export class Account {
 
     constructor(element, router, appController, formValidator) {
         // New
@@ -20,6 +20,25 @@ export class Account{
 
     activate(params, config, navigationInstruction) {
         let _self = this;
+
+        this.userId = params.id;
+        return new Promise((resolve) => {
+            if (_self.userId) {
+                _self.appController.webServices.getUserById(_self.userId).then(response => {
+                    if (response && response.User) {
+                        _self.appController.IsUserLogin = true;
+                        _self.appController.populateModels(response.User);
+                    }
+                    else {
+                        _self.router.navigateToRoute("Home");
+                    }
+                    resolve();
+                });
+            }
+            else {
+                resolve();
+            }
+        });
     }
 
     attached() {
@@ -30,7 +49,7 @@ export class Account{
     dtBirthdayChanged(valueIn) {
         var newDate = formatDateToSharepoint(valueIn);
         if (newDate && newDate != "Invalid date") {
-            this.appController.model.Birthday= newDate;
+            this.appController.model.Birthday = newDate;
         }
     }
 

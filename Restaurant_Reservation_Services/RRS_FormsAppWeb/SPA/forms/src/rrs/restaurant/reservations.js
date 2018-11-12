@@ -29,6 +29,26 @@ export class Reservations {
     activate(params, config, navigationInstruction) {
         let _self = this;
         this.generateNumberOfTablesAndPersons();
+
+        this.resId = params.id;
+        return new Promise((resolve) => {
+            if (_self.resId) {
+                _self.appController.webServices.getRestaurantById(_self.resId).then(response => {
+                    if (response.Restaurant && response.UserBooking) {
+                        _self.appController.IsRestaurantLogin = true;
+                        _self.appController.TablesBookingCount = response.UserBooking ? response.UserBooking.length : 0;
+                        _self.appController.populateModels(response.Restaurant);
+                    }
+                    else {
+                        _self.router.navigateToRoute("Home");
+                    }
+                    resolve();
+                });
+            }
+            else {
+                resolve();
+            }
+        });
     }
 
     attached() {

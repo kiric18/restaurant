@@ -40,7 +40,7 @@ export class App {
                 }
             },
             {
-                route: [ 'user/'],
+                route: ['user/'],
                 viewPorts: { mainContent: { moduleId: 'rrs/user/index' }, },
                 name: 'User', title: 'User',
                 settings: {

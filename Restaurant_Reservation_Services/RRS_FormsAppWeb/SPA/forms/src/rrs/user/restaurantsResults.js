@@ -16,6 +16,24 @@ export class RestaurantsResults {
 
     activate(params, config, navigationInstruction) {
         let _self = this;
+
+        this.name = params.name;
+        return new Promise((resolve) => {
+            if (_self.name === "all") {
+                _self.appController.webServices.getAllRestaurants().then(response => {
+                    if (response && response.Restaurants) {
+                        _self.appController.RestaurantsResultsList = response.Restaurants;
+                    }
+                    else {
+                        _self.router.navigateToRoute("Home");
+                    }
+                    resolve();
+                });
+            }
+            else {
+                resolve();
+            }
+        });
     }
 
     attached() {
@@ -25,7 +43,7 @@ export class RestaurantsResults {
 
     navigateToRestaurant(res) {
         customLog("Selected Restaurant:", res, "info");
-        this.appController.SelectedRestaurant = this.appController.json.clone(res);
-        this.router.navigateToRoute("SelectedRestaurant");
+        let name = res.RestaurantInternalName;
+        this.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
     }
 }

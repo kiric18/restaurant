@@ -159,6 +159,30 @@ export class WebServices {
         return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantTableImage/?${this.environment.standardTokens}`, newRequest);
     }
 
+    getRestaurantByName(name) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'name':'${name}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantByName/?${this.environment.standardTokens}`, newRequest);
+    }
+
+    getRestaurantById(id) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'id':'${id}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantById/?${this.environment.standardTokens}`, newRequest);
+    }
+
+    getUserById(id) {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{'id':'${id}'}`;
+        return this.defaultFetch(`${this.environment.appUrl}/User/GetUserById/?${this.environment.standardTokens}`, newRequest);
+    }
+
+    getAllRestaurants() {
+        let newRequest = this.generateRequestBody();
+        newRequest.body = `{}`;
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetAllRestaurants/?${this.environment.standardTokens}`, newRequest);
+    }
+
     deleteRestaurantTableImage(restaurantTableId) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantTableId':'${restaurantTableId}'}`;

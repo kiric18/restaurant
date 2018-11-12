@@ -9,6 +9,8 @@ namespace RRS_Model.Business
     {
         public string RestaurantName { get; set; }
 
+        public string RestaurantInternalName { get; set; }
+
         public string City { get; set; }
 
         public string Country { get; set; }

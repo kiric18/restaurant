@@ -9,7 +9,7 @@ import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 import $ from 'jquery';
 
 @inject(Element, Router, AppController, FormValidator)
-export class Account{
+export class Account {
 
     constructor(element, router, appController, formValidator) {
         // New
@@ -25,11 +25,27 @@ export class Account{
 
     activate(params, config, navigationInstruction) {
         let _self = this;
-        //if (this.appController.model.Id == 0) {
-        //    //this.appController.toast.toastWarning("First you need to login", "", true);
-        //    this.router.navigate("#/restaurant/login");
-        //}
         this.generateNumberOfTablesAndPersons();
+
+        this.resId = params.id;
+        return new Promise((resolve) => {
+            if (_self.resId) {
+                _self.appController.webServices.getRestaurantById(_self.resId).then(response => {
+                    if (response.Restaurant && response.UserBooking) {
+                        _self.appController.IsRestaurantLogin = true;
+                        _self.appController.TablesBookingCount = response.UserBooking ? response.UserBooking.length : 0;
+                        _self.appController.populateModels(response.Restaurant);
+                    }
+                    else {
+                        _self.router.navigateToRoute("Home");
+                    }
+                    resolve();
+                });
+            }
+            else {
+                resolve();
+            }
+        });
     }
 
     attached() {
@@ -194,7 +210,7 @@ export class Account{
                         message: "Style is required!",
                         callback: function () {
                             if (_self.appController.model.RestaurantStyles.length > 0) {
-                               // _self.styleVM.addRemoveClass(false);
+                                // _self.styleVM.addRemoveClass(false);
                                 return true;
                             }
                             //_self.styleVM.addRemoveClass(true);
@@ -214,7 +230,7 @@ export class Account{
                                 //_self.paymentMethodsVM.addRemoveClass(false);
                                 return true;
                             }
-                           // _self.paymentMethodsVM.addRemoveClass(true);
+                            // _self.paymentMethodsVM.addRemoveClass(true);
                             return false;
                         }
                     }

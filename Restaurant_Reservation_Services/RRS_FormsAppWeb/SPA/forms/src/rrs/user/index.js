@@ -46,17 +46,17 @@ export class Index {
                 name: 'Login', title: 'Login', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Account', 'a'],
+                route: ['Account', 'a', 'Account/:id'],
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['RestaurantsResults', 'rr'],
+                route: ['RestaurantsResults', 'rr', 'RestaurantsResults/:name'],
                 moduleId: `rrs/${this.modulePath}/restaurantsResults`,
                 name: 'RestaurantsResults', title: 'RestaurantsResults', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['SelectedRestaurant', 'sr'],
+                route: ['SelectedRestaurant', 'sr', 'SelectedRes/:name'],
                 moduleId: `rrs/${this.modulePath}/selectedRestaurant`,
                 name: 'SelectedRestaurant', title: 'SelectedRestaurant', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

@@ -1,7 +1,7 @@
 ﻿import { inject } from "aurelia-framework";
 import { Router } from 'aurelia-router';
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab, datetimepicker, formatDateToSharepoint, setMinTime, setMinDate, setMaxDate, currentDate, currentTime } from 'common/resources/scripts/helper';
+import { closeTab, datetimepicker, formatDateToSharepoint, setMinTime, setMinDate, setMaxDate, currentDate, currentTime, replaceAll } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import "common/plugins/select2.full.min";
 import 'selectize';
@@ -42,6 +42,7 @@ export class SearchRestaurant {
                     _self.appController.RestaurantSearch.Search.push(newObject);
                     if (data.OptGroup == 'Restaurants') {
                         _self.appController.RestaurantSearch.RestaurantName = data.Name;
+                        _self.appController.RestaurantSearch.RestaurantId= data.Id;
                     }
                 }
             },
@@ -114,14 +115,13 @@ export class SearchRestaurant {
         customLog(`Restaurant Search: `, this.appController.RestaurantSearch, "info");
         this.appController.webServices.searchRestaurant(this.appController.RestaurantSearch).then(response => {
             customLog(`Restaurant Search Response: `, response.Restaurants, "info");
-            if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants && response.Restaurants[0]) {
-                _self.appController.RestaurantsResultsList = response.Restaurants;
-                _self.appController.SelectedRestaurant = _self.appController.json.clone(response.Restaurants[0]);
-                _self.router.navigateToRoute("SelectedRestaurant");
+            if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants) {
+                let name = replaceAll(_self.appController.RestaurantSearch.RestaurantName, " ", "-");
+                window.open('http://localhost:56294/Spa/forms/assets/virtualTour/two/index.html', '_self');
+                //_self.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
             }
             else {
-                _self.appController.RestaurantsResultsList = response.Restaurants;
-                _self.router.navigateToRoute("RestaurantsResults");
+                _self.router.navigate(`#/user/RestaurantsResults/all`);
             }
         });
     }

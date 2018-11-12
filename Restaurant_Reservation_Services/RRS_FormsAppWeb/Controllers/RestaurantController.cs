@@ -279,6 +279,94 @@ namespace RRS_FormsAppWeb.Controllers
             }
         }
 
+
+        // POST: Login
+        [HttpPost]
+        public ActionResult GetRestaurantByName(string name)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+
+                // Call action here...
+                Restaurant restaurant = db.Restaurants.Where(u => u.RestaurantInternalName == name).FirstOrDefault();
+                if (restaurant == null)
+                {
+                    result.Data = new { Result = false };
+                }
+                else
+                {
+                    var userBooking = db.UserBookings.Where(u => u.RestaurantId == restaurant.Id && u.IsActive).ToList();
+                    result.Data = new { Result = true, Restaurant = restaurant, UserBooking = userBooking };
+                }
+
+                return result;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // POST: Login
+        [HttpPost]
+        public ActionResult GetAllRestaurants()
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+
+                // Call action here...
+                List<Restaurant> restaurants = db.Restaurants.ToList();
+
+                if (restaurants == null)
+                {
+                    result.Data = new { Result = false };
+                }
+                else
+                {
+                    result.Data = new { Result = true, Restaurants = restaurants };
+                }
+
+                return result;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
+        // POST: Login
+        [HttpPost]
+        public ActionResult GetRestaurantById(int id)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+
+                // Call action here...
+                Restaurant restaurant = db.Restaurants.Find(id);
+                if (restaurant == null)
+                {
+                    result.Data = new { Result = false };
+                }
+                else
+                {
+                    var userBooking = db.UserBookings.Where(u => u.RestaurantId == restaurant.Id && u.IsActive).ToList();
+                    result.Data = new { Result = true, Restaurant = restaurant, UserBooking = userBooking };
+                }
+
+                return result;
+            }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
         // POST: UserAcount
         [HttpPost]
         public ActionResult UpdateAccount(Restaurant restaurantVM)

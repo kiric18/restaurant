@@ -18,6 +18,23 @@ export class SelectedRestaurant {
 
     activate(params, config, navigationInstruction) {
         let _self = this;
+        this.resName = params.name;
+
+        return new Promise((resolve) => {
+            if (_self.resName) {
+                _self.appController.webServices.getRestaurantByName(_self.resName).then(response => {
+                    if (response.Restaurant) {
+                        _self.appController.SelectedRestaurant = _self.appController.json.clone(response.Restaurant);
+                    }
+                    customLog(`Selected Table - ${_self.resName}`, _self.appController.SelectedRestaurant, "info");
+
+                    resolve();
+                });
+            }
+            else {
+                resolve();
+            }
+        });
     }
 
     attached() {
