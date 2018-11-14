@@ -35,7 +35,7 @@ export class Signup {
         }
 
         this.appController.model.RestaurantManager.Password = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
-
+        this.appController.model.RestaurantInternalName = replaceAll(this.appController.model.RestaurantName, " ", "-");
         customLog("Restaurant Model:", this.appController.model, "info");
 
         this.appController.webServices.signup(this.appController.model, "Restaurant").then(response => {

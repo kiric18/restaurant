@@ -44,6 +44,11 @@ export class RestaurantsResults {
     navigateToRestaurant(res) {
         customLog("Selected Restaurant:", res, "info");
         let name = res.RestaurantInternalName;
-        this.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
+        if (name === "napa-star") {
+            window.open('http://localhost:56294/Spa/forms/assets/virtualTour/two/index.html', '_self');
+        }
+        else {
+            this.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
+        }
     }
 }

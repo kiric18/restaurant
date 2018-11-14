@@ -14,11 +14,13 @@ export class SelectedRestaurant {
         this.numberOfPersonsList = [];
         this.ambienceViewModel = [];
         this.showTables = false;
+        this.disableNumberOfPersons = false;
     }
 
     activate(params, config, navigationInstruction) {
         let _self = this;
         this.resName = params.name;
+        this.tableId = params.tableId;
 
         return new Promise((resolve) => {
             if (_self.resName) {
@@ -57,7 +59,13 @@ export class SelectedRestaurant {
         if (this.appController.SelectedRestaurant.RestaurantTables && this.appController.SelectedRestaurant.RestaurantTables.length > 0) {
             for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
                 let table = this.appController.SelectedRestaurant.RestaurantTables[i];
-                if (table.IsBooking) {
+                if (table.Id === parseInt(_self.tableId)) {
+                    _self.showTables = true;
+                    _self.disableNumberOfPersons = true;
+                    _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
+                    table["IsSelected"] = true;
+                }
+                else if (table.IsBooking) {
                     table["IsSelected"] = true;
                 }
                 else {

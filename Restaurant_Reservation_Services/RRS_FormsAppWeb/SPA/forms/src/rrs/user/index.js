@@ -51,12 +51,12 @@ export class Index {
                 name: 'Account', title: 'Account', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['RestaurantsResults', 'rr', 'RestaurantsResults/:name'],
+                route: ['RestaurantsResults', 'rr', 'RestaurantsResults/:name?'],
                 moduleId: `rrs/${this.modulePath}/restaurantsResults`,
                 name: 'RestaurantsResults', title: 'RestaurantsResults', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['SelectedRestaurant', 'sr', 'SelectedRes/:name'],
+                route: ['SelectedRestaurant', 'sr', 'SelectedRes/:name?', 'SelectedRes/:name?/:tableId?'],
                 moduleId: `rrs/${this.modulePath}/selectedRestaurant`,
                 name: 'SelectedRestaurant', title: 'SelectedRestaurant', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

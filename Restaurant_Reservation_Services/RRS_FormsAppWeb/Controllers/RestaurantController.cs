@@ -379,6 +379,7 @@ namespace RRS_FormsAppWeb.Controllers
                 if (restaurant != null)
                 {
                     restaurant.RestaurantName = restaurantVM.RestaurantName;
+                    restaurant.RestaurantInternalName = restaurantVM.RestaurantInternalName;
                     restaurant.Address = restaurantVM.Address;
                     restaurant.City = restaurantVM.City;
                     restaurant.Country = restaurantVM.Country;

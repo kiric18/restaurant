@@ -50,12 +50,12 @@ export class Index {
                 name: 'Login', title: 'Login', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Account', 'a', 'Account/:id'],
+                route: ['Account', 'a', 'Account/:id?'],
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Reservations', 'r', 'Reservations/:id'],
+                route: ['Reservations', 'r', 'Reservations/:id?'],
                 moduleId: `rrs/${this.modulePath}/reservations`,
                 name: 'Reservations', title: 'Reservations', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

@@ -80,6 +80,7 @@ export class Account {
             }
         }
 
+        this.appController.model.RestaurantInternalName = replaceAll(this.appController.model.RestaurantName, " ", "-");
         this.appController.webServices.updateAcount(this.appController.model, "Restaurant").then(response => {
             if (response.Result) {
                 _self.appController.IsRestaurantLogin = true;
