@@ -115,9 +115,10 @@ export class SearchRestaurant {
         customLog(`Restaurant Search: `, this.appController.RestaurantSearch, "info");
         this.appController.webServices.searchRestaurant(this.appController.RestaurantSearch).then(response => {
             customLog(`Restaurant Search Response: `, response.Restaurants, "info");
-            if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants) {
-                let name = replaceAll(_self.appController.RestaurantSearch.RestaurantName, " ", "-");
-                window.open('http://localhost:56294/Spa/forms/assets/virtualTour/two/index.html', '_self');
+            if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants && response.Restaurants.RestaurantInternalName) {
+                let name = response.Restaurants.RestaurantInternalName;
+                let url = 'http://localhost:56294/Spa/forms/assets/virtualTour/' + name.toLowerCase() + '/index.html';
+                window.open(url, '_self');
                 //_self.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
             }
             else {
