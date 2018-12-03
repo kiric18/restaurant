@@ -69,9 +69,9 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 CustomJsonResult result = new CustomJsonResult();
-
+                var pass = Cryptography.GetMD5Hash(userVM.Password);
                 // Check if the email already exists.
-                User us = db.Users.Where(u => u.Email == userVM.Email && u.Password == userVM.Password).FirstOrDefault();
+                User us = db.Users.Where(u => u.Email == userVM.Email && u.Password == pass).FirstOrDefault();
                 if (us == null)
                 {
                     db.Users.Add(userVM);
@@ -100,15 +100,16 @@ namespace RRS_FormsAppWeb.Controllers
             {
                 CustomJsonResult result = new CustomJsonResult();
 
+                var pass = Cryptography.GetMD5Hash(password);
                 // Call action here...
-                User user = db.Users.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+                User user = db.Users.Where(u => u.Email == email && u.Password == pass).FirstOrDefault();
                 var userPass = db.Users.Where(u => u.Email == email).Select(u => u.Password).FirstOrDefault();
-                var userEmail = db.Users.Where(u => u.Email != email && u.Password == password).Select(u => u.Email).FirstOrDefault();
+                var userEmail = db.Users.Where(u => u.Email != email && u.Password == pass).Select(u => u.Email).FirstOrDefault();
                 if (user == null && userPass == null)
                 {
                     result.Data = new { Result = false };
                 }
-                else if ((userPass != null && userPass != password) || (userEmail != null && userEmail != email))
+                else if ((userPass != null && userPass != pass) || (userEmail != null && userEmail != email))
                 {
                     result.Data = new { Result = true, IsLoginCorrected = false };
                 }
@@ -175,7 +176,7 @@ namespace RRS_FormsAppWeb.Controllers
                 user.Gender = userVM.Gender;
                 if (!string.IsNullOrEmpty(userVM.Password))
                 {
-                    user.Password = userVM.Password;
+                    user.Password = Cryptography.GetMD5Hash(userVM.Password);
                 }
 
                 db.SaveChanges();

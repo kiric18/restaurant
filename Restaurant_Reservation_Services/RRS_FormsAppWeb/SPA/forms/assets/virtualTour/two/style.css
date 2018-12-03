@@ -648,7 +648,7 @@ body.single-scene #sceneList, body.single-scene #sceneListToggle {
   width: 300px;
   height: auto;
   max-height: 200px;
-  top: 80px; // changed to show the next element
+  top: 80px;
   left: 0;
   padding: 10px;
   background-color: rgb(58,68,84);

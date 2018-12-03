@@ -1,7 +1,7 @@
 ﻿import { inject } from "aurelia-framework";
 import { Router } from 'aurelia-router';
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab } from 'common/resources/scripts/helper';
+import { closeTab, replaceAll } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 import $ from 'jquery';
@@ -34,11 +34,11 @@ export class Signup {
             return;
         }
 
-        this.appController.model.RestaurantManager.Password = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
-        //this.appController.model.RestaurantInternalName = replaceAll(this.appController.model.RestaurantName, " ", "-");
+        //this.appController.model.RestaurantManager.Password = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
+        this.appController.model.RestaurantInternalName = replaceAll(this.appController.model.RestaurantName, " ", "-");
         customLog("Restaurant Model:", this.appController.model, "info");
 
-        this.appController.webServices.signup(this.appController.model, "Restaurant").then(responsse => {
+        this.appController.webServices.signup(this.appController.model, "Restaurant").then(response => {
             if (response.Result) {
                 if (!response.Restaurant.IsActive) {
                     _self.appController.toast.toastSuccess(`Restaurant SignUp succesfully. Please wait for your activation.`);

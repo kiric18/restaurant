@@ -33,8 +33,8 @@ export class Login {
             return;
         }
 
-        let pass = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
-        this.appController.webServices.login(this.appController.model.RestaurantManager.Email, pass, "Restaurant").then(response => {
+        //let pass = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
+        this.appController.webServices.login(this.appController.model.RestaurantManager.Email, this.appController.model.RestaurantManager.Password, "Restaurant").then(response => {
             if (response.Result && response.Restaurant) {
                 if (response.Restaurant.IsActive) {
                     _self.appController.IsRestaurantLogin = true;

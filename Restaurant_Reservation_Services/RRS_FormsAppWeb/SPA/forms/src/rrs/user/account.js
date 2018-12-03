@@ -60,10 +60,10 @@ export class Account {
             return;
         }
 
-        let pass = '';
-        if (this.appController.model.Password) {
-            pass = this.appController.md5.calcMD5(this.appController.model.Password);
-        }
+        //let pass = '';
+        //if (this.appController.model.Password) {
+        //    pass = this.appController.md5.calcMD5(this.appController.model.Password);
+        //}
 
         this.appController.webServices.updateAcount(this.appController.model, "User").then(response => {
             if (response.Result) {

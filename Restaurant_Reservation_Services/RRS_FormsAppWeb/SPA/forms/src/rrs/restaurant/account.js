@@ -3,7 +3,7 @@ import { Router } from 'aurelia-router';
 
 import { RestaurantTable } from "model/restaurantTable";
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab } from 'common/resources/scripts/helper';
+import { closeTab, replaceAll } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
 import $ from 'jquery';
@@ -67,13 +67,11 @@ export class Account {
             return;
         }
 
-        if (this.appController.model.RestaurantManager.Password) {
-            this.appController.model.RestaurantManager.Password = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
-        }
-        else {
+        if (!this.appController.model.RestaurantManager.Password) {
             delete this.appController.model.RestaurantManager.Password;
         }
         delete this.appController.model.ConfirmPassword;
+
         if (this.appController.model.RestaurantTables.length > 0) {
             for (let i = 0; i < this.appController.model.RestaurantTables.length; i++) {
                 _self.appController.model.RestaurantTables[i].Ambience = JSON.stringify(_self.appController.model.RestaurantTables[i].Ambience);

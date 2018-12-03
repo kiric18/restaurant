@@ -61,6 +61,10 @@
       <Project>{afe60d9c-7641-4d2a-8887-d11a97dc5069}</Project>
       <Name>RRS_DataAccess</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RRS_FormsAppWeb\RRS_FormsAppWeb.csproj">
+      <Project>{4331C7D4-BAD6-4891-BB4A-57A4D840B5B9}</Project>
+      <Name>RRS_FormsAppWeb</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RRS_Model\RRS_Model.csproj">
       <Project>{6adf26d4-b2fe-4810-94df-7f0994076e86}</Project>
       <Name>RRS_Model</Name>

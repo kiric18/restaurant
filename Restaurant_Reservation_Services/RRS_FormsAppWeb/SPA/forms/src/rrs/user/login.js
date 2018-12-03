@@ -34,8 +34,8 @@ export class Login {
             return;
         }
 
-        let pass = this.appController.md5.calcMD5(this.appController.model.Password);
-        this.appController.webServices.login(this.appController.model.Email, pass, "User").then(response => {
+        //let pass = this.appController.md5.calcMD5(this.appController.model.Password);
+        this.appController.webServices.login(this.appController.model.Email, this.appController.model.Password, "User").then(response => {
             if (response.Result && response.User) {
                 _self.appController.IsUserLogin = true;
                 _self.appController.populateModels(response.User);

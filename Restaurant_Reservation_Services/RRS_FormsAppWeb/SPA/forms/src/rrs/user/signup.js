@@ -34,7 +34,7 @@ export class Signup {
             return;
         }
 
-        this.appController.model.Password = this.appController.md5.calcMD5(this.appController.model.Password);
+        //this.appController.model.Password = this.appController.md5.calcMD5(this.appController.model.Password);
         this.appController.webServices.signup(this.appController.model, "User").then(response => {
             if (response.Result) {
                 _self.appController.IsUserLogin = true;

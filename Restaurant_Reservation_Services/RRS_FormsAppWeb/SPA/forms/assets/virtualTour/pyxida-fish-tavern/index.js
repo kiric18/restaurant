@@ -21,8 +21,6 @@
     var screenfull = window.screenfull;
     var data = window.APP_DATA;
 
-
-
     // Grab elements from DOM.
     var panoElement = document.querySelector('#pano');
     var sceneNameElement = document.querySelector('#titleBar .sceneName');
@@ -31,7 +29,6 @@
     var sceneListToggleElement = document.querySelector('#sceneListToggle');
     var autorotateToggleElement = document.querySelector('#autorotateToggle');
     var fullscreenToggleElement = document.querySelector('#fullscreenToggle');
-
 
     // Detect desktop or mobile mode.
     if (window.matchMedia) {
@@ -293,7 +290,6 @@
         var wrapper = document.createElement('div');
         wrapper.classList.add('hotspot');
         wrapper.classList.add('info-hotspot');
-        wrapper.classList.add('info-hotspot');
 
         // Create hotspot/tooltip header.
         var header = document.createElement('div');
@@ -329,9 +325,9 @@
         header.appendChild(closeWrapper);
 
         // Create text element.
-        var text = document.createElement('div');
-        text.classList.add('info-hotspot-text');
-        text.innerHTML = hotspot.text;
+        //var text = document.createElement('div');
+        //text.classList.add('info-hotspot-text');
+        //text.innerHTML = hotspot.text;
 
         // Create table text element.
         var table = document.createElement('div');
@@ -351,7 +347,7 @@
 
         // Place header and text into wrapper element.
         wrapper.appendChild(header);
-        wrapper.appendChild(text);
+        //wrapper.appendChild(text);
         wrapper.appendChild(table);
         wrapper.appendChild(ambience);
         wrapper.appendChild(link);

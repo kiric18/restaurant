@@ -63,15 +63,15 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 CustomJsonResult result = new CustomJsonResult();
-
+                var pass = Cryptography.GetMD5Hash(password);
                 // Call action here...
-                Restaurant restaurant = db.Restaurants.Where(u => u.RestaurantManager.Email == email && u.RestaurantManager.Password == password).FirstOrDefault();
+                Restaurant restaurant = db.Restaurants.Where(u => u.RestaurantManager.Email == email && u.RestaurantManager.Password == pass).FirstOrDefault();
                 var restaurantPass = db.Restaurants.Where(u => u.RestaurantManager.Email == email).Select(u => u.RestaurantManager.Password).FirstOrDefault();
                 if (restaurant == null && restaurantPass == null)
                 {
                     result.Data = new { Result = false };
                 }
-                else if (restaurantPass != null && restaurantPass != password)
+                else if (restaurantPass != null && restaurantPass != pass)
                 {
                     result.Data = new { Result = true, PasswordCorrected = false };
                 }
@@ -101,6 +101,7 @@ namespace RRS_FormsAppWeb.Controllers
                 Restaurant res = db.Restaurants.Where(r => r.RestaurantName == restaurant.RestaurantName && r.PhoneNumber == restaurant.PhoneNumber && r.RestaurantManager.Email == restaurant.RestaurantManager.Email).FirstOrDefault();
                 if (res == null)
                 {
+                    restaurant.RestaurantManager.Password = Cryptography.GetMD5Hash(restaurant.RestaurantManager.Password);
                     // Add new restaurant and save changes to db
                     db.Restaurants.Add(restaurant);
                     db.SaveChanges();
@@ -552,7 +553,7 @@ namespace RRS_FormsAppWeb.Controllers
 
                     if (!string.IsNullOrEmpty(restaurantVM.RestaurantManager.Password))
                     {
-                        restaurant.RestaurantManager.Password = restaurantVM.RestaurantManager.Password;
+                        restaurant.RestaurantManager.Password = Cryptography.GetMD5Hash(restaurantVM.RestaurantManager.Password);
                     }
 
                     db.SaveChanges();
