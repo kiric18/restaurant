@@ -194,6 +194,7 @@ export class AppController {
         this.model.RestaurantAmenities = [];
         this.model.RestaurantPaymentMethods = [];
         this.model.RestaurantTables = [];
+        this.RestaurantTableAndUserBooking = [];
 
         this.model.ConfirmPassword = "";
         this.model.RestaurantManager.Email = "";

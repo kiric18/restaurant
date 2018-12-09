@@ -33,8 +33,7 @@ export class Login {
             return;
         }
 
-        let pass = this.appController.md5.calcMD5(this.appController.model.RestaurantManager.Password);
-        this.appController.webServices.login(this.appController.model.RestaurantManager.Email, pass, "Admin").then(response => {
+        this.appController.webServices.login(this.appController.model.RestaurantManager.Email, this.appController.model.RestaurantManager.Password, "Admin").then(response => {
             if (response.Result) {
                 _self.appController.IsAdminLogin = true;
                 _self.appController.populateModels(response.Admin);

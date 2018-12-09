@@ -15,7 +15,13 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" show.bind="showMessage">
+
+            <div class="col-sm-12">
+                <h2 class="form-label">Thank you for your booking!</h2>
+            </div>
+        </div>
+        <div class="row" show.bind="!showMessage">
             <div class="col-sm-12">
                 <h4 class="form-label">Book a Table</h4>
                 <form id="bookForm" onsubmit="return false;">

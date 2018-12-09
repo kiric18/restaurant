@@ -17,7 +17,7 @@ export class App {
         this.router = router;
         this.isTwoColumns = true;
 
-        config.title = "Restaurant Reservation Sevrvices";
+        config.title = "VRWF-RRS";
 
         config.map([
             {

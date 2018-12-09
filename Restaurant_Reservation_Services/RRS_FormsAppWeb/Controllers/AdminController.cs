@@ -45,9 +45,10 @@ namespace RRS_FormsAppWeb.Controllers
             try
             {
                 CustomJsonResult result = new CustomJsonResult();
+                var pass = Cryptography.GetMD5Hash(password);
 
                 // Call action here...
-                Admin admin = db.Admins.Where(u => u.Email == email && u.Password == password).FirstOrDefault();
+                Admin admin = db.Admins.Where(u => u.Email == email && u.Password == pass).FirstOrDefault();
                 if (admin == null)
                 {
                     result.Data = new { Result = false };

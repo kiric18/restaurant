@@ -54,7 +54,7 @@ var APP_DATA = {
                     "pitch": 0.18888796665185126,
                     "title": "Table No: 10",
                     "table": "Capacity: 7 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Business Meeting",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/10"
                 }
             ]
@@ -107,7 +107,7 @@ var APP_DATA = {
                     "pitch": 0.18913771557565795,
                     "title": "Table No: 1",
                     "table": "Capacity: 2 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Romantic",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/7"
                 },
                 {
@@ -115,7 +115,7 @@ var APP_DATA = {
                     "pitch": 0.21800399587245067,
                     "title": "Table No: 4",
                     "table": "Capacity: 4 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: ",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/8"
                 },
                 {
@@ -123,7 +123,7 @@ var APP_DATA = {
                     "pitch": 0.434139985729626,
                     "title": "Table No: 8",
                     "table": "Capacity: 7 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Groups",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/9"
                 }
             ]
@@ -170,7 +170,7 @@ var APP_DATA = {
                     "pitch": 0.09972304575789259,
                     "title": "Table No: 16",
                     "table": "Capacity: 12 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Groups",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/12"
                 },
                 {
@@ -178,7 +178,7 @@ var APP_DATA = {
                     "pitch": 0.27374028600090483,
                     "title": "Table No: 15",
                     "table": "Capacity: 6 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Groups",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/11"
                 }
             ]
@@ -231,7 +231,7 @@ var APP_DATA = {
                     "pitch": 0.19098625799619207,
                     "title": "Table No: 21",
                     "table": "Capacity: 6 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Groups",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/15"
                 },
                 {
@@ -247,7 +247,7 @@ var APP_DATA = {
                     "pitch": 0.2733474999180707,
                     "title": "Table No: 18",
                     "table": "Capacity: 10 persons",
-                    "ambience": "Ambience: Scenic View",
+                    "ambience": "Ambience: Groups",
                     "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/13"
                 }
             ]

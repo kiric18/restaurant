@@ -14,6 +14,7 @@ export class SelectedRestaurant {
         this.numberOfPersonsList = [];
         this.ambienceViewModel = [];
         this.showTables = false;
+        this.showMessage = false;
         this.disableNumberOfPersons = false;
     }
 
@@ -62,6 +63,7 @@ export class SelectedRestaurant {
                 if (table.Id === parseInt(_self.tableId)) {
                     _self.showTables = true;
                     _self.disableNumberOfPersons = true;
+                    _self.appController.UserBooking.RestaurantTableId = table.Id;
                     _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
                     table["IsSelected"] = true;
                 }
@@ -93,12 +95,17 @@ export class SelectedRestaurant {
 
     completeReservation() {
         let _self = this;
+
+        if (this.runValidation() == false) {
+            return;
+        }
         this.appController.UserBooking.User = this.appController.model.Id;
         this.appController.UserBooking.RestaurantId = this.appController.SelectedRestaurant.Id;
         this.appController.UserBooking.IsActive= true;
         customLog("Table Booking", this.appController.UserBooking, "info");
         this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
             _self.appController.webServices.updateRestaurantTableAvailability(_self.appController.UserBooking.RestaurantTableId, true).then(response => {
+                _self.showMessage = true;
                 _self.appController.toast.toastSuccess("Your table has been booking succesfully!");
             });
         });
