@@ -117,7 +117,7 @@ export class SearchRestaurant {
             customLog(`Restaurant Search Response: `, response.Restaurants, "info");
             if (_self.appController.RestaurantSearch.RestaurantName && response.Restaurants) {
                 let name = response.Restaurants[0].RestaurantInternalName;
-                let url = 'http://localhost:56294/Spa/forms/assets/virtualTour/' + name.toLowerCase() + '/index.html';
+                let url = _self.appController.environment.appUrl + '/Spa/forms/assets/virtualTour/' + name.toLowerCase() + '/index.html';
                 window.open(url, '_self');
                 //_self.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
             }

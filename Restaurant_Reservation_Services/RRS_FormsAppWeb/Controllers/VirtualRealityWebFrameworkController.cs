@@ -6,13 +6,12 @@ using System.Web.Mvc;
 
 namespace RRS_FormsAppWeb.Controllers
 {
-    public class SpaController : Controller
+    public class VirtualRealityWebFrameworkController : Controller
     {
-        public ActionResult Index()
+        public ActionResult RestaurantReservationServices()
         {
             return View();
             //return View("~/Views/SPA/Forms.cshtml");
-
         }
     }
 }

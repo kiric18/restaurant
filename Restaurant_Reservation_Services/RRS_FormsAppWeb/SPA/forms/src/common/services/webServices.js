@@ -127,19 +127,19 @@ export class WebServices {
             request.body.append(files[i].name, files[i]);
         }
 
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadImages/?${this.environment.standardTokens}`, request);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadImages/`, request);
     }
 
     getImages(restaurantId) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantId':'${restaurantId}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetImages/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetImages/`, newRequest);
     }
 
     deleteImage(imageId) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'imageId':'${imageId}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteImage/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteImage/`, newRequest);
     }
 
     uploadRestaurantTableImage(files, restaurantTableId) {
@@ -150,42 +150,42 @@ export class WebServices {
         for (let i = 0; i < files.length; i++) {
             request.body.append(files[i].name, files[i]);
         }
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadRestaurantTableImage/?${this.environment.standardTokens}`, request);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/UploadRestaurantTableImage/`, request);
     }
 
     getRestaurantTableImage(restaurantTableId) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantTableId':'${restaurantTableId}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantTableImage/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantTableImage/`, newRequest);
     }
 
     getRestaurantByName(name) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'name':'${name}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantByName/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantByName/`, newRequest);
     }
 
     getRestaurantById(id) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'id':'${id}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantById/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetRestaurantById/`, newRequest);
     }
 
     getUserById(id) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'id':'${id}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/User/GetUserById/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/User/GetUserById/`, newRequest);
     }
 
     getAllRestaurants() {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetAllRestaurants/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/GetAllRestaurants/`, newRequest);
     }
 
     deleteRestaurantTableImage(restaurantTableId) {
         let newRequest = this.generateRequestBody();
         newRequest.body = `{'restaurantTableId':'${restaurantTableId}'}`;
-        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteRestaurantTableImage/?${this.environment.standardTokens}`, newRequest);
+        return this.defaultFetch(`${this.environment.appUrl}/Restaurant/DeleteRestaurantTableImage/`, newRequest);
     }
 }
