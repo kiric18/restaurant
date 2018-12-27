@@ -1,76 +1,49 @@
 ﻿<template style="width:100%; z-index:9999;">
 
-    <nav class="gtco-nav" role="navigation">
+    <div class="gtco-nav topnav" id="myTopnav">
         <div class="gtco-container">
-
             <div class="row">
-                <div class="col-sm-4 col-xs-12">
-                    <div id="gtco-logo"><a click.delegate="openPage('Home')">#-VRWF-RRS<em>.</em></a></div>
+                <div class="col-xs-3">
+                    <a id="gtco-logo" click.delegate="openPage('Home')">#-VRWF-RRS<em>.</em></a>
                 </div>
-                <div class="col-xs-8 text-right menu-1">
-                    <ul>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="About" click.delegate="openPage('About')">
-                                <i class="fa fa-font">bout</i>
-                            </a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Contact" click.delegate="openPage('Contact')">
-                                <i class="fa fa-contao">ontact</i>
-                            </a>
-                        </li>
-
-                        <li class="dropdown" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdmin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Signup" click.delegate="openPage('Signup')">
-                                <i class="fa fa-sign-in"> Sign up</i>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdminLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Login" click.delegate="openPage('Login')">
-                                <i class="fa fa-sign-in"> Login</i>
-                            </a>
-                        </li>
-                        <!--<li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Messages">
-                                <i class="fa fa-envelope"></i>  <span class="label label-warning">0</span>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Alerts">
-                                <i class="fa fa-bell"></i>  <span class="label label-primary">0</span>
-                            </a>
-                        </li>-->
-                        <li class="dropdown" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Reservations" click.delegate="openPage('Reservations')">
-                                <i class="fa fa-list-alt"></i>  <span class="label label-primary">${appController.TablesBookingCount}</span>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Account" click.delegate="openPage('Account')">
-                                <i class="fa fa-user-circle"></i>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="appController.IsAdminLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Restaurants" click.delegate="openPage('Restaurants')">
-                                <i class="fa fa-cutlery"> Restaurants</i>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="appController.IsAdminLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Users" click.delegate="openPage('Users')">
-                                <i class="fa fa-users"> Users</i>
-                            </a>
-                        </li>
-                        <li class="dropdown" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin || appController.IsAdminLogin">
-                            <a class="dropdown-toggle count-info" data-toggle="dropdown" style="font-size:18px;" title="Logout" click.delegate="openPage('Logout')">
-                                <i class="fa fa-sign-out"> Logout</i>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="col-xs-9">
+                    <div class="pull-right">
+                        <a style="font-size:18px;" title="Home" click.delegate="openPage('Home')">
+                            <i class="fa fa-home"> Home</i>
+                        </a>
+                        <a style="font-size:18px;" title="About" click.delegate="openPage('About')">
+                            <i class="fa fa-font">bout</i>
+                        </a>
+                        <a style="font-size:18px;" title="Contact" click.delegate="openPage('Contact')">
+                            <i class="fa fa-contao">ontact</i>
+                        </a>
+                        <a style="font-size:18px;" title="Signup" click.delegate="openPage('Signup')" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdmin">
+                            <i class="fa fa-sign-in"> Sign up</i>
+                        </a>
+                        <a style="font-size:18px;" title="Login" click.delegate="openPage('Login')" show.bind="!appController.IsUserLogin && !appController.IsRestaurantLogin && !appController.IsAdminLogin">
+                            <i class="fa fa-sign-in"> Login</i>
+                        </a>
+                        <a style="font-size:18px;" title="Reservations" click.delegate="openPage('Reservations')" show.bind="appController.IsRestaurant && appController.IsRestaurantLogin">
+                            <i class="fa fa-list-alt"></i>  <span class="label label-primary">${appController.TablesBookingCount}</span>
+                        </a>
+                        <a style="font-size:18px;" title="Account" click.delegate="openPage('Account')" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin">
+                            <i class="fa fa-user-circle"></i>
+                        </a>
+                        <a style="font-size:18px;" title="Restaurants" click.delegate="openPage('Restaurants')" show.bind="appController.IsAdminLogin">
+                            <i class="fa fa-cutlery"> Restaurants</i>
+                        </a>
+                        <a style="font-size:18px;" title="Users" click.delegate="openPage('Users')" show.bind="appController.IsAdminLogin">
+                            <i class="fa fa-users"> Users</i>
+                        </a>
+                        <a style="font-size:18px;" title="Logout" click.delegate="openPage('Logout')" show.bind="appController.IsUserLogin || appController.IsRestaurantLogin || appController.IsAdminLogin">
+                            <i class="fa fa-sign-out"> Logout</i>
+                        </a>
+                        <a href="javascript:void(0);" style="font-size:15px;" class="icon" click.delegate="myFunction()">&#9776;</a>
+                    </div>
                 </div>
             </div>
-
         </div>
-    </nav>
+    </div>
 
     <div class="row" style="height:4px">
         <div class="col-xs-12">

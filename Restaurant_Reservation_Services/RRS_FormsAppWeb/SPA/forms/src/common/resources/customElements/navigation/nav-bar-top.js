@@ -63,4 +63,14 @@ export class NavBarTop {
             //}
         }
     }
+
+    myFunction() {
+        var x = document.getElementById("myTopnav");
+        if (x.className === "gtco-nav topnav") {
+            x.className += " responsive";
+        }
+        else {
+            x.className = "gtco-nav topnav";
+        }
+    }
 }

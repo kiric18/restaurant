@@ -55,7 +55,7 @@ var APP_DATA = {
                     "title": "Table No: 10",
                     "table": "Capacity: 7 persons",
                     "ambience": "Ambience: Business Meeting",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/10"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/10"
                 }
             ]
         },
@@ -108,7 +108,7 @@ var APP_DATA = {
                     "title": "Table No: 1",
                     "table": "Capacity: 2 persons",
                     "ambience": "Ambience: Romantic",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/7"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/7"
                 },
                 {
                     "yaw": 1.322193219856917,
@@ -116,7 +116,7 @@ var APP_DATA = {
                     "title": "Table No: 4",
                     "table": "Capacity: 4 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/8"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/8"
                 },
                 {
                     "yaw": 2.2325812098048647,
@@ -124,7 +124,7 @@ var APP_DATA = {
                     "title": "Table No: 8",
                     "table": "Capacity: 7 persons",
                     "ambience": "Ambience: Groups",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/9"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/9"
                 }
             ]
         },
@@ -171,7 +171,7 @@ var APP_DATA = {
                     "title": "Table No: 16",
                     "table": "Capacity: 12 persons",
                     "ambience": "Ambience: Groups",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/12"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/12"
                 },
                 {
                     "yaw": 1.256073555577137,
@@ -179,7 +179,7 @@ var APP_DATA = {
                     "title": "Table No: 15",
                     "table": "Capacity: 6 persons",
                     "ambience": "Ambience: Groups",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/11"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/11"
                 }
             ]
         },
@@ -232,7 +232,7 @@ var APP_DATA = {
                     "title": "Table No: 21",
                     "table": "Capacity: 6 persons",
                     "ambience": "Ambience: Groups",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/15"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/15"
                 },
                 {
                     "yaw": -0.3862192846502541,
@@ -240,7 +240,7 @@ var APP_DATA = {
                     "title": "Table No: 20",
                     "table": "Capacity: 5 persons",
                     "ambience": "Ambience: Scenic View",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/14"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/14"
                 },
                 {
                     "yaw": -2.7951860014390544,
@@ -248,7 +248,7 @@ var APP_DATA = {
                     "title": "Table No: 18",
                     "table": "Capacity: 10 persons",
                     "ambience": "Ambience: Groups",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/pyxida-fish-tavern/13"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/pyxida-fish-tavern/13"
                 }
             ]
         },

@@ -7,36 +7,16 @@
     <form id="searchRestaurant" class="inputs-group form-search col-xs-12" onsubmit="return false;">
         <fieldset>
             <div class="row">
-                <div class="col-xs-10" style="padding-right:0px;">
+                <div class="col-xs-12" style="padding-right:0px;">
                     <div class="form-group">
-                        <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Restaurants, Locations, Cuisines, Amenities, Styles">
-                            <!--<optgroup label="Locations">
-                                <option repeat.for="option of appController.LocationsList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>
-                            <optgroup label="Cuisines">
-                                <option repeat.for="option of appController.CuisinesList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>
-                            <optgroup label="Amenities">
-                                <option repeat.for="option of appController.AmenitiesList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>
-                            <optgroup label="Styles">
-                                <option repeat.for="option of appController.StylesList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>
-                            <optgroup label="Ambience">
-                                <option repeat.for="option of appController.AmbiencesList" value.bind="option.Name">${option.Description}</option>
-                            </optgroup>-->
-                        </select>
+                        <select class="demo-default selectized" multiple id="search" name="search" data-placeholder="Restaurants, Locations, Cuisines, Amenities, Styles"></select>
                     </div>
                 </div>
+            </div>
+            <div class="row">
                 <div class="col-xs-2" style="padding-right:0px;">
                     <div class="form-group">
-                        <div class='input-group'>
-                            <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="Search" click.delegate="search()">
-                                <span style="font-size:20px;">
-                                    <i class="fa fa-search"> Search</i>
-                                </span>
-                            </button>
-                        </div>
+                        <button type="button" class="btn btn-primary" style="border-radius: 10px !important;" value="Search" click.delegate="search()">Search</button>
                     </div>
                 </div>
             </div>

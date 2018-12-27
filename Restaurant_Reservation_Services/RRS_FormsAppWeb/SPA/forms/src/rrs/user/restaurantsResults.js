@@ -44,11 +44,12 @@ export class RestaurantsResults {
     navigateToRestaurant(res) {
         customLog("Selected Restaurant:", res, "info");
         let name = res.RestaurantInternalName;
-        if (name === "napa-star") {
-            window.open('http://localhost:56294/Spa/forms/assets/virtualTour/two/index.html', '_self');
+        if (name === "Pyxida-Fish-Tavern" || name === "Paul-Cyprus") {
+            let url = this.appController.environment.appUrl + '/Spa/forms/assets/virtualTour/' + name.toLowerCase() + '/index.html';
+            window.open(url, '_self');
         }
         else {
-            this.router.navigate(`#/user/selectedRes/${name.toLowerCase()}`);
+            this.router.navigate(`#/user/selectedRes/${name}`);
         }
     }
 }

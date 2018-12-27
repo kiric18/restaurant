@@ -55,7 +55,7 @@ var APP_DATA = {
                     "title": "Table No:1",
                     "table": "Capacity: 4 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/paul-cyprus/16"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/paul-cyprus/16"
                 },
                 {
                     "yaw": 2.4139874012238884,
@@ -63,7 +63,7 @@ var APP_DATA = {
                     "title": "Table No: 2",
                     "table": "Capacity: 4 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/paul-cyprus/17"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/paul-cyprus/17"
                 },
                 {
                     "yaw": -3.1401380047195318,
@@ -71,7 +71,7 @@ var APP_DATA = {
                     "title": "Table No: 3",
                     "table": "Capacity: 3 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/paul-cyprus/18"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/paul-cyprus/18"
                 }
             ]
         },
@@ -124,7 +124,7 @@ var APP_DATA = {
                     "title": "Table No: 7",
                     "table": "Capacity: 2 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/paul-cyprus/19"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/paul-cyprus/19"
                 },
                 {
                     "yaw": -0.25420051173190394,
@@ -132,7 +132,7 @@ var APP_DATA = {
                     "title": "Table No: 8",
                     "table": "Capacity: 4 persons",
                     "ambience": "Ambience: ",
-                    "link": "http://localhost:56294/Spa/Index#/user/SelectedRes/paul-cyprus/20"
+                    "link": "http://localhost:56294/VirtualRealityWebFramework/RestaurantReservationServices#/user/SelectedRes/paul-cyprus/20"
                 }
             ]
         },
