@@ -1463,10 +1463,6 @@
     <Content Include="SPA\forms\assets\virtualTour\pyxida-fish-tavern\vendor\requestAnimationFrame.js" />
     <Content Include="SPA\forms\assets\virtualTour\pyxida-fish-tavern\vendor\reset.min.css" />
     <Content Include="SPA\forms\assets\virtualTour\pyxida-fish-tavern\vendor\screenfull.min.js" />
-    <Content Include="SPA\forms\assets\virtualTour\two\data.js" />
-    <Content Include="SPA\forms\assets\virtualTour\two\index.html" />
-    <Content Include="SPA\forms\assets\virtualTour\two\index.js" />
-    <Content Include="SPA\forms\assets\virtualTour\two\style.css" />
     <Content Include="SPA\forms\config.js" />
     <Content Include="SPA\forms\package.json" />
     <Content Include="SPA\forms\src\app.html" />
