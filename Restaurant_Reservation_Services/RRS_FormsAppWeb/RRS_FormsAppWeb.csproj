@@ -1761,6 +1761,18 @@
     <Content Include="SPA\forms\src\rrs\restaurant\login.html" />
     <Content Include="SPA\forms\src\rrs\restaurant\index.html" />
     <Content Include="SPA\forms\src\rrs\restaurant\home.html" />
+    <Content Include="SPA\release\build\args.js" />
+    <Content Include="SPA\release\build\bundles.js" />
+    <Content Include="SPA\release\build\export.js" />
+    <Content Include="SPA\release\build\paths.js" />
+    <Content Include="SPA\release\build\tasks\bundle.js" />
+    <Content Include="SPA\release\build\tasks\clean.js" />
+    <Content Include="SPA\release\build\tasks\config-serializer.js" />
+    <Content Include="SPA\release\build\tasks\export-release.js" />
+    <Content Include="SPA\release\build\tasks\pre-bundle.js" />
+    <Content Include="SPA\release\build\tasks\prepare-release.js" />
+    <Content Include="SPA\release\config.js" />
+    <Content Include="SPA\release\gulpfile.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1856,6 +1868,9 @@
     <Content Include="SPA\forms\assets\fonts\themify-icons\themify.ttf" />
     <Content Include="SPA\forms\assets\fonts\themify-icons\themify.woff" />
     <Content Include="SPA\forms\assets\styles\slimselect.min.css" />
+    <Content Include="SPA\release\export.bat" />
+    <Content Include="SPA\release\init.bat" />
+    <Content Include="SPA\release\package.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
