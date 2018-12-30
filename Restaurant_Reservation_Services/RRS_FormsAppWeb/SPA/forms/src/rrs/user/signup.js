@@ -13,7 +13,6 @@ export class Signup {
         // New
         this.$element = $(element);
         this.router = router;
-        this.$element = $(element);
         this.appController = appController;
         this.formValidator = formValidator;
     }
@@ -92,5 +91,27 @@ export class Signup {
         this.enableFieldValidators();
         let fvInstances = [this.fv];
         return this.formValidator.getAndReportErrors(fvInstances);
+
+        //if (!this.appController.model.Email && !this.appController.model.Password) {
+        //    this.appController.toast.toastError("Email and Password are required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.Email) {
+        //    this.appController.toast.toastError("Email is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.Password) {
+        //    this.appController.toast.toastError("Password is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.ConfirmPassword) {
+        //    this.appController.toast.toastError("Confirm Password is required.", true);
+        //    return false;
+        //}
+        //else if (this.appController.model.Password != this.appController.model.ConfirmPassword) {
+        //    this.appController.toast.toastError("Confirm password doesn't match, Type again!", true);
+        //    return false;
+        //}
+        //return true;
     }
 }

@@ -1,7 +1,8 @@
 ﻿import { bindable, inject } from "aurelia-framework";
 import { log, customLog } from 'common/resources/scripts/log';
 import { trimEndSpaceComma } from 'common/resources/scripts/helper';
-import 'selectize';
+import $ from 'jquery';
+import selectize from 'selectize';
 
 @inject(Element)
 export class SelectControl {

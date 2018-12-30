@@ -55,7 +55,7 @@ function fixConfigFile() {
 			console.log(e);
 		}
 		
-		//var t = {baseURL: "/SPA/workflowforms/",defaultJSExtensions: true,transpiler: "babel"}
+		//var t = {baseURL: "/SPA/forms/",defaultJSExtensions: true,transpiler: "babel"}
 		//console.log(d);
 		
 		

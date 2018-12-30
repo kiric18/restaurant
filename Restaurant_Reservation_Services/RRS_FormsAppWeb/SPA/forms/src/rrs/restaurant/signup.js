@@ -113,5 +113,41 @@ export class Signup {
         this.enableFieldValidators();
         let fvInstances = [this.fv];
         return this.formValidator.getAndReportErrors(fvInstances);
+
+        //if (!this.appController.model.RestaurantName && !this.appController.model.RestaurantManager.ManagerName &&
+        //    !this.appController.model.RestaurantManager.Username && !this.appController.model.RestaurantManager.Email &&
+        //    !this.appController.model.RestaurantManager.Password) {
+        //    this.appController.toast.toastError("All fields are required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantName) {
+        //    this.appController.toast.toastError("Restaurant Name is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.ManagerName) {
+        //    this.appController.toast.toastError("Manager Name is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.Username) {
+        //    this.appController.toast.toastError("Username is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.Email) {
+        //    this.appController.toast.toastError("Email is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.Password) {
+        //    this.appController.toast.toastError("Password is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.ConfirmPassword) {
+        //    this.appController.toast.toastError("Confirm Password is required.", true);
+        //    return false;
+        //}
+        //else if (this.appController.model.RestaurantManager.Password != this.appController.model.ConfirmPassword) {
+        //    this.appController.toast.toastError("Confirm password doesn't match, Type again!", true);
+        //    return false;
+        //}
+        //return true;
     }
 }

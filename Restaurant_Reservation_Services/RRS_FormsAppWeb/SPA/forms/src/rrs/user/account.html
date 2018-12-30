@@ -47,7 +47,7 @@
                                 <div class="form-group add-padding-left-right">
                                     <h4 for="dtBirthday" class="form-label" style="margin:0px 0px 0px 0px">Birthday:</h4>
                                     <div class='input-group date' id='dtBirthday'>
-                                        <input type="text" class="form-control" id="Birthday" name="Birthday" datepicker placeholder="Birthday" value.bind="appController.model.Birthday  | dateFormat" input.delegate="dtBirthdayChanged($event.target.value)" />
+                                        <input type="text" class="form-control" id="Birthday" name="Birthday" datepicker placeholder="Birthday" value.bind="appController.model.Birthday | dateFormat" input.delegate="dtBirthdayChanged($event.target.value)" />
                                         <span class="input-group-addon">
                                             <i class="fa fa-calendar"></i>
                                         </span>
@@ -97,13 +97,13 @@
 
                     <div class="row">
                         <div class="col-xs-6">
-                            <div class="form-group add-padding-left-right">
+                            <div class="add-padding-left-right">
                                 <password element-id="Password" element-name="Password" icon-id="iconPassword" placeholder="Password" label="Password" column.two-way="appController.model.Password"></password>
 
                             </div>
                         </div>
                         <div class="col-xs-6">
-                            <div class="form-group add-padding-left-right">
+                            <div class="add-padding-left-right">
                                 <password element-id="ConfirmPassword" element-name="ConfirmPassword" icon-id="iconConfirmPassword" placeholder="Confirm Password" label="ConfirmPassword" column.two-way="appController.model.ConfirmPassword"></password>
                             </div>
                         </div>

@@ -35,27 +35,27 @@ export class Index {
 
         config.map([
             {
-                route: ['', 'Home', 'h'],
+                route: ['', 'Home'],
                 moduleId: `rrs/${this.modulePath}/home`,
                 name: 'Home', title: 'Home', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Signup', 's'],
+                route: ['Signup'],
                 moduleId: `rrs/${this.modulePath}/signup`,
                 name: 'Signup', title: 'Sign up', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Login', 'l'],
+                route: ['Login'],
                 moduleId: `rrs/${this.modulePath}/login`,
                 name: 'Login', title: 'Login', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Account', 'a', 'Account/:id?'],
+                route: ['Account', 'Account/:id?'],
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Reservations', 'r', 'Reservations/:id?'],
+                route: ['Reservations', 'Reservations/:id?'],
                 moduleId: `rrs/${this.modulePath}/reservations`,
                 name: 'Reservations', title: 'Reservations', settings: { type: 'Restaurant', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

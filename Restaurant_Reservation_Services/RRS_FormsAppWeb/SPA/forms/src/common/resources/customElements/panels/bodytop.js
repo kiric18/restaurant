@@ -11,7 +11,7 @@ export class BodyTop {
         this.user = user;
         this.router = router;
         this.appController = appController;
-        this.defaultLogo = "/SPA/workflowforms/assets/images/smartflow_logo_small.png";
+        this.defaultLogo = "/SPA/forms/assets/images/smartflow_logo_small.png";
     }
 
     // New

@@ -4,7 +4,6 @@ import { log, customLog } from 'common/resources/scripts/log';
 import { closeTab } from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
 import { FormValidator, cookFV } from 'common/resources/scripts/formValidator';
-import $ from 'jquery';
 
 @inject(Element, Router, AppController, FormValidator)
 export class Login {
@@ -13,7 +12,6 @@ export class Login {
         // New
         this.$element = $(element);
         this.router = router;
-        this.$element = $(element);
         this.appController = appController;
         this.formValidator = formValidator;
     }
@@ -71,14 +69,30 @@ export class Login {
     }
 
     enableFieldValidators(doEnable = true) {
-        for (var field in this.fv.options.fields) {
-            this.fv.enableFieldValidators(field, doEnable);
-        };
+        //for (var field in this.fv.options.fields) {
+        //    this.fv.enableFieldValidators(field, doEnable);
+        //};
+
+        this.fv.enableFieldValidators("Email", doEnable);
+        this.fv.enableFieldValidators("Password", doEnable);
     }
 
     runValidation() {
         this.enableFieldValidators();
         let fvInstances = [this.fv];
         return this.formValidator.getAndReportErrors(fvInstances);
+        //if (!this.appController.model.Email && !this.appController.model.Password) {
+        //    this.appController.toast.toastError("Email and Password are required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.Email) {
+        //    this.appController.toast.toastError("Email is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.Password) {
+        //    this.appController.toast.toastError("Password is required.", true);
+        //    return false;
+        //}
+        //return true;
     }
 }

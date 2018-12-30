@@ -85,5 +85,18 @@ export class Login {
         this.enableFieldValidators();
         let fvInstances = [this.fv];
         return this.formValidator.getAndReportErrors(fvInstances);
+        //if (!this.appController.model.RestaurantManager.Email && !this.appController.model.RestaurantManager.Password) {
+        //    this.appController.toast.toastError("Email and Password are required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.Email) {
+        //    this.appController.toast.toastError("Email is required.", true);
+        //    return false;
+        //}
+        //else if (!this.appController.model.RestaurantManager.Password) {
+        //    this.appController.toast.toastError("Password is required.", true);
+        //    return false;
+        //}
+        //return true;
     }
 }

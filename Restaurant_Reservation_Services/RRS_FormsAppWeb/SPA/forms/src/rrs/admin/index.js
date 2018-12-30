@@ -12,7 +12,7 @@ export class Index {
     constructor(alertMessages, appController, environment, restaurant) {
 
         this.title = "Admin";
-        this.modulePath = "Admin";
+        this.modulePath = "admin";
 
         this.alertMessages = alertMessages;
         this.environment = environment;

@@ -2,7 +2,7 @@ var appRoot = 'src/';
 var assetRoot = 'assets/';
 var outputRoot = 'dist/';
 var exportSrvRoot = 'export/';
-var devRoot = '../../forms/';
+var devRoot = '../forms/';
 
 module.exports = {
   config : './config.js',

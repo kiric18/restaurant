@@ -28,23 +28,23 @@ export class stringToIconValueConverter {
                     break;
                 }
                 case "Word": {
-                    result = `<img src="${this.environment.appUrl}/SPA/workflowforms/assets/images/DocumentFormat/word.png" alt="Word" />`;
+                    result = `<img src="${this.environment.appUrl}/SPA/forms/assets/images/DocumentFormat/word.png" alt="Word" />`;
                     break;
                 }
                 case "Excel": {
-                    result = `<img src="${this.environment.appUrl}/SPA/workflowforms/assets/images/DocumentFormat/excel.png" alt="Excel" />`;
+                    result = `<img src="${this.environment.appUrl}/SPA/forms/assets/images/DocumentFormat/excel.png" alt="Excel" />`;
                     break;
             }
                 case "PowerPoint": {
-                    result = `<img src="${this.environment.appUrl}/SPA/workflowforms/assets/images/DocumentFormat/powerpoint.png" alt="PowerPoint" />`;
+                    result = `<img src="${this.environment.appUrl}/SPA/forms/assets/images/DocumentFormat/powerpoint.png" alt="PowerPoint" />`;
                     break;
                 }
                 case "PDF": {
-                    result = `<img src="${this.environment.appUrl}/SPA/workflowforms/assets/images/DocumentFormat/PDF.png" alt="PDF" />`;
+                    result = `<img src="${this.environment.appUrl}/SPA/forms/assets/images/DocumentFormat/PDF.png" alt="PDF" />`;
                     break;
                 }
                 default: {
-                    result = `<img src="${this.environment.appUrl}/SPA/workflowforms/assets/images/DocumentFormat/other.png" alt="Other" />`;
+                    result = `<img src="${this.environment.appUrl}/SPA/forms/assets/images/DocumentFormat/other.png" alt="Other" />`;
                     break;
                 }
             }

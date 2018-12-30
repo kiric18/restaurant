@@ -24,27 +24,25 @@ module.exports = {
                 rev: true
             }
         },
-        "dist/plugins-build": {
-            includes: [
-                '[common/plugins/**/*.js]',
-                '[common/plugins/**/*.html!text]',
-                '[common/plugins/**/*.css!text]'
-            ],
-
-            options: {
-                inject: true,
-                minify: true,
-                depcache: true,
-                rev: true
-            }
-        },
+        //"dist/plugins-build": {
+        //    includes: [
+        //        '[common/plugins/**/*.js]',
+        //        '[common/plugins/**/*.html!text]',
+        //        '[common/plugins/**/*.css!text]'
+        //    ],
+        //    options: {
+        //        inject: true,
+        //        minify: true,
+        //        depcache: true,
+        //        rev: true
+        //    }
+        //},
         "dist/admin-build": {
             includes: [
                 '[rrs/admin/**/*.js]',
                 '[rrs/admin/**/*.html!text]',
                 '[rrs/admin/**/*.css!text]'
             ],
-
             options: {
                 inject: true,
                 minify: false,
@@ -72,7 +70,6 @@ module.exports = {
                 '[rrs/user/**/*.html!text]',
                 '[rrs/user/**/*.css!text]'
             ],
-
             options: {
                 inject: true,
                 minify: false,

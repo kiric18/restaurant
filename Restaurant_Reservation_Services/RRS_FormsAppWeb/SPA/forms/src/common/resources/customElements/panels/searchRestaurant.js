@@ -1,10 +1,10 @@
 ﻿import { inject } from "aurelia-framework";
 import { Router } from 'aurelia-router';
 import { log, customLog } from 'common/resources/scripts/log';
-import { closeTab, datetimepicker, formatDateToSharepoint, setMinTime, setMinDate, setMaxDate, currentDate, currentTime, replaceAll } from 'common/resources/scripts/helper';
+import { formatDateToSharepoint} from 'common/resources/scripts/helper';
 import { AppController } from "common/controllers/appController";
-import "common/plugins/select2.full.min";
-import 'selectize';
+import $ from 'jquery';
+import selectize from 'selectize';
 
 @inject(Element, Router, AppController)
 export class SearchRestaurant {

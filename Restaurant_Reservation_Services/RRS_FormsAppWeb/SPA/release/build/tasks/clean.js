@@ -19,6 +19,7 @@ gulp.task('clean-unbundle', function() {
 gulp.task('clean', function(callback) {
   return runSequence(
     ['clean-unbundle','clean-files'],
+    //['clean-files'],
     callback
   );
 });

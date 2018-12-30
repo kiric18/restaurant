@@ -31,32 +31,32 @@ export class Index {
 
         config.map([
             {
-                route: ['', 'Home', 'h'],
+                route: ['', 'Home'],
                 moduleId: `rrs/${this.modulePath}/home`,
                 name: 'Home', title: 'Home', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Signup', 's'],
+                route: ['Signup'],
                 moduleId: `rrs/${this.modulePath}/signup`,
                 name: 'Signup', title: 'Sign up', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Login', 'l'],
+                route: ['Login'],
                 moduleId: `rrs/${this.modulePath}/login`,
                 name: 'Login', title: 'Login', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['Account', 'a', 'Account/:id'],
+                route: ['Account', 'Account/:id?'],
                 moduleId: `rrs/${this.modulePath}/account`,
                 name: 'Account', title: 'Account', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['RestaurantsResults', 'rr', 'RestaurantsResults/:name?'],
+                route: ['RestaurantsResults', 'RestaurantsResults/:name?'],
                 moduleId: `rrs/${this.modulePath}/restaurantsResults`,
                 name: 'RestaurantsResults', title: 'RestaurantsResults', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
-                route: ['SelectedRestaurant', 'sr', 'SelectedRes/:name?', 'SelectedRes/:name?/:tableId?'],
+                route: ['SelectedRestaurant', 'SelectedRes/:name?', 'SelectedRes/:name?/:tableId?'],
                 moduleId: `rrs/${this.modulePath}/selectedRestaurant`,
                 name: 'SelectedRestaurant', title: 'SelectedRestaurant', settings: { type: 'User', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },

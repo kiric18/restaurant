@@ -1,6 +1,6 @@
-﻿import { Popup } from 'common/resources/scripts/popup';
+﻿import { inject } from 'aurelia-framework';
+import { Popup } from 'common/resources/scripts/popup';
 import { Toast } from 'common/resources/scripts/toast';
-import { inject } from 'aurelia-framework';
 
 @inject(Popup, Toast)
 export class FormValidator {
