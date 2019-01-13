@@ -60,12 +60,14 @@ export class SelectedRestaurant {
         if (this.appController.SelectedRestaurant.RestaurantTables && this.appController.SelectedRestaurant.RestaurantTables.length > 0) {
             for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
                 let table = this.appController.SelectedRestaurant.RestaurantTables[i];
-                if (table.Id === parseInt(_self.tableId)) {
-                    _self.showTables = true;
-                    _self.disableNumberOfPersons = true;
-                    _self.appController.UserBooking.RestaurantTableId = table.Id;
-                    _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
-                    table["IsSelected"] = true;
+                if (table.Id === parseInt(_self.tableId)) {                    
+                    if (!table.IsBooking) {
+                        _self.showTables = true;
+                        _self.disableNumberOfPersons = true;
+                        _self.appController.UserBooking.RestaurantTableId = table.Id;
+                        _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
+                        table["IsSelected"] = true;
+                    }
                 }
                 else if (table.IsBooking) {
                     table["IsSelected"] = true;
@@ -113,10 +115,6 @@ export class SelectedRestaurant {
 
     findTable() {
         let _self = this;
-
-        if (this.runValidation() == false) {
-            return;
-        }
 
         this.showTables = true;
     }

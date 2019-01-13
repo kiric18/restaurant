@@ -29,7 +29,7 @@ export class App {
                 viewPorts: { mainContent: { moduleId: 'common/resources/customElements/pages/underMaintenance' }, },
             },
             {
-                route: ['', 'admin/'],
+                route: ['admin/'],
                 viewPorts: { mainContent: { moduleId: 'rrs/admin/index' }, },
                 name: 'Admin', title: 'Admin',
                 settings: {
@@ -40,7 +40,7 @@ export class App {
                 }
             },
             {
-                route: ['user/'],
+                route: ['', 'user/'],
                 viewPorts: { mainContent: { moduleId: 'rrs/user/index' }, },
                 name: 'User', title: 'User',
                 settings: {
