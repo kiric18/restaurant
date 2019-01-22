@@ -81,6 +81,13 @@ export class WebServices {
         return this.defaultFetch(`${this.environment.appUrl}/user/BookTable/`, newRequest);
     }
 
+    checkIfTableIsBook(model) {
+        let newRequest = this.generateRequestBody();
+        newRequest.dataType = 'json';
+        newRequest.body = json(model);
+        return this.defaultFetch(`${this.environment.appUrl}/user/CheckIfTableIsBook/`, newRequest);
+    }
+
     searchRestaurant(model) {
         let newRequest = this.generateRequestBody();
         newRequest.dataType = 'json';

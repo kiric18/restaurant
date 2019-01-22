@@ -263,5 +263,31 @@ namespace RRS_FormsAppWeb.Controllers
                 throw ex;
             }
         }
+
+        
+        [HttpPost]
+        public ActionResult CheckIfTableIsBook(UserBooking booking)
+        {
+            try
+            {
+                CustomJsonResult result = new CustomJsonResult();
+                UserBooking userBooking = db.UserBookings.Where(u => u.Date == booking.Date && u.Time == booking.Time && u.IsActive == true).FirstOrDefault();
+                if (userBooking != null)
+                {
+                    result.Data = new { Result = true, UserBooking = booking };
+                }
+                else
+                {
+                    result.Data = new { Result = false };
+                }
+
+
+                return result;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

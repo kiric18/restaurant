@@ -60,14 +60,14 @@ export class SelectedRestaurant {
         if (this.appController.SelectedRestaurant.RestaurantTables && this.appController.SelectedRestaurant.RestaurantTables.length > 0) {
             for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
                 let table = this.appController.SelectedRestaurant.RestaurantTables[i];
-                if (table.Id === parseInt(_self.tableId)) {                    
-                    if (!table.IsBooking) {
+                if (table.Id === parseInt(_self.tableId)) {
+                    //if (!table.IsBooking) {
                         _self.showTables = true;
                         _self.disableNumberOfPersons = true;
                         _self.appController.UserBooking.RestaurantTableId = table.Id;
                         _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
                         table["IsSelected"] = true;
-                    }
+                    //}
                 }
                 else if (table.IsBooking) {
                     table["IsSelected"] = true;
@@ -103,13 +103,20 @@ export class SelectedRestaurant {
         }
         this.appController.UserBooking.User = this.appController.model.Id;
         this.appController.UserBooking.RestaurantId = this.appController.SelectedRestaurant.Id;
-        this.appController.UserBooking.IsActive= true;
+        this.appController.UserBooking.IsActive = true;
         customLog("Table Booking", this.appController.UserBooking, "info");
-        this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
-            _self.appController.webServices.updateRestaurantTableAvailability(_self.appController.UserBooking.RestaurantTableId, true).then(response => {
-                _self.showMessage = true;
-                _self.appController.toast.toastSuccess("Your table has been booking succesfully!");
-            });
+        this.appController.webServices.checkIfTableIsBook(this.appController.UserBooking).then(response => {
+            if (response.Result) {
+                _self.appController.toast.toastWarning("The table is already booked! Please select other table!");
+            }
+            else if (!response.Result) {
+                this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
+                    _self.appController.webServices.updateRestaurantTableAvailability(_self.appController.UserBooking.RestaurantTableId, true).then(response => {
+                        _self.showMessage = true;
+                        _self.appController.toast.toastSuccess("Your table has been booking succesfully!");
+                    });
+                });
+            }
         });
     }
 
@@ -128,7 +135,7 @@ export class SelectedRestaurant {
             if (table.Id === selectedTable.Id) {
                 table.IsSelected = true;
             }
-            else if (!table.IsBooking){
+            else if (!table.IsBooking) {
                 table.IsSelected = false;
             }
         }
