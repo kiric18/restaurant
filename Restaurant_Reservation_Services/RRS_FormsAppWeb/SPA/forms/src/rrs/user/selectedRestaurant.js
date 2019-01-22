@@ -69,9 +69,6 @@ export class SelectedRestaurant {
                         table["IsSelected"] = true;
                     //}
                 }
-                else if (table.IsBooking) {
-                    table["IsSelected"] = true;
-                }
                 else {
                     table["IsSelected"] = false;
                 }
@@ -107,7 +104,7 @@ export class SelectedRestaurant {
         customLog("Table Booking", this.appController.UserBooking, "info");
         this.appController.webServices.checkIfTableIsBook(this.appController.UserBooking).then(response => {
             if (response.Result) {
-                _self.appController.toast.toastWarning("The table is already booked! Please select other table!");
+                _self.appController.toast.toastWarning("The table is already booked! Please select other table or date!");
             }
             else if (!response.Result) {
                 this.appController.webServices.bookTable(this.appController.UserBooking).then(response => {
