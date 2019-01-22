@@ -488,7 +488,7 @@ System.config({
       "rrs/restaurant/signup.html!github:systemjs/plugin-text@0.0.9.js",
       "rrs/restaurant/signup.js"
     ],
-    "dist/user-build-4efc662f7b.js": [
+    "dist/user-build-2b8c32a1ee.js": [
       "rrs/user/account.html!github:systemjs/plugin-text@0.0.9.js",
       "rrs/user/account.js",
       "rrs/user/home.html!github:systemjs/plugin-text@0.0.9.js",
@@ -896,7 +896,7 @@ System.config({
       "npm:whatwg-fetch@1.0.0.js",
       "npm:whatwg-fetch@1.0.0/fetch.js"
     ],
-    "dist/app-build-2e89c6cb51.js": [
+    "dist/app-build-a28199e9e5.js": [
       "app.html!github:systemjs/plugin-text@0.0.9.js",
       "app.js",
       "common/controllers/appController.js",
