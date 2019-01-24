@@ -773,7 +773,6 @@ body.boxed-layout #wrapper {
 
 .res-is-active {
     color: #1ab394 !important;
-    s
 }
 
 .selectize-control .selectize-input.disabled {
@@ -842,11 +841,6 @@ iploadImg > i {
         text-decoration: none;
         font-size: 17px;
     }
-
-.active {
-    background-color: #4CAF50;
-    color: white;
-}
 
 .topnav .icon {
     display: none;

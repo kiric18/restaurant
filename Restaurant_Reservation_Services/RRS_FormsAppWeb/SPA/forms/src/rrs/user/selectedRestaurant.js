@@ -62,17 +62,18 @@ export class SelectedRestaurant {
                 let table = this.appController.SelectedRestaurant.RestaurantTables[i];
                 if (table.Id === parseInt(_self.tableId)) {
                     //if (!table.IsBooking) {
-                        _self.showTables = true;
-                        _self.disableNumberOfPersons = true;
-                        _self.appController.UserBooking.RestaurantTableId = table.Id;
-                        _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
-                        table["IsSelected"] = true;
+                    _self.showTables = true;
+                    _self.appController.UserBooking.RestaurantTableId = table.Id;
+                    _self.appController.UserBooking.NumberOfPersons = table.NumberOfPersons;
+                    table["IsSelected"] = true;
                     //}
                 }
                 else {
                     table["IsSelected"] = false;
                 }
             }
+
+            //this.selectedTable();
         }
 
         this.initializeValidation('bookForm');
@@ -83,6 +84,8 @@ export class SelectedRestaurant {
         for (let i = 1; i <= 20; i++) {
             _self.numberOfPersonsList.push(i);
         }
+
+        _self.numberOfPersonsList.push("All Tables");
     }
 
     dtDateChanged(valueIn) {
@@ -123,7 +126,7 @@ export class SelectedRestaurant {
         this.showTables = true;
     }
 
-    onSelectTable(event, selectedTable) {
+    onSelectTable(event, selectedTable, index) {
         let _self = this;
         this.appController.UserBooking.RestaurantTableId = selectedTable.Id;
 
@@ -132,21 +135,28 @@ export class SelectedRestaurant {
             if (table.Id === selectedTable.Id) {
                 table.IsSelected = true;
             }
-            else if (!table.IsBooking) {
+            else {
                 table.IsSelected = false;
             }
         }
+        //this.selectedTable();
     }
 
-    //selectedTable(selectedTable, index) {
-    //    this.appController.UserBooking.RestaurantTableId = selectedTable.Id;
+    //selectedTable() {
+    //    let countTables = 0;
     //    for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
     //        let table = this.appController.SelectedRestaurant.RestaurantTables[i];
-    //        if (!table.IsBooking && selectedTable.IsBooking) {
-    //            $(`#IsBooking${i}`).prop("disabled", true);
+    //        if (table.IsSelected) {
+    //            countTables++;
     //        }
     //        else {
-    //            $(`#IsBooking${i}`).prop("disabled", false);
+    //            $(`#TableRow${i}`).prop("disabled", true);
+    //        }
+    //    }
+    //    if (countTables == 0) {
+    //        for (let i = 0; i < this.appController.SelectedRestaurant.RestaurantTables.length; i++) {
+    //            let table = this.appController.SelectedRestaurant.RestaurantTables[i];
+    //            $(`#TableRow${i}`).prop("disabled", false);
     //        }
     //    }
     //}

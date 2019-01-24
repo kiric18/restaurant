@@ -488,7 +488,7 @@ System.config({
       "rrs/restaurant/signup.html!github:systemjs/plugin-text@0.0.9.js",
       "rrs/restaurant/signup.js"
     ],
-    "dist/user-build-2b8c32a1ee.js": [
+    "dist/user-build-95f54e7b67.js": [
       "rrs/user/account.html!github:systemjs/plugin-text@0.0.9.js",
       "rrs/user/account.js",
       "rrs/user/home.html!github:systemjs/plugin-text@0.0.9.js",

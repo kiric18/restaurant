@@ -95,7 +95,7 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" show.bind="appController.UserBooking.NumberOfPersons == table.NumberOfPersons" click.delegate="onSelectTable($event, table)" class="${table.IsSelected ? 'selectedRow' : ''}" style="cursor:pointer">
+                                    <tr repeat.for="table of appController.SelectedRestaurant.RestaurantTables | arraySanitizer" id="TableRow${$index}" show.bind="appController.UserBooking.NumberOfPersons == table.NumberOfPersons || appController.UserBooking.NumberOfPersons == 'All Tables'" click.delegate="onSelectTable($event, table, $index)" class="${table.IsSelected ? 'selectedRow' : ''}" style="cursor:pointer">
                                         <td style="text-align:center;vertical-align:middle;">
                                             <div class="row">
                                                 <div class="col-xs-12 col-md-12">
