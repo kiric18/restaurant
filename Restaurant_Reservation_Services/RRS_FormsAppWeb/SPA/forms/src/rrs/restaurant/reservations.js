@@ -64,9 +64,9 @@ export class Reservations {
                     for (let i = 0; i < response.UserBooking.length; i++) {
                         let book = response.UserBooking[i];
                         for (let t = 0; t < tablesLength; t++) {
-                            let tableBook = new TablesBook();
                             let table = this.appController.model.RestaurantTables[t];
                             if (book.IsActive && table.IsBooking && table.Id == book.RestaurantTableId) {
+                                let tableBook = new TablesBook();
                                 tableBook.NumberOfTable = table.NumberOfTable;
                                 tableBook.NumberOfPersons = table.NumberOfPersons;
                                 tableBook.Ambience = table.Ambience;
@@ -83,18 +83,18 @@ export class Reservations {
                                 tableBook.ReservationPhoneNumber = book.ReservationPhoneNumber;
 
                                 tableBook.IsDisabled = true;
+                                _self.appController.RestaurantTableAndUserBooking.push(tableBook);
                             }
-                            else {
-                                //tableBook.UserBookingId = book.Id;
-                                //tableBook.IsActive = book.IsActive;
-                                tableBook.RestaurantTableId = table.Id;
-                                tableBook.NumberOfTable = table.NumberOfTable;
-                                tableBook.NumberOfPersons = table.NumberOfPersons;
-                                tableBook.Ambience = table.Ambience;
-                                tableBook.IsBooking = table.IsBooking;
-                            }
+                            //else {
+                            //    //tableBook.UserBookingId = book.Id;
+                            //    //tableBook.IsActive = book.IsActive;
+                            //    tableBook.RestaurantTableId = table.Id;
+                            //    tableBook.NumberOfTable = table.NumberOfTable;
+                            //    tableBook.NumberOfPersons = table.NumberOfPersons;
+                            //    tableBook.Ambience = table.Ambience;
+                            //    tableBook.IsBooking = table.IsBooking;
+                            //}
 
-                            _self.appController.RestaurantTableAndUserBooking.push(tableBook);
                         }
                     }
 

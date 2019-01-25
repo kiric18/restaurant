@@ -46,7 +46,7 @@ export class Index {
             },
             {
                 route: ['Restaurants'],
-                moduleId: `rrs/${this.modulePath}/Restaurants`,
+                moduleId: `rrs/${this.modulePath}/restaurants`,
                 name: 'Restaurants', title: 'Restaurants', settings: { type: 'Admin', icon: '', isVisible: true, completed: false, color: '' }, nav: true,
             },
             {
